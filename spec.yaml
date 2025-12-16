@@ -1,0 +1,244 @@
+# YAML Schema Specification for Project Files
+#
+# This file defines the structure for projects/*.yaml files.
+# Customize this schema based on your SCOPE.md requirements.
+#
+# Usage: Reference this when creating new project YAML files.
+# Validation: Run ./scripts/check-yaml.py to validate against this schema.
+
+schema-version: "1.0"
+
+# ============================================================================
+# REQUIRED FIELDS (must be present in every project file)
+# ============================================================================
+
+required-fields:
+  - last-update      # Date when this entry was last updated (YYYY-MM-DD)
+  - repo-url         # Full URL to the repository
+
+# ============================================================================
+# FIELD DEFINITIONS
+# ============================================================================
+
+fields:
+  # --- Tracking Fields (put these first in YAML files) ---
+
+  last-update:
+    type: string
+    format: date  # YYYY-MM-DD
+    description: "Date when this entry was last analyzed/updated"
+    required: true
+
+  repo-commit:
+    type: string
+    description: "Git commit hash that was analyzed (for reproducibility)"
+    required: false
+
+  repo-url:
+    type: string
+    format: url
+    description: "Full URL to the repository (GitHub, GitLab, etc.)"
+    required: true
+
+  # --- Basic Metadata ---
+
+  name:
+    type: string
+    description: "Project name (usually repo name)"
+    required: false
+
+  description:
+    type: string
+    description: "One-line description of what the project does"
+    required: false
+
+  language:
+    type: string
+    description: "Primary programming language"
+    enum:
+      - TypeScript
+      - JavaScript
+      - Python
+      - Go
+      - Rust
+      - Java
+      - C#
+      - Ruby
+      - PHP
+      - Swift
+      - Kotlin
+      - other
+    required: false
+
+  languages:
+    type: array
+    items: string
+    description: "All languages used (if multi-language project)"
+    required: false
+
+  stars:
+    type: integer
+    description: "GitHub star count"
+    required: false
+
+  forks:
+    type: integer
+    description: "GitHub fork count"
+    required: false
+
+  license:
+    type: string
+    description: "License type (MIT, Apache-2.0, GPL-3.0, etc.)"
+    required: false
+
+  last-commit:
+    type: string
+    format: date
+    description: "Date of most recent commit"
+    required: false
+
+  # --- Classification ---
+
+  category:
+    type: string
+    description: "Project category (customize in SCOPE.md)"
+    enum:
+      - cli-client         # Command-line interface tool
+      - mcp-server         # MCP server implementation
+      - api-wrapper        # API client library
+      - integration        # Third-party integration
+      - extension          # Browser/IDE extension
+      - bridge             # Protocol bridge/adapter
+      - uncategorized      # Not yet categorized
+    required: false
+
+  reputable-source:
+    type: boolean
+    description: "Is this from a reputable/official organization?"
+    required: false
+
+  organization:
+    type: string
+    description: "Parent organization (if reputable-source is true)"
+    required: false
+
+  # --- Features ---
+
+  features:
+    type: array
+    items: string
+    description: "List of notable features"
+    required: false
+
+  # --- Installation ---
+
+  installation:
+    type: object
+    description: "Installation methods available"
+    properties:
+      npm:
+        type: string
+        description: "npm package name"
+      pip:
+        type: string
+        description: "PyPI package name"
+      brew:
+        type: string
+        description: "Homebrew formula"
+      go-install:
+        type: string
+        description: "go install path"
+      cargo:
+        type: string
+        description: "Cargo crate name"
+      binary:
+        type: boolean
+        description: "Pre-built binaries available"
+      docker:
+        type: string
+        description: "Docker image"
+    required: false
+
+  # --- Security Analysis (optional, for security-focused research) ---
+
+  security:
+    type: object
+    description: "Security analysis results"
+    properties:
+      analyzed:
+        type: boolean
+        description: "Has security analysis been performed?"
+      analysis-commit:
+        type: string
+        description: "Commit hash that was analyzed"
+      eval-usage:
+        type: string
+        enum: [none, safe, unsafe]
+        description: "Usage of eval/exec/compile"
+      subprocess-usage:
+        type: string
+        enum: [none, safe, unsafe]
+        description: "Subprocess/shell command handling"
+      network-isolation:
+        type: string
+        enum: [verified, partial, none]
+        description: "Only connects to configured endpoints?"
+      input-validation:
+        type: string
+        enum: [thorough, basic, none]
+        description: "Input sanitization quality"
+      sandboxing:
+        type: boolean
+        description: "Sandboxing/isolation support"
+      notes:
+        type: array
+        items: string
+        description: "Security-related notes"
+    required: false
+
+  # --- Documentation Quality ---
+
+  documentation:
+    type: object
+    description: "Documentation quality assessment"
+    properties:
+      readme:
+        type: boolean
+        description: "Has README"
+      api-docs:
+        type: boolean
+        description: "Has API documentation"
+      examples:
+        type: boolean
+        description: "Has usage examples"
+      tests:
+        type: boolean
+        description: "Has test files"
+    required: false
+
+  # --- Notes ---
+
+  notes:
+    type: array
+    items: string
+    description: "Additional notes about the project"
+    required: false
+
+# ============================================================================
+# CUSTOM FIELDS
+# ============================================================================
+# Add your own fields below based on your SCOPE.md requirements.
+# Example:
+#
+# custom-fields:
+#   api-coverage:
+#     type: string
+#     enum: [full, partial, minimal]
+#     description: "How much of the target API is covered"
+#
+#   cli-commands:
+#     type: array
+#     items: string
+#     description: "List of CLI commands supported"
+
+custom-fields: {}
