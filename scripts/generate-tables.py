@@ -7,6 +7,7 @@ Usage:
 
 Options:
     --by-category       Group projects by category
+    --by-transport      Show transport support matrix
     --by-stars          Sort by star count
     --reputable-only    Only show reputable sources
     --json              Output as JSON instead of markdown
@@ -170,6 +171,51 @@ def generate_reputable_table(projects: list[dict]) -> str:
     return "\n".join(lines)
 
 
+def generate_transport_matrix(projects: list[dict]) -> str:
+    """Generate transport support matrix."""
+    lines = ["## Transport Support Matrix", ""]
+
+    # Define transports to check
+    transports = ["stdio", "http", "sse", "websocket"]
+
+    # Header
+    header = "| Project | " + " | ".join(t.upper() for t in transports) + " |"
+    separator = "|---------|" + "|".join(":---:" for _ in transports) + "|"
+
+    lines.append(header)
+    lines.append(separator)
+
+    # Sort by stars
+    def star_sort_key(p):
+        stars = p.get("stars")
+        if isinstance(stars, int):
+            return (0, -stars)
+        return (1, 0)
+
+    for p in sorted(projects, key=star_sort_key):
+        name = p.get("name", "unknown")
+        url = p.get("repo-url", "")
+
+        if url:
+            name_cell = f"[{name}]({url})"
+        else:
+            name_cell = name
+
+        # Get transport support
+        transport_data = p.get("transports", {}) or {}
+        cells = []
+        for t in transports:
+            if transport_data.get(t):
+                cells.append("✓")
+            else:
+                cells.append("")
+
+        lines.append(f"| {name_cell} | " + " | ".join(cells) + " |")
+
+    lines.append("")
+    return "\n".join(lines)
+
+
 def generate_by_category(projects: list[dict]) -> str:
     """Generate tables grouped by category."""
     categories = defaultdict(list)
@@ -255,6 +301,9 @@ def main():
 
         if "--by-category" in args:
             parts.append(generate_by_category(projects))
+
+        if "--by-transport" in args:
+            parts.append(generate_transport_matrix(projects))
 
         output = "\n".join(parts)
 

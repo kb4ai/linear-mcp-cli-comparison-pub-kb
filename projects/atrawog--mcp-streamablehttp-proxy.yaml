@@ -1,0 +1,43 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/atrawog/mcp-streamablehttp-proxy"
+name: "mcp-streamablehttp-proxy"
+description: "Generic stdio-to-StreamableHTTP bridge for MCP servers"
+language: "Python"
+stars: null
+category: "proxy-bridge"
+features:
+  - "Universal stdio MCP server support"
+  - "Session management with isolated subprocesses"
+  - "Full MCP lifecycle support"
+  - "Async I/O for concurrent requests"
+  - "Configurable timeouts"
+  - "Production-ready implementation"
+  - "Works with any stdio-based MCP server"
+transports:
+  stdio: true
+  streamable-http: true
+bridge-direction: "stdio-to-http"
+auth:
+  bearer-header: null
+deployment:
+  default-host: "127.0.0.1"
+  default-port: 3000
+  session-timeout: 300
+  request-timeout: 30
+configuration:
+  flags:
+    - "--host"
+    - "--port"
+    - "--timeout"
+    - "--log-level"
+installation:
+  - "pip install mcp-streamablehttp-proxy"
+pypi-package: "mcp-streamablehttp-proxy"
+usage-examples:
+  - "mcp-streamablehttp-proxy python -m mcp_server_fetch"
+  - "mcp-streamablehttp-proxy /usr/local/bin/mcp-server-filesystem --root /data"
+  - "mcp-streamablehttp-proxy npx @modelcontextprotocol/server-memory"
+license: "MIT"
+notes: "One subprocess per session - plan resources accordingly. No request queuing, parallel processing within sessions. NEVER expose directly to internet. Designed to work with MCP OAuth Gateway. Enables web clients to access stdio servers."
+security-warning: "Not designed for direct internet exposure"
+integration: "Works with atrawog/mcp-oauth-gateway"

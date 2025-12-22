@@ -1,0 +1,27 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/carlosflorencio/linear-cli"
+
+name: "linear-cli"
+description: "Command-line interface for interacting with the Linear API"
+language: "Go"
+stars: 0
+
+category: "linear-cli"
+reputable-source: false
+
+features:
+  - "Go-based CLI for Linear API"
+  - "Command-line interface for Linear operations"
+
+auth:
+  api-key: true
+  env-var: true
+
+linear-api-coverage: "unknown"
+
+linear-features:
+  - "issues"
+
+notes:
+  - "Minimal information available"
+  - "Early stage or experimental project"

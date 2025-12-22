@@ -1,0 +1,27 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/minupalaniappan/linear-cli"
+
+name: "linear-cli"
+description: "Everyone loves Linear, but sometimes you just need access to it from terminal"
+language: "JavaScript"
+stars: 8
+
+category: "linear-cli"
+reputable-source: false
+
+features:
+  - "Terminal-based Linear access"
+  - "Command line issue management"
+
+auth:
+  api-key: true
+  env-var: true
+
+linear-api-coverage: "partial"
+
+linear-features:
+  - "issues"
+
+notes:
+  - "Companion to native and web Linear experience"
+  - "JavaScript-based implementation"

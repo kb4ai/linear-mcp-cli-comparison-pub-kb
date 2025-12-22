@@ -1,0 +1,36 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/iceener/linear-streamable-mcp-server"
+name: "linear-streamable-mcp-server"
+description: "MCP Server for interacting with Linear API. Written in TypeScript, Node and Hono.dev"
+language: "TypeScript"
+stars: 45
+category: "linear-mcp-server"
+reputable-source: false
+features:
+  - "Manage issues, projects, teams, users, comments, and cycles"
+  - "Local or remote deployment"
+  - "AI-agent friendly with clear MCP instructions"
+  - "Human-readable feedback in API responses"
+  - "Hints and suggestions for next steps"
+  - "Batch actions support (e.g., add_issues)"
+  - "Prefetches related values (status ID + status name)"
+  - "Hides disabled tools to reduce noise"
+  - "Adjusts schemas to match workspace preferences"
+  - "Issue priority format adaptation"
+transports:
+  stdio: false
+  http: true
+  sse: true
+auth:
+  api-key: true
+  oauth: true
+tech-stack:
+  - "TypeScript"
+  - "Node.js"
+  - "Hono.dev"
+notes:
+  - "Uses modern Streamable HTTP transport"
+  - "Not a direct API mirror - tailored for AI agents"
+  - "OAuth setup for development (not production-grade)"
+  - "Local auth server runs on PORT+1"
+  - "Optimized for LLM understanding and usage"

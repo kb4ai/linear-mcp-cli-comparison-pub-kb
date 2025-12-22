@@ -1,0 +1,27 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/dvcrn/mcp-server-linear"
+name: "mcp-server-linear"
+description: "A (working!) MCP server for accessing Linear with multiple workspaces support"
+language: "TypeScript"
+stars: 2
+category: "linear-mcp-server"
+reputable-source: false
+features:
+  - "Multiple Linear workspaces support"
+  - "Create issues with full field support"
+  - "Update existing issues"
+  - "Delete issues (single or bulk)"
+  - "Search issues with filtering"
+  - "Associate issues with projects"
+  - "Parent/child issue relationships"
+  - "Comments and threaded comments"
+transports:
+  stdio: true
+  http: false
+  sse: false
+auth:
+  api-key: true
+  oauth: false
+notes:
+  - "Multi-workspace support via TOOL_PREFIX configuration"
+  - "Allows connecting to multiple Linear workspaces in same Cline environment"

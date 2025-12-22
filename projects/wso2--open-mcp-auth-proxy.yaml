@@ -1,0 +1,41 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/wso2/open-mcp-auth-proxy"
+name: "Open MCP Auth Proxy"
+description: "Lightweight authorization proxy for MCP servers enforcing MCP authorization specification"
+language: "Go"
+stars: null
+category: "proxy-bridge"
+features:
+  - "MCP Authorization Specification compliance"
+  - "JWT validation (signature, audience, scopes)"
+  - "Dynamic authorization"
+  - "Identity provider integration"
+  - "Protocol version negotiation (MCP-Protocol-Version header)"
+  - "Flexible transport modes"
+  - "Demo mode with pre-configured auth"
+transports:
+  stdio: true
+  sse: true
+  streamable-http: true
+bridge-direction: "auth-layer"
+auth:
+  jwt: true
+  oauth: true
+  oidc: true
+  scope-enforcement: true
+identity-providers:
+  - "Asgardeo"
+  - "Auth0"
+  - "Keycloak"
+  - "Any OAuth/OIDC provider"
+requirements:
+  - "Go 1.20 or higher"
+  - "Running MCP server"
+deployment:
+  demo-mode: "Pre-configured with Asgardeo sandbox"
+clients-tested:
+  - "MCP Inspector"
+license: "Apache-2.0"
+organization: "WSO2"
+notes: "Lightweight authorization middleware sitting between MCP clients and servers. Intercepts incoming requests to validate tokens and enforce scopes. Offloads auth to OAuth/OIDC identity providers. Supports MCP authorization protocol specification. Demo mode enables quick testing with Asgardeo sandbox."
+use-case: "Add standards-compliant authorization to any MCP server via proxy layer"

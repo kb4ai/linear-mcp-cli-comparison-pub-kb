@@ -1,0 +1,27 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/allanhortle/linear-cli"
+
+name: "linear-cli"
+description: "A CLI for linear.app"
+language: "TypeScript"
+stars: 1
+
+category: "linear-cli"
+reputable-source: false
+
+features:
+  - "Cycle management commands"
+  - "Version and help options"
+
+auth:
+  api-key: true
+  env-var: true
+
+linear-api-coverage: "partial"
+
+linear-features:
+  - "cycles"
+
+notes:
+  - "Focus on Linear cycles"
+  - "Minimal documentation"

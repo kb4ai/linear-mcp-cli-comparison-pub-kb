@@ -1,0 +1,36 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/dorkitude/linctl"
+
+name: "linctl"
+description: "A Linear CLI tool built with agents in mind (but useful to humans too). Implemented in Golang with Cobra"
+language: "Go"
+stars: 78
+
+category: "linear-cli"
+reputable-source: false
+
+features:
+  - "Built with agents in mind"
+  - "Flexible sorting capabilities"
+  - "Time-based filtering"
+  - "Built-in documentation"
+  - "Implemented with Cobra framework"
+
+auth:
+  api-key: true
+  env-var: true
+
+linear-api-coverage: "comprehensive"
+
+linear-features:
+  - "issues"
+  - "filtering"
+  - "sorting"
+
+agent-optimized: true
+
+notes:
+  - "Specifically designed for agent usage"
+  - "Also useful for human users"
+  - "Go implementation with Cobra"
+  - "Comprehensive filtering and sorting"

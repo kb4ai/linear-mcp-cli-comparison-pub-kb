@@ -1,0 +1,43 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/f/mcptools"
+name: "mcptools"
+description: "Command-line interface for MCP servers with stdio and HTTP transport support"
+language: "Go"
+stars: 870
+forks: 55
+category: "mcp-cli-auth"
+features:
+  - "STDIO transport via JSON-RPC 2.0"
+  - "HTTP SSE (Server-Sent Events) transport for legacy MCP protocol (2024-11-05)"
+  - "Streamable HTTP transport (modern, recommended for remote servers)"
+  - "Automatic transport detection (SSE when URL ends with /sse)"
+  - "Command-line tool for MCP server interaction"
+  - "Guard mode (STDIO only)"
+  - "Can be aliased as mcpt for convenience"
+transports:
+  stdio: true
+  http: true
+  sse: true
+  streamable-http: true
+auth:
+  bearer-header: true  # Roadmap includes authentication support
+  api-key: false
+  oauth: false  # Not yet implemented
+  custom-headers: true  # Can pass custom headers for auth
+mcptools-compatible: true  # This is the reference implementation
+installation:
+  - "go install github.com/f/mcptools/cmd/mcptools@latest"
+notes: |
+  - Written in Go (Golang)
+  - Uses cobra for CLI framework
+  - Automatic transport detection
+  - Guard mode currently only works with STDIO transport
+  - Known issue: HTTP transport client uses context path with "/sse" prefix
+  - Authentication support is on the roadmap
+  - Default transport for HTTP/HTTPS URLs is Streamable HTTP
+limitations:
+  - "Guard mode only works with STDIO, not HTTP transport"
+  - "HTTP SSE only supports MCP protocol version 2024-11-05"
+sources:
+  - "https://github.com/f/mcptools"
+  - "https://medium.com/@olserra/mastering-mcp-tools-a-powerful-cli-for-model-context-protocol-servers-e47649fdda16"

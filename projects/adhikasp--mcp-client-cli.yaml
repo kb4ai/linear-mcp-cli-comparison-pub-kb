@@ -1,0 +1,32 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/adhikasp/mcp-client-cli"
+name: "mcp-client-cli"
+description: "Simple CLI to run LLM prompts and implement MCP client functionality"
+language: "Python"
+stars: null  # Not found in search results
+category: "mcp-cli-auth"
+features:
+  - "llm --list-tools command"
+  - "llm --list-prompts command"
+  - "llm --no-tools option"
+  - "llm --force-refresh option"
+  - "Simple command-line interface"
+  - "LLM prompt execution"
+transports:
+  stdio: true  # Likely, not explicitly documented
+  http: false  # Not mentioned
+  sse: false
+  streamable-http: false
+auth:
+  bearer-header: false  # Not documented
+  api-key: false
+  oauth: false
+  custom-headers: false
+mcptools-compatible: false
+notes: |
+  - Minimal, simple MCP client CLI
+  - Focused on basic LLM prompt execution
+  - Limited documentation in search results
+  - Appears to be a lightweight alternative to full-featured clients
+sources:
+  - "https://github.com/adhikasp/mcp-client-cli"

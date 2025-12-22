@@ -1,0 +1,30 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/hypervideo/linear-cli"
+
+name: "linear-cli"
+description: "A linear.app API client for the command line"
+language: "Rust"
+stars: 2
+
+category: "linear-cli"
+reputable-source: false
+
+features:
+  - "Rust-based Linear API client"
+  - "Commands: init, me, team, issue, debug"
+  - "Uses lr command alias"
+
+auth:
+  api-key: true
+  env-var: true
+
+linear-api-coverage: "partial"
+
+linear-features:
+  - "issues"
+  - "teams"
+  - "user info"
+
+notes:
+  - "Rust implementation for performance"
+  - "Simple CLI utility"

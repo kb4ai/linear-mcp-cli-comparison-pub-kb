@@ -1,0 +1,29 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/mixpeek/linear-cli"
+
+name: "linear-cli"
+description: "A CLI tool for interacting with Linear.app"
+language: "TypeScript"
+stars: 14
+
+category: "linear-cli"
+reputable-source: false
+
+features:
+  - "Modern, user-friendly CLI client"
+  - "Built with Linear's TypeScript SDK"
+  - "Improved developer experience"
+
+auth:
+  api-key: true
+  env-var: true
+
+linear-api-coverage: "partial"
+
+linear-features:
+  - "issues"
+  - "Linear SDK integration"
+
+notes:
+  - "Uses official Linear TypeScript SDK"
+  - "Focus on developer experience"

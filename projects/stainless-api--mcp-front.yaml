@@ -1,0 +1,34 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/stainless-api/mcp-front"
+name: "mcp-front"
+description: "Auth proxy for Model Context Protocol servers - adds authentication to MCP tools for Claude.ai, Claude Code, Cursor, Gemini"
+language: "TypeScript"
+stars: null
+category: "proxy-bridge"
+features:
+  - "Three-level authentication (user-to-proxy, proxy-to-server, per-user tokens)"
+  - "OAuth 2.1 support"
+  - "Service authentication (serviceAuths)"
+  - "Per-user service tokens (userAuthentication)"
+  - "Multiple transport support"
+  - "Token management web UI"
+transports:
+  stdio: true
+  sse: true
+  streamable-http: true
+  inline: true
+bridge-direction: "bidirectional"
+auth:
+  oauth: true
+  bearer-header: true
+  multi-level: true
+  web-ui: "/my/tokens"
+clients-supported:
+  - "Claude.ai"
+  - "Claude Code"
+  - "Cursor"
+  - "Gemini"
+license: "Elastic License 2.0"
+license-notes: "Commercial exceptions for Stainless Software Ltd. Can use as infrastructure for your services. Cannot offer mcp-front itself as hosted product."
+notes: "Authentication gateway enabling teams to use Claude with internal databases/APIs without internet exposure. Handles auth while MCP servers handle authorization/validation. Only use trusted MCP servers."
+fork: "dgellow/mcp-front (similar OAuth 2.1 proxy with /my/tokens UI)"

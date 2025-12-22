@@ -1,0 +1,47 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/TBXark/mcp-proxy"
+name: "mcp-proxy (TBXark)"
+description: "Go-based MCP proxy aggregating multiple servers through single HTTP endpoint"
+language: "Go"
+stars: 585
+forks: 73
+category: "mcp-cli-auth"
+features:
+  - "Multiple MCP server aggregation"
+  - "Unified tool/prompt/resource interface"
+  - "SSE transport support"
+  - "Streamable HTTP support"
+  - "Multiple client types (stdio, sse, streamable-http)"
+  - "Flexible configuration via JSON"
+  - "Remote config URL support"
+  - "Docker support with npx/uvx"
+  - "Online Claude config converter"
+transports:
+  stdio: true
+  sse: true
+  streamable-http: true
+bridge-direction: "aggregator"
+auth:
+  bearer-header: null
+deployment:
+  default-port: 9090
+  docker-image: "ghcr.io/tbxark/mcp-proxy:latest"
+  npx-support: true
+  uvx-support: true
+configuration:
+  format: "JSON"
+  remote-config: true
+  converter-url: "https://tbxark.github.io/mcp-proxy"
+installation:
+  - "make build"
+  - "go install github.com/TBXark/mcp-proxy@latest"
+  - "docker run -p 9090:9090 -v /path/to/config.json:/config/config.json ghcr.io/tbxark/mcp-proxy:latest"
+documentation: "docs/configuration.md"
+license: "MIT"
+notes: "Aggregates multiple MCP servers into single HTTP entrypoint. Exposes combined tools, prompts, and resources from all connected servers. Supports various client types with customizable settings. Online config converter helps Claude Desktop integration. Written in Go for performance. Inspired by adamwattis/mcp-proxy-server."
+use-case: "Central hub for managing and aggregating multiple MCP resource servers"
+inspiration: "adamwattis/mcp-proxy-server"
+sources:
+  - "https://github.com/TBXark/mcp-proxy"
+  - "https://tbxark.github.io/mcp-proxy"
+  - "https://lobehub.com/mcp/tbxark-mcp-proxy"

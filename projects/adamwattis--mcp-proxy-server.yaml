@@ -1,0 +1,37 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/adamwattis/mcp-proxy-server"
+name: "MCP Proxy Server"
+description: "MCP proxy server that aggregates and serves multiple MCP resource servers through a single interface"
+language: "TypeScript"
+stars: 182
+category: "proxy-bridge"
+features:
+  - "Multiple MCP server aggregation"
+  - "Unified resource interface"
+  - "Consistent URI schemes"
+  - "Tool routing to backend servers"
+  - "Prompt aggregation"
+  - "Resource discovery"
+  - "SSE transport support"
+  - "Claude Desktop integration"
+  - "KEEP_SERVER_OPEN mode for multiple clients"
+transports:
+  stdio: true
+  sse: true
+bridge-direction: "aggregator"
+auth:
+  bearer-header: null
+configuration:
+  format: "JSON"
+  env-var: "MCP_CONFIG_PATH"
+  keep-open-mode: true
+deployment:
+  client-support: "Claude Desktop"
+  multi-client: true
+debugging:
+  tool: "MCP Inspector"
+  available-as: "package script"
+release-date: "2024-12-04"
+notes: "Central hub connecting and managing multiple MCP resource servers. Aggregates resources, tools, and prompts from all connected backends. Maintains consistent URI schemes across servers. KEEP_SERVER_OPEN keeps SSE running when clients disconnect - useful for multi-client scenarios. Inspired TBXark/mcp-proxy implementation."
+use-case: "Aggregate multiple MCP servers into single interface for clients"
+inspiration-for: "TBXark/mcp-proxy"

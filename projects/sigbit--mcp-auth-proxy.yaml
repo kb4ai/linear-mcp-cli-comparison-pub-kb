@@ -1,0 +1,50 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/sigbit/mcp-auth-proxy"
+name: "MCP Auth Proxy"
+description: "Drop-in OAuth 2.1/OIDC gateway for MCP servers with no code changes required"
+language: "Go"
+stars: null
+category: "proxy-bridge"
+features:
+  - "OAuth 2.1 / OIDC authentication"
+  - "Multiple identity provider support"
+  - "Google, GitHub, OIDC providers (Okta, Auth0, Azure AD, Keycloak)"
+  - "Optional password authentication"
+  - "Flexible user matching (exact, glob patterns)"
+  - "Transport conversion (stdio to HTTP)"
+  - "stdio/SSE/HTTP proxy passthrough"
+  - "TLS with automatic certificates"
+  - "Client-specific quirk handling"
+transports:
+  stdio: true
+  sse: true
+  streamable-http: true
+bridge-direction: "stdio-to-http"
+auth:
+  oauth: true
+  oidc: true
+  password-auth: true
+  user-matching: "exact + glob patterns (e.g., *@company.com)"
+identity-providers:
+  - "Google"
+  - "GitHub"
+  - "Okta"
+  - "Auth0"
+  - "Azure AD"
+  - "Keycloak"
+  - "Any OIDC provider"
+clients-verified:
+  - "Claude"
+  - "Claude Code"
+  - "ChatGPT"
+  - "GitHub Copilot"
+  - "Cursor"
+deployment:
+  tls: "automatic with --tls-accept-tos"
+  requires-external-url: true
+installation:
+  - "Download binary from release page"
+organization: "SigBit Lab (IT research lab, Japan)"
+documentation: "https://sigbit.github.io/mcp-auth-proxy/"
+notes: "Zero-code-change authentication gateway. Converts stdio traffic to /mcp endpoint. Proxies SSE/HTTP as-is. Smooths client-specific quirks for consistent auth across platforms. Publish local MCP servers safely to internet."
+use-case: "Add enterprise-grade authentication to any MCP server without modifying server code"

@@ -1,0 +1,29 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/pyroprompts/mcp-stdio-to-streamable-http-adapter"
+name: "mcp-stdio-to-streamable-http-adapter"
+description: "Proxy through a STDIO MCP Server to interact with Streamable HTTP MCP Servers"
+language: "TypeScript"
+stars: null
+category: "proxy-bridge"
+features:
+  - "stdio to Streamable HTTP conversion"
+  - "Bearer token authentication support"
+  - "Multiple server configurations"
+  - "Legacy client compatibility layer"
+  - "JSON-RPC to HTTP translation"
+  - "Named server instances"
+transports:
+  stdio: true
+  streamable-http: true
+bridge-direction: "stdio-to-http"
+auth:
+  bearer-header: true
+  token-env-var: "BEARER_TOKEN"
+configuration:
+  uri-env-var: "URI"
+  name-env-var: "MCP_NAME"
+installation:
+  - "npx @pyroprompts/mcp-stdio-to-streamable-http-adapter"
+npm-package: "@pyroprompts/mcp-stdio-to-streamable-http-adapter"
+notes: "Enables legacy MCP clients to communicate with modern Streamable HTTP servers. Presents itself as stdio server to client, translates to HTTP internally. Critical for early Streamable HTTP adoption before SDK support."
+use-case: "Bridge gap between clients with only stdio support and servers using new Streamable HTTP transport"

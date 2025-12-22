@@ -46,11 +46,15 @@ MCP servers can't do this. They require the LLM for every interaction.
 
 ## Quick Stats
 
-| Metric | Status |
-|--------|--------|
-| Research scope | Defined |
-| Projects tracked | 1 (discovery in progress) |
-| Token efficiency documented | Yes |
+| Metric | Count |
+|--------|-------|
+| Total projects tracked | 45 |
+| Linear CLI tools | 13 |
+| Linear MCP servers | 12 |
+| MCP CLI auth tools | 9 |
+| Proxy/bridge solutions | 11 |
+
+**[View Full Comparison Tables →](comparisons/auto-generated.md)**
 
 ## Key Finding So Far
 
@@ -109,15 +113,26 @@ See [ramblings/2025-12-22--subagent-analysis-plan.md](ramblings/2025-12-22--suba
 | CLI + JSON (linearis) | ~0 | **High** (scripts!) | Daily workflows |
 | Direct API (curl) | ~0 | **High** | Automation, CI/CD |
 
+## Prerequisites
+
+To use the scripts in this repository:
+
+* **Python 3.8+** with PyYAML: `pip install -r requirements.txt`
+* **yq** (YAML processor): `brew install yq` or `pip install yq`
+* **git** for cloning repositories
+
+See [QUICKSTART.md](QUICKSTART.md) for detailed setup instructions.
+
 ## Contributing
 
 Found a Linear CLI tool or MCP solution? See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ```bash
 # Quick start
-./scripts/clone-all.sh          # Clone tracked repos
-./scripts/check-yaml.py         # Validate YAML
-./scripts/generate-tables.py    # Generate tables
+pip install -r requirements.txt  # Install Python dependencies
+./scripts/clone-all.sh           # Clone tracked repos
+./scripts/check-yaml.py          # Validate YAML
+./scripts/generate-tables.py     # Generate tables
 ```
 
 ## Prior Art

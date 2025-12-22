@@ -1,0 +1,21 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/martinsione/linear-remote-mcp"
+name: "linear-remote-mcp"
+description: "Remote Model Context Protocol (MCP) server for Linear"
+language: "TypeScript"
+stars: 17
+category: "linear-mcp-server"
+reputable-source: false
+features:
+  - "Remote MCP server deployment"
+  - "Linear API integration"
+transports:
+  stdio: false
+  http: true
+  sse: true
+auth:
+  api-key: true
+  oauth: false
+notes:
+  - "Designed for remote deployment"
+  - "Alternative to local stdio-based servers"

@@ -1,0 +1,46 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/schpet/linear-cli"
+
+name: "linear-cli"
+description: "Linear without leaving the command line: list, start, and create PRs for linear issues"
+language: "TypeScript"
+stars: 120
+
+category: "linear-cli"
+reputable-source: false
+
+features:
+  - "Git and jj version control aware"
+  - "List unstarted issues assigned to user"
+  - "Start issues and create branches automatically"
+  - "View current branch's issue as markdown"
+  - "Create PRs with preset title/body"
+  - "Jump to web or Linear desktop app (gh-like)"
+  - "Includes Claude Code skill for LLM integration"
+  - "GraphQL API documentation included"
+
+installation:
+  jsr: "@schpet/linear-cli"
+  npm: "@schpet/linear-cli"
+
+auth:
+  api-key: true
+  env-var: true
+
+linear-api-coverage: "partial"
+
+linear-features:
+  - "issues"
+  - "issue listing"
+  - "issue starting"
+  - "pull request creation"
+  - "desktop app integration"
+
+agent-optimized: true
+
+notes:
+  - "Designed for developer workflow integration"
+  - "Git/jj aware to maintain context"
+  - "Similar UX to GitHub CLI (gh)"
+  - "Includes skill for Claude Code"
+  - "Published on JSR registry"

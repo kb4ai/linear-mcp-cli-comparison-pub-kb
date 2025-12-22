@@ -1,0 +1,29 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/zephraph/linear-cli"
+
+name: "linear-cli"
+description: "A CLI for Linear issue creation"
+language: "TypeScript"
+stars: 6
+
+category: "linear-cli"
+reputable-source: false
+
+features:
+  - "Create new Linear issues"
+  - "Interactive prompts for missing flags"
+
+auth:
+  api-key: true
+  env-var: true
+
+linear-api-coverage: "minimal"
+
+linear-features:
+  - "issues"
+  - "issue creation"
+
+notes:
+  - "Focus on issue creation workflow"
+  - "Interactive flag prompting"
+  - "Repository appears redirected to just-be-dev/linear-cli"

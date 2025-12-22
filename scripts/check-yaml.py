@@ -16,6 +16,7 @@ import sys
 import os
 import re
 from pathlib import Path
+from datetime import datetime
 
 try:
     import yaml
@@ -23,12 +24,29 @@ except ImportError:
     print("ERROR: PyYAML not installed. Run: pip install pyyaml")
     sys.exit(1)
 
+# Valid categories from spec.yaml
+VALID_CATEGORIES = [
+    "linear-cli",
+    "linear-mcp-server",
+    "mcp-cli-auth",
+    "proxy-bridge",
+    "official",
+    "uncategorized",
+]
 
-def validate_date(value: str) -> bool:
-    """Validate YYYY-MM-DD format."""
+
+def validate_date(value: str) -> tuple[bool, str]:
+    """Validate YYYY-MM-DD format and actual date validity."""
     if not isinstance(value, str):
-        return False
-    return bool(re.match(r"^\d{4}-\d{2}-\d{2}$", value))
+        return False, "not a string"
+    if not re.match(r"^\d{4}-\d{2}-\d{2}$", value):
+        return False, "not YYYY-MM-DD format"
+    # Actually parse to catch invalid dates like 2024-02-30
+    try:
+        datetime.strptime(value, "%Y-%m-%d")
+        return True, ""
+    except ValueError as e:
+        return False, str(e)
 
 
 def validate_url(value: str) -> bool:
@@ -70,8 +88,9 @@ def validate_yaml_file(filepath: Path, strict: bool = False) -> tuple[bool, list
 
     # Validate last-update format
     if "last-update" in data:
-        if not validate_date(data["last-update"]):
-            messages.append(f"ERROR: last-update must be YYYY-MM-DD format, got: {data['last-update']}")
+        valid, err = validate_date(data["last-update"])
+        if not valid:
+            messages.append(f"ERROR: last-update invalid: {err}, got: {data['last-update']}")
             is_valid = False
 
     # Validate repo-url format
@@ -82,19 +101,29 @@ def validate_yaml_file(filepath: Path, strict: bool = False) -> tuple[bool, list
 
     # Validate last-commit format (if present)
     if "last-commit" in data and data["last-commit"]:
-        if not validate_date(str(data["last-commit"])):
-            messages.append(f"WARN: last-commit should be YYYY-MM-DD format")
+        valid, err = validate_date(str(data["last-commit"]))
+        if not valid:
+            messages.append(f"WARN: last-commit invalid: {err}")
             if strict:
                 is_valid = False
 
-    # Validate stars is numeric (if present)
-    if "stars" in data and data["stars"] is not None:
-        if not isinstance(data["stars"], int):
-            messages.append(f"ERROR: stars must be an integer, got: {type(data['stars']).__name__}")
-            is_valid = False
+    # Validate category enum (if present)
+    if "category" in data and data["category"]:
+        if data["category"] not in VALID_CATEGORIES:
+            messages.append(f"WARN: unknown category '{data['category']}', valid: {VALID_CATEGORIES}")
+            if strict:
+                is_valid = False
+
+    # Validate numeric fields
+    numeric_fields = ["stars", "forks", "watchers", "contributors"]
+    for field in numeric_fields:
+        if field in data and data[field] is not None:
+            if not isinstance(data[field], int):
+                messages.append(f"ERROR: {field} must be an integer, got: {type(data[field]).__name__}")
+                is_valid = False
 
     # Validate boolean fields
-    bool_fields = ["reputable-source"]
+    bool_fields = ["reputable-source", "tested-with-linear", "agent-optimized", "mcptools-compatible"]
     for field in bool_fields:
         if field in data and data[field] is not None:
             if not isinstance(data[field], bool):
@@ -106,6 +135,18 @@ def validate_yaml_file(filepath: Path, strict: bool = False) -> tuple[bool, list
     if "transports" in data and data["transports"]:
         if not isinstance(data["transports"], dict):
             messages.append(f"ERROR: transports must be a mapping")
+            is_valid = False
+        else:
+            # Validate each transport is boolean
+            for key, val in data["transports"].items():
+                if val is not None and not isinstance(val, bool):
+                    messages.append(f"WARN: transports.{key} should be boolean")
+                    if strict:
+                        is_valid = False
+
+    if "auth" in data and data["auth"]:
+        if not isinstance(data["auth"], dict):
+            messages.append(f"ERROR: auth must be a mapping")
             is_valid = False
 
     if "features" in data and data["features"]:

@@ -12,6 +12,33 @@ Step-by-step instructions for conducting research and maintaining this repositor
 | Validate strictly | `./scripts/check-yaml.py --strict` |
 | Generate tables | `./scripts/generate-tables.py > comparisons/auto-generated.md` |
 
+## Pre-Commit Checklist
+
+**Before every commit that modifies projects/*.yaml:**
+
+```bash
+# 1. Validate all YAML files
+./scripts/check-yaml.py
+
+# 2. Regenerate comparison tables
+./scripts/generate-tables.py --by-category --by-transport > comparisons/auto-generated.md
+
+# 3. Verify tables generated correctly
+head -50 comparisons/auto-generated.md
+
+# 4. Stage both YAML and generated files
+git add projects/*.yaml comparisons/auto-generated.md
+
+# 5. Commit
+git commit -m "Add/update project: description"
+```
+
+**One-liner for quick regeneration:**
+
+```bash
+./scripts/check-yaml.py && ./scripts/generate-tables.py --by-category --by-transport > comparisons/auto-generated.md
+```
+
 ## Initial Setup
 
 Before beginning research, complete the scope definition:

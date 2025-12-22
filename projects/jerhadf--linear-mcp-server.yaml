@@ -1,0 +1,34 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/jerhadf/linear-mcp-server"
+name: "linear-mcp-server"
+description: "A server that integrates Linear's project management system with the Model Context Protocol (MCP) to allow LLMs to interact with Linear"
+language: "JavaScript"
+stars: 339
+category: "linear-mcp-server"
+reputable-source: false
+deprecated: true
+deprecation-notice: "Deprecated and no longer maintained. Author recommends using official Linear remote MCP server at https://mcp.linear.app/sse"
+features:
+  - "Create issues with title, team ID, description, priority (0-4), and status"
+  - "Update existing issues"
+  - "Search issues with flexible filtering"
+  - "Add comments to issues"
+  - "Resources for user assignments and issue details"
+transports:
+  stdio: true
+  http: false
+  sse: false
+auth:
+  api-key: true
+  oauth: false
+tools:
+  - "search_issues"
+  - "create_issue"
+  - "update_issue"
+  - "comment_on_issue"
+installation:
+  npm: "npx @smithery/cli install linear-mcp-server --client claude"
+license: "MIT"
+notes:
+  - "First major community Linear MCP server"
+  - "No longer maintained - use official server instead"

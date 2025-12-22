@@ -1,0 +1,45 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/punkpeye/mcp-proxy"
+name: "mcp-proxy (punkpeye)"
+description: "TypeScript streamable HTTP and SSE proxy for MCP servers that use stdio transport"
+language: "TypeScript"
+stars: 204
+forks: 41
+license: "BSD-2-Clause"
+category: "mcp-cli-auth"
+features:
+  - "stdio to Streamable HTTP conversion"
+  - "stdio to SSE conversion"
+  - "CORS enabled by default"
+  - "Persistent session management"
+  - "Stateless mode for serverless"
+  - "Configurable CORS options"
+  - "Used by FastMCP framework"
+transports:
+  stdio: true
+  sse: true
+  streamable-http: true
+bridge-direction: "stdio-to-http"
+auth:
+  bearer-header: null
+deployment:
+  default-port: 8080
+  endpoints:
+    - "/mcp (streamable HTTP)"
+    - "/sse (SSE)"
+  stateless-mode: true
+latest-version: "v5.10.0"
+installation:
+  - "npm install mcp-proxy"
+  - "npm install @punkpeye/mcp-proxy"
+  - "npx @punkpeye/mcp-proxy"
+registries:
+  - "npm: https://www.npmjs.com/package/mcp-proxy"
+  - "JSR: https://jsr.io/@punkpeye/mcp-proxy"
+argument-handling: "When wrapping commands with arguments starting with '-', use '--' separator to prevent mcp-proxy from interpreting them as its own options"
+notes: "Used by FastMCP framework to enable HTTP/SSE transports. Persistent sessions by default - each client connection has dedicated server instance. Stateless mode available for serverless environments with no session management. Dual endpoint support (SSE + Streamable HTTP)."
+integration: "FastMCP"
+sources:
+  - "https://github.com/punkpeye/mcp-proxy"
+  - "https://www.npmjs.com/package/mcp-proxy"
+  - "https://jsr.io/@punkpeye/mcp-proxy"

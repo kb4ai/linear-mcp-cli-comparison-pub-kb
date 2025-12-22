@@ -1,0 +1,28 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/rubyists/linear-cli"
+
+name: "linear-cli"
+description: "A command line interface to https://linear.app"
+language: "Ruby"
+stars: 7
+
+category: "linear-cli"
+reputable-source: false
+
+features:
+  - "Ruby-based Linear CLI"
+  - "OCI container image available"
+  - "Can run without installation via container"
+
+auth:
+  api-key: true
+  env-var: true
+
+linear-api-coverage: "partial"
+
+linear-features:
+  - "issues"
+
+notes:
+  - "Ruby implementation"
+  - "Container-based distribution available"

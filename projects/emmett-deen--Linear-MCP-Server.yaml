@@ -1,0 +1,23 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/emmett-deen/Linear-MCP-Server"
+name: "Linear-MCP-Server"
+description: "Connect Claude to Linear project management systems. Retrieve, create, and manage issues and projects seamlessly"
+language: "TypeScript"
+stars: 3
+category: "linear-mcp-server"
+reputable-source: false
+features:
+  - "Connect Claude to Linear"
+  - "Retrieve, create, and manage issues"
+  - "Project management"
+  - "Linear GraphQL API integration"
+transports:
+  stdio: true
+  http: false
+  sse: false
+auth:
+  api-key: true
+  oauth: false
+notes:
+  - "Claude-focused implementation"
+  - "Uses Linear GraphQL API"

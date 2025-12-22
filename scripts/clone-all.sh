@@ -17,6 +17,18 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 TMP_DIR="$PROJECT_ROOT/tmp"
 
+# Check for yq dependency
+if ! command -v yq &> /dev/null; then
+    echo "❌ Error: yq is required but not installed."
+    echo ""
+    echo "Install with:"
+    echo "  brew install yq       # macOS"
+    echo "  pip install yq        # pip"
+    echo "  pacman -S yq          # Arch Linux"
+    echo "  apt install yq        # Debian/Ubuntu"
+    exit 1
+fi
+
 # Parse arguments
 SHALLOW=false
 UPDATE=false
@@ -85,19 +97,21 @@ for yaml_file in "$PROJECT_ROOT"/projects/*.yaml; do
 
     if [ -d "$target_dir" ]; then
         if [ "$UPDATE" = true ]; then
-            echo "Updating: $owner/$repo"
+            echo -n "📥 Updating: $owner/$repo ... "
             if (cd "$target_dir" && git pull --quiet 2>/dev/null); then
+                commit=$(cd "$target_dir" && git rev-parse --short HEAD 2>/dev/null || echo "???")
+                echo "✅ ($commit)"
                 incr updated
             else
-                echo "  WARN: Failed to update $owner/$repo"
+                echo "❌ failed"
                 incr failed
             fi
         else
-            echo "Skip (exists): $owner/$repo"
+            echo "⏭️  Skip (exists): $owner/$repo"
             incr skip_count
         fi
     else
-        echo "Cloning: $owner/$repo"
+        echo -n "📦 Cloning: $owner/$repo ... "
 
         clone_args=()
         if [ "$SHALLOW" = true ]; then
@@ -105,9 +119,11 @@ for yaml_file in "$PROJECT_ROOT"/projects/*.yaml; do
         fi
 
         if git clone "${clone_args[@]}" "$repo_url" "$target_dir" 2>/dev/null; then
+            commit=$(cd "$target_dir" && git rev-parse --short HEAD 2>/dev/null || echo "???")
+            echo "✅ ($commit)"
             incr cloned
         else
-            echo "  FAIL: Could not clone $repo_url"
+            echo "❌ failed"
             incr failed
         fi
     fi
