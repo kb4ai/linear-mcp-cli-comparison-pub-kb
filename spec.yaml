@@ -101,14 +101,13 @@ fields:
 
   category:
     type: string
-    description: "Project category (customize in SCOPE.md)"
+    description: "Project category (see SCOPE.md)"
     enum:
-      - cli-client         # Command-line interface tool
-      - mcp-server         # MCP server implementation
-      - api-wrapper        # API client library
-      - integration        # Third-party integration
-      - extension          # Browser/IDE extension
-      - bridge             # Protocol bridge/adapter
+      - linear-cli         # Direct CLI tools for Linear API
+      - linear-mcp-server  # MCP servers exposing Linear functionality
+      - mcp-cli-auth       # MCP CLI tools with HTTP auth support
+      - proxy-bridge       # stdio↔HTTP bridges with auth support
+      - official           # Official tools from Linear or Anthropic
       - uncategorized      # Not yet categorized
     required: false
 
@@ -225,20 +224,72 @@ fields:
     required: false
 
 # ============================================================================
-# CUSTOM FIELDS
+# CUSTOM FIELDS (Linear CLI & MCP Tools Research)
 # ============================================================================
-# Add your own fields below based on your SCOPE.md requirements.
-# Example:
-#
-# custom-fields:
-#   api-coverage:
-#     type: string
-#     enum: [full, partial, minimal]
-#     description: "How much of the target API is covered"
-#
-#   cli-commands:
-#     type: array
-#     items: string
-#     description: "List of CLI commands supported"
 
-custom-fields: {}
+custom-fields:
+
+  # --- Transport Support ---
+
+  transports:
+    type: object
+    description: "MCP transport protocols supported"
+    properties:
+      stdio:
+        type: boolean
+        description: "Supports stdio transport"
+      http:
+        type: boolean
+        description: "Supports HTTP transport"
+      sse:
+        type: boolean
+        description: "Supports SSE (Server-Sent Events) transport"
+      websocket:
+        type: boolean
+        description: "Supports WebSocket transport"
+
+  # --- Authentication Support ---
+
+  auth:
+    type: object
+    description: "Authentication methods supported"
+    properties:
+      api-key:
+        type: boolean
+        description: "Supports API key authentication"
+      oauth:
+        type: boolean
+        description: "Supports OAuth authentication"
+      bearer-header:
+        type: boolean
+        description: "Supports passing Bearer token via header"
+      env-var:
+        type: boolean
+        description: "Supports auth via environment variable"
+
+  # --- Linear-Specific ---
+
+  linear-api-coverage:
+    type: string
+    enum: [full, partial, minimal, none]
+    description: "Coverage of Linear API features"
+
+  tested-with-linear:
+    type: boolean
+    description: "Has been verified working with Linear MCP server"
+
+  linear-features:
+    type: array
+    items: string
+    description: "Linear features supported (issues, projects, cycles, teams, etc.)"
+
+  # --- Proxy/Bridge Specific ---
+
+  bridge-direction:
+    type: string
+    enum: [stdio-to-http, http-to-stdio, bidirectional]
+    description: "Direction of protocol bridging"
+
+  mcptools-compatible:
+    type: boolean
+    description: "Can be used as a command with mcptools CLI"
