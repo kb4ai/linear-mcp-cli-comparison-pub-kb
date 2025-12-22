@@ -1,0 +1,44 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/czottmann/linearis"
+
+name: "linearis"
+description: "Lightweight Linear CLI tool optimized for LLM agent usage with JSON output"
+language: "TypeScript"
+license: "MIT"
+
+category: "linear-cli"
+reputable-source: false
+
+features:
+  - "JSON output for machine parsing"
+  - "Smart ID resolution (ABC-123 format)"
+  - "Create and update tickets"
+  - "Add comments and labels"
+  - "Search and filter issues"
+  - "Manage ticket relationships"
+  - "Single-command usage documentation"
+  - "Designed for LLM agent integration"
+
+installation:
+  npm: "linearis"
+
+auth:
+  api-key: true
+  env-var: true
+
+linear-api-coverage: "partial"
+tested-with-linear: true
+
+linear-features:
+  - "issues"
+  - "comments"
+  - "labels"
+  - "search"
+  - "relationships"
+
+notes:
+  - "Built as alternative to token-heavy MCP server"
+  - "Official MCP server uses ~13k tokens just to connect"
+  - "Focused on 3-4 core operations vs 20+ MCP tools"
+  - "Author uses with Claude Code, sst/opencode, charmbracelet/crush"
+  - "Blog post: https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html"

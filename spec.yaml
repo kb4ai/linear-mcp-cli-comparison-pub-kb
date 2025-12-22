@@ -293,3 +293,26 @@ custom-fields:
   mcptools-compatible:
     type: boolean
     description: "Can be used as a command with mcptools CLI"
+
+  # --- Token Efficiency (for agent use cases) ---
+
+  token-efficiency:
+    type: object
+    description: "Token cost for LLM agent usage"
+    properties:
+      connection-overhead:
+        type: integer
+        description: "Approximate tokens consumed on connection/initialization"
+      tool-count:
+        type: integer
+        description: "Number of tools exposed (for MCP servers)"
+      json-output:
+        type: boolean
+        description: "Provides machine-parseable JSON output"
+      single-command-docs:
+        type: boolean
+        description: "Single command to get usage documentation"
+
+  agent-optimized:
+    type: boolean
+    description: "Designed/optimized for LLM agent usage"
