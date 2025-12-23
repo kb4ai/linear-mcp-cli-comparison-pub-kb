@@ -118,7 +118,7 @@ All tools would need to implement the `IssueRelation` GraphQL mutations:
 * `issueRelationCreate(type: "blocks", issueId, relatedIssueId)`
 * `issueRelationCreate(type: "blocked", issueId, relatedIssueId)`
 
-**Workaround:** Use Linear WebUI or direct GraphQL API calls.
+**Workaround:** [Python GraphQL scripts](https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc) for estimates, assignees, and blocking relations.
 
 ### Estimates Support
 
@@ -126,6 +126,8 @@ Only 2 tools support setting estimates:
 
 * **linear-issue-importer** (Rust) - via `estimate` field in JSON/CSV
 * **linearator** (Python) - partial support via API fields
+
+**Workaround:** [Python scripts](https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc) provide `get_issue_estimate()` and `set_issue_estimate()` functions.
 
 ### Sub-Issues Support
 
@@ -135,4 +137,65 @@ Best support for sub-issues (parent-child):
 * **linctl** (Go) - read/write via `--parent` flag
 * **linearator** (Python) - GraphQL parent/children queries
 * **linear-issue-importer** (Rust) - via `parentId` field
+
+---
+
+## Tool Recommendations by Use Case
+
+### For AI Agent Workflows
+**Recommended: [linctl](https://github.com/dorkitude/linctl)** (Go)
+
+* Purpose-built for AI agents (Claude Code, Cursor, Gemini)
+* `--json` flag for structured output
+* Authenticated image downloads (unique feature)
+* Sub-issues + due dates support
+
+### For Git-Integrated Workflows
+**Recommended: [schpet/linear-cli](https://github.com/schpet/linear-cli)** (TypeScript/Deno)
+
+* Auto-detects issue IDs from git branch names
+* GitHub PR creation via `gh pr create`
+* Branch management
+
+### For macOS Native Experience
+**Recommended: [linearis](https://github.com/czottmann/linearis)** (Swift)
+
+* AppleScript automation
+* LLM-optimized JSON output
+* Feature requests tracked: [#26 estimates](https://github.com/czottmann/linearis/issues/26), [#27 blocking](https://github.com/czottmann/linearis/issues/27), [#29 due dates](https://github.com/czottmann/linearis/issues/29)
+
+### For Cross-Platform / Python Users
+**Recommended: [linearator](https://github.com/AdiKsOnDev/linear-cli)** (Python)
+
+* PyPI: `pip install linearator`
+* AUR: `paru -S linear-cli`
+* Windows support
+* Note: GitHub repo is "linear-cli", PyPI package is "linearator"
+
+### For Bulk Import/Export with Estimates
+**Recommended: [linear-issue-importer](https://crates.io/crates/linear-issue-importer)** (Rust)
+
+* Only tool with full estimate write support
+* Sub-issues + due dates
+* JSON/CSV batch operations
+
+---
+
+## Workaround Scripts for Missing Features
+
+For **linearis** and other tools missing estimates/blocking support:
+
+**Gist:** https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc
+
+```python
+# Estimates
+get_issue_estimate(identifier)      # Returns float or None
+set_issue_estimate(identifier, 5.0) # Set to 5 points
+
+# Blocking relations
+add_issue_relation('TES-123', 'TES-456', 'blocks')
+remove_issue_relation('TES-123', 'TES-456', 'blocks')
+```
+
+Requires: `LINEAR_API_KEY` environment variable
 

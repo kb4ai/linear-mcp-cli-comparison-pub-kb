@@ -1,7 +1,10 @@
-last-update: "2025-12-22"
-repo-url: "https://github.com/linearator/linearator"
+last-update: "2025-12-23"
+repo-url: "https://github.com/AdiKsOnDev/linear-cli"
 
 name: "linearator"
+aliases:
+  - "linear-cli"  # GitHub repo name
+  - "linear"      # CLI command name
 description: "Comprehensive Python CLI for Linear with AUR support"
 language: "Python"
 license: "MIT"
@@ -46,7 +49,19 @@ platforms:
 documentation:
   readme: true
 
+stats:
+  stars: 5
+  forks: 0
+  open-issues: 2
+
+maintainer:
+  github: "AdiKsOnDev"
+  name: "Adil Alizada"
+
 notes:
+  - "IMPORTANT: PyPI package name is 'linearator', GitHub repo is 'linear-cli'"
   - "Available on PyPI and Arch User Repository (AUR)"
   - "Advanced search and bulk operations"
   - "Team collaboration features"
+  - "Small community but actively maintained"
+  - "Do NOT confuse with abandoned 'linearcli' package (last updated 2022)"

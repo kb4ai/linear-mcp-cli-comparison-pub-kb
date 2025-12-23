@@ -72,3 +72,50 @@ When using linearis with AI coding assistants (Claude, Cursor, etc.):
 1. For basic issue management: linearis works well
 2. For agile workflows with estimates: need WebUI or custom GraphQL scripts
 3. For dependency tracking: must use WebUI or find alternative tool
+
+## Feature Requests (Track Progress)
+
+| Feature | GitHub Issue |
+|---------|-------------|
+| Estimates | [#26](https://github.com/czottmann/linearis/issues/26) |
+| Blocking/Blocked-by | [#27](https://github.com/czottmann/linearis/issues/27) |
+| Due dates | [#29](https://github.com/czottmann/linearis/issues/29) |
+| Attachments | [#28](https://github.com/czottmann/linearis/issues/28) |
+| Assignee in read output | [#30](https://github.com/czottmann/linearis/issues/30) |
+| Raw GraphQL command | [#31](https://github.com/czottmann/linearis/issues/31) |
+
+## Python Workaround Scripts
+
+A comprehensive Python workaround exists for missing features:
+
+**Gist:** https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc
+
+### Available Functions
+
+```python
+# Estimates
+get_issue_estimate(identifier)      # Returns float or None
+set_issue_estimate(identifier, 5.0) # Set to 5 points
+
+# Assignees
+get_issue_assignee(identifier)      # Returns dict with id/name/email
+set_issue_assignee(identifier, uuid) # Assign by user UUID
+
+# Issue Relations (blocking, blocked_by, related, duplicate)
+add_issue_relation('TES-123', 'TES-456', 'blocks')
+remove_issue_relation('TES-123', 'TES-456', 'blocks')
+```
+
+### Important Note for Blocking
+
+To mark `TES-456` as **blocked by** `TES-123`:
+
+```python
+# Note: identifiers are swapped, use 'blocks' type
+add_issue_relation('TES-123', 'TES-456', 'blocks')
+```
+
+### Requirements
+
+* Python 3.x
+* `LINEAR_API_KEY` environment variable set

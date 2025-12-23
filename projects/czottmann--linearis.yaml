@@ -72,3 +72,21 @@ notes:
   - "Full CRUD for basic issue fields"
   - "Missing: estimates, blocking/blocked-by, due dates, attachments"
   - "Tested commit: 3b3ccd18299cfd70c427482aacadf0a65b43e4c4"
+
+# Feature request tracking
+missing-feature-issues:
+  estimates: "https://github.com/czottmann/linearis/issues/26"
+  blocking-blocked-by: "https://github.com/czottmann/linearis/issues/27"
+  due-dates: "https://github.com/czottmann/linearis/issues/29"
+  attachments: "https://github.com/czottmann/linearis/issues/28"
+  assignee-read: "https://github.com/czottmann/linearis/issues/30"
+  raw-graphql: "https://github.com/czottmann/linearis/issues/31"
+
+# Python workaround scripts for missing features
+workarounds:
+  gist-url: "https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc"
+  description: "Python/GraphQL workarounds for estimates, assignees, blocking relations"
+  features-covered:
+    - "get/set estimates"
+    - "get/set assignee"
+    - "add/remove issue relations (blocking, blocked_by, related, duplicate)"
