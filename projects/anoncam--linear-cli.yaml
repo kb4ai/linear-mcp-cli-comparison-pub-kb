@@ -28,6 +28,21 @@ features:
     - "markdown"
     - "table"
 
+  # Advanced Linear features (researched 2025-12-23)
+  # Source: GraphQL schema analysis from scripts/linearCli.ts
+  sub-issues: false            # No parent/children fields in queries
+  estimates: false             # Not in GraphQL query or types
+  blocking-blocked-by: false   # Not implemented
+  due-dates: false             # Not in queries
+  related-issues: false        # Not implemented
+  labels: true
+  status: true
+  priority: true
+  assignee: true
+  projects: true
+  cycles: false
+  comments: false
+
 installation:
   npm: "@anoncam/linear-cli"
 

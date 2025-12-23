@@ -13,6 +13,23 @@ features:
   issue-search: true
   interactive-mode: true
   git-integration: true  # Copy branch name to clipboard
+  issue-creation: false  # Read-only TUI
+  issue-update: false
+
+  # Advanced Linear features
+  # Note: This is a READ-ONLY TUI - no write operations
+  sub-issues: read-only        # May display parent/children in view
+  estimates: read-only         # Displayed in issue details
+  blocking-blocked-by: unknown # Unknown if displayed
+  due-dates: read-only         # Displayed in issue details
+  related-issues: unknown
+  labels: read-only
+  status: read-only
+  priority: read-only
+  assignee: read-only
+  projects: read-only
+  cycles: read-only
+  comments: read-only
 
 installation:
   brew: "markmarkoh/lt"

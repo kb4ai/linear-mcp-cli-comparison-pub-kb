@@ -20,6 +20,21 @@ features:
   issue-view: true
   team-management: true
 
+  # Advanced Linear features (researched 2025-12-23)
+  # Based on bin/index.js source code analysis
+  sub-issues: partial          # Creates via parentId, no read/modify
+  estimates: false             # Field in SDK but not used
+  blocking-blocked-by: false   # Not implemented
+  due-dates: false             # Field in SDK but not used
+  related-issues: false
+  labels: false
+  status: false
+  priority: false
+  assignee: true               # assigneeId in createIssueAPI
+  projects: false
+  cycles: false
+  comments: false
+
 installation:
   npm: "@minupalaniappan/linear"
 

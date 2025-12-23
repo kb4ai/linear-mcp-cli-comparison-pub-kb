@@ -16,6 +16,20 @@ features:
   team-management: true
   bulk-operations: true
 
+  # Advanced Linear features (researched 2025-12-23)
+  sub-issues: true             # parent/children in GraphQL queries
+  estimates: partial           # estimate field in API, CLI exposure unclear
+  blocking-blocked-by: false   # Not supported
+  due-dates: true              # dueDate field supported
+  related-issues: false
+  labels: true
+  status: true
+  priority: true
+  assignee: true
+  projects: true
+  cycles: true
+  comments: true
+
 installation:
   pip: "linearator"
   aur: "linear-cli"

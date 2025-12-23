@@ -215,6 +215,92 @@ features:
     description: "Interactive prompts for issue selection"
 
 # ============================================================================
+# ADVANCED LINEAR FEATURES (Issue Fields & Relationships)
+# These are the specific Linear API features that matter for workflows
+# ============================================================================
+
+advanced-features:
+  # Issue field support (read/write)
+  sub-issues:
+    type: boolean
+    description: "Can create/manage sub-issues (parent-child relationships)"
+    priority: high
+
+  estimates:
+    type: boolean
+    description: "Can set/read story point estimates"
+    priority: high
+
+  blocking-blocked-by:
+    type: boolean
+    description: "Can set/read blocking/blocked-by issue relationships"
+    priority: high
+
+  due-dates:
+    type: boolean
+    description: "Can set/read due dates on issues"
+    priority: medium
+
+  related-issues:
+    type: boolean
+    description: "Can link related issues together"
+    priority: medium
+
+  duplicate-marking:
+    type: boolean
+    description: "Can mark issues as duplicates"
+    priority: low
+
+  attachments:
+    type: boolean
+    description: "Can upload/download file attachments"
+    priority: medium
+
+  # GitHub integration fields
+  github-commits-link:
+    type: boolean
+    description: "Can view/manage linked GitHub commits"
+    priority: low
+
+  github-prs-link:
+    type: boolean
+    description: "Can view/manage linked GitHub PRs"
+    priority: low
+
+  # Core issue fields (typically supported)
+  labels:
+    type: boolean
+    description: "Can set/manage labels"
+
+  status:
+    type: boolean
+    description: "Can change issue status"
+
+  priority:
+    type: boolean
+    description: "Can set issue priority"
+
+  assignee:
+    type: boolean
+    description: "Can assign issues to users"
+
+  projects:
+    type: boolean
+    description: "Can assign issues to projects"
+
+  cycles:
+    type: boolean
+    description: "Can assign issues to cycles/sprints"
+
+  milestones:
+    type: boolean
+    description: "Can assign issues to milestones"
+
+  comments:
+    type: boolean
+    description: "Can create/read comments"
+
+# ============================================================================
 # INSTALLATION METHODS
 # ============================================================================
 

@@ -23,6 +23,20 @@ features:
     - "json"
     - "plain"
 
+  # Advanced Linear features (researched 2025-12-23)
+  sub-issues: true             # Full read/write via --parent flag (PR #24)
+  estimates: false             # Not exposed in CLI
+  blocking-blocked-by: false   # Not supported
+  due-dates: true              # --due-date flag (YYYY-MM-DD)
+  related-issues: unknown      # Community PR mentioned, status unclear
+  labels: true
+  status: true
+  priority: true
+  assignee: true
+  projects: true
+  cycles: true
+  comments: true
+
 installation:
   go-install: "github.com/dorkitude/linctl@latest"
   binary: true

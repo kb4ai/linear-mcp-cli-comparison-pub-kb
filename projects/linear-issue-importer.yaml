@@ -16,6 +16,21 @@ features:
     - "json"
     - "csv"
 
+  # Advanced Linear features (researched 2025-12-23)
+  # Based on IssueCreateInput fields in README
+  sub-issues: true             # parentId field supported
+  estimates: true              # estimate field (integer complexity points)
+  blocking-blocked-by: false   # Requires separate IssueRelation mutations
+  due-dates: true              # dueDate field (YYYY-MM-DD)
+  related-issues: false        # Not in IssueCreateInput
+  labels: true                 # labelIds array
+  status: true                 # stateId
+  priority: true
+  assignee: true               # assigneeId
+  projects: true               # projectId
+  cycles: true                 # cycleId
+  comments: false
+
 installation:
   cargo: "linear-issue-importer"
 

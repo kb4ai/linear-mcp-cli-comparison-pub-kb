@@ -23,6 +23,20 @@ features:
   team-management: true
   interactive-mode: true
 
+  # Advanced Linear features (researched 2025-12-23)
+  sub-issues: partial          # --parent flag exists, reads parent info
+  estimates: read-only         # Displayed in queries, no write support
+  blocking-blocked-by: false   # Feature request open (GH #26)
+  due-dates: false
+  related-issues: false
+  labels: true
+  status: true
+  priority: true
+  assignee: true
+  projects: true
+  cycles: true
+  comments: true
+
 installation:
   brew: "schpet/tap/linear"
   deno: "jsr:@schpet/linear-cli"

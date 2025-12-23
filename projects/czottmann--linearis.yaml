@@ -1,0 +1,74 @@
+last-update: "2025-12-23"
+repo-url: "https://github.com/czottmann/linearis"
+repo-commit: "3b3ccd18299cfd70c427482aacadf0a65b43e4c4"
+release-version: "2025.12.03"
+release-date: "2025-12-11"
+
+name: "linearis"
+description: "macOS-native Linear CLI with AppleScript support"
+language: "Swift"
+license: "MIT"
+
+category: "cli-client"
+
+# Core Linear API features
+features:
+  # Basic issue operations
+  issue-creation: true
+  issue-update: true
+  issue-view: true
+  issue-search: true
+
+  # Issue fields support
+  sub-issues: true           # Can set parent issue
+  labels: true
+  status: true
+  priority: true
+  assignee: true
+  projects: true
+  cycles: true
+  milestones: true
+  comments: true
+
+  # MISSING FEATURES (tested 2025-12-23)
+  estimates: false           # Story points - NOT SUPPORTED
+  blocking-blocked-by: false # Issue dependencies - NOT SUPPORTED
+  related-issues: false      # Related issue links - NOT SUPPORTED
+  duplicate-marking: false   # Mark as duplicate - NOT SUPPORTED
+  due-dates: false           # Due date field - NOT SUPPORTED
+  attachments: false         # File attachments - NOT SUPPORTED
+  github-commits-link: false # Linked GitHub commits - NOT SUPPORTED
+  github-prs-link: false     # Linked GitHub PRs - NOT SUPPORTED
+
+  # Other features
+  team-management: true
+  interactive-mode: true
+  mcp-server: false
+  git-integration: false
+  github-pr-creation: false
+  branch-management: false
+
+installation:
+  brew: "czottmann/tap/linearis"
+  binary: true
+
+authentication:
+  env-var: "LINEAR_API_KEY"
+  config-file: true
+
+platforms:
+  linux: false
+  macos: true
+  windows: false
+
+documentation:
+  readme: true
+  examples: true
+
+notes:
+  - "macOS-native Swift implementation"
+  - "AppleScript automation support"
+  - "Excellent sub-issue (parent-ticket) support"
+  - "Full CRUD for basic issue fields"
+  - "Missing: estimates, blocking/blocked-by, due dates, attachments"
+  - "Tested commit: 3b3ccd18299cfd70c427482aacadf0a65b43e4c4"
