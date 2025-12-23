@@ -1,0 +1,31 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/eriksandfort/linear_cli"
+
+name: "linear_cli"
+description: "Rust-based Linear CLI"
+language: "Rust"
+license: "MIT"
+
+category: "cli-client"
+
+features:
+  issue-view: true
+  issue-creation: true
+
+installation:
+  cargo: "linear_cli"
+
+authentication:
+  env-var: "LINEAR_API_KEY"
+
+platforms:
+  linux: true
+  macos: true
+  windows: true
+
+documentation:
+  readme: true
+
+notes:
+  - "Rust implementation"
+  - "Basic Linear CLI functionality"

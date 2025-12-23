@@ -1,0 +1,31 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/carlosflorencio/linear-cli"
+
+name: "linear-cli"
+description: "Simple Go-based Linear CLI"
+language: "Go"
+license: "MIT"
+
+category: "cli-client"
+
+features:
+  issue-view: true
+  issue-creation: true
+
+installation:
+  go-install: "github.com/carlosflorencio/linear-cli@latest"
+
+authentication:
+  env-var: "LINEAR_API_KEY"
+
+platforms:
+  linux: true
+  macos: true
+  windows: true
+
+documentation:
+  readme: true
+
+notes:
+  - "Go implementation"
+  - "Simple and lightweight"

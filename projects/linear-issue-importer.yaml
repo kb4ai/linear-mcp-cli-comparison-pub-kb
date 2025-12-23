@@ -1,0 +1,37 @@
+last-update: "2025-12-22"
+repo-url: "https://crates.io/crates/linear-issue-importer"
+
+name: "linear-issue-importer"
+description: "Batch create/update Linear issues via JSON/CSV"
+language: "Rust"
+license: "MIT"
+
+category: "importer-exporter"
+
+features:
+  issue-creation: true
+  issue-update: true
+  bulk-operations: true
+  output-formats:
+    - "json"
+    - "csv"
+
+installation:
+  cargo: "linear-issue-importer"
+
+authentication:
+  env-var: "LINEAR_API_KEY"
+
+platforms:
+  linux: true
+  macos: true
+  windows: true
+
+documentation:
+  readme: true
+  api-docs: true
+
+notes:
+  - "Designed for batch operations"
+  - "Supports JSON and CSV input formats"
+  - "Create and update issues in bulk"

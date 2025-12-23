@@ -1,0 +1,49 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/dorkitude/linctl"
+
+name: "linctl"
+description: "A Linear CLI tool purpose-built for AI agents (Claude Code, Cursor, Amp)"
+language: "Go"
+license: "MIT"
+
+category: "ai-agent-tool"
+secondary-categories:
+  - "cli-client"
+
+features:
+  git-integration: false
+  github-pr-creation: false
+  ai-integration: true
+  issue-creation: true
+  issue-update: true
+  issue-view: true
+  issue-search: true
+  image-download: true
+  output-formats:
+    - "json"
+    - "plain"
+
+installation:
+  go-install: "github.com/dorkitude/linctl@latest"
+  binary: true
+
+authentication:
+  env-var: "LINEAR_API_KEY"
+  config-file: true
+  keyring: true
+  encrypted-file: true
+
+platforms:
+  linux: true
+  macos: true
+  windows: true
+
+documentation:
+  readme: true
+  examples: true
+
+notes:
+  - "Purpose-built for AI agents while remaining human-friendly"
+  - "Flexible credential storage: env vars, system keyring, encrypted files, JSON"
+  - "Enhanced media management with authenticated image downloads"
+  - "Structured output for agent parsing"

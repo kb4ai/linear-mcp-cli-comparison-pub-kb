@@ -1,0 +1,31 @@
+last-update: "2025-12-22"
+repo-url: "https://www.piwheels.org/project/linear-app-cli/"
+
+name: "linear-app-cli"
+description: "Python-based Linear API CLI"
+language: "Python"
+license: "MIT"
+
+category: "cli-client"
+
+features:
+  issue-view: true
+  issue-creation: true
+
+installation:
+  pip: "linear-app-cli"
+
+authentication:
+  env-var: "LINEAR_API_KEY"
+
+platforms:
+  linux: true
+  macos: true
+  windows: true
+
+documentation:
+  readme: true
+
+notes:
+  - "Python CLI for Linear API"
+  - "Available on PyPI via piwheels"

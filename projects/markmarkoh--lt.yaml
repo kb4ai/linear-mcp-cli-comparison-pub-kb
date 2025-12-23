@@ -1,0 +1,40 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/markmarkoh/lt"
+
+name: "lt"
+description: "Read-only TUI for viewing Linear issues in your terminal"
+language: "Rust"
+license: "MIT"
+
+category: "tui-client"
+
+features:
+  issue-view: true
+  issue-search: true
+  interactive-mode: true
+  git-integration: true  # Copy branch name to clipboard
+
+installation:
+  brew: "markmarkoh/lt"
+  cargo: "lt"
+
+authentication:
+  env-var: "LINEAR_API_TOKEN"
+
+platforms:
+  linux: true
+  macos: true
+  windows: false
+
+documentation:
+  readme: true
+
+notes:
+  - "Read-only TUI application"
+  - "View 'My Issues' with full details (description, project, priority, status, labels)"
+  - "Press 'y' to copy git branch name to clipboard"
+  - "Press 'o' to open issue in Linear desktop/web"
+  - "View switcher with '/' + Tab/Shift+Tab for custom views"
+  - "Search issues by search term ('/')"
+  - "Optimized color schemes for light/dark terminals"
+  - "Requires modern terminal (kitty, Ghostty, iTerm2) and Nerdfont"

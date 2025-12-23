@@ -1,0 +1,31 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/rubyists/linear-cli"
+
+name: "linear-cli"
+description: "Ruby-based Linear CLI"
+language: "Ruby"
+license: "MIT"
+
+category: "cli-client"
+
+features:
+  issue-view: true
+  issue-creation: true
+
+installation:
+  binary: true
+
+authentication:
+  env-var: "LINEAR_API_KEY"
+
+platforms:
+  linux: true
+  macos: true
+  windows: false
+
+documentation:
+  readme: true
+
+notes:
+  - "Ruby implementation"
+  - "For Ruby developers"

@@ -1,0 +1,49 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/minupalaniappan/linear-cli"
+
+name: "@minupalaniappan/linear"
+description: "Branch-aware CLI designed to work with git branches containing Linear IDs"
+language: "JavaScript"
+languages:
+  - "JavaScript"
+  - "Node.js"
+license: "MIT"
+
+category: "git-workflow"
+secondary-categories:
+  - "cli-client"
+
+features:
+  git-integration: true
+  branch-management: false
+  issue-creation: true
+  issue-view: true
+  team-management: true
+
+installation:
+  npm: "@minupalaniappan/linear"
+
+authentication:
+  env-var: "LINEAR_API_KEY"
+  setup-wizard: true
+
+platforms:
+  linux: true
+  macos: true
+  windows: true
+
+documentation:
+  readme: true
+
+commands:
+  - "linear key"
+  - "linear me"
+  - "linear team"
+  - "linear branch"
+  - "linear open"
+  - "linear new"
+
+notes:
+  - "Designed to work with git branches that include Linear ticket identifiers"
+  - "Commands context-aware based on current branch"
+  - "Can create sub-issues from current branch"

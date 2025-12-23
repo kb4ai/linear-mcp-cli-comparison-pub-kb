@@ -1,0 +1,57 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/schpet/linear-cli"
+
+name: "linear-cli"
+description: "Git-aware Linear CLI that keeps you in context"
+language: "TypeScript"
+languages:
+  - "TypeScript"
+  - "Deno"
+license: "MIT"
+
+category: "git-workflow"
+secondary-categories:
+  - "cli-client"
+
+features:
+  git-integration: true
+  github-pr-creation: true
+  branch-management: true
+  issue-creation: true
+  issue-view: true
+  issue-search: true
+  team-management: true
+  interactive-mode: true
+
+installation:
+  brew: "schpet/tap/linear"
+  deno: "jsr:@schpet/linear-cli"
+
+authentication:
+  env-var: "LINEAR_API_KEY"
+  setup-wizard: true
+
+platforms:
+  linux: true
+  macos: true
+  windows: false
+
+documentation:
+  readme: true
+  examples: true
+
+commands:
+  - "linear config"
+  - "linear issue list"
+  - "linear issue start"
+  - "linear issue start ABC-123"
+  - "linear issue view"
+  - "linear issue pr"
+  - "linear issue create"
+  - "linear team members"
+
+notes:
+  - "Automatically detects Linear issue IDs from git branch names"
+  - "Creates/switches to issue branches and marks them as started"
+  - "Creates GitHub PRs with issue details via gh pr create"
+  - "Opens the right view in Linear based on current branch"

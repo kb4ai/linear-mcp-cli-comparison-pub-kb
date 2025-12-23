@@ -1,0 +1,17 @@
+# Cloned repositories for analysis
+tmp/
+
+# Claude Code working directory
+.claude/
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Node modules (if any scripts use them)
+node_modules/

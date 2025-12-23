@@ -1,0 +1,34 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/filipjaj/linear-cli"
+
+name: "linear-cli"
+description: "AI-powered issue creation using Gemini AI"
+language: "Go"
+license: "MIT"
+
+category: "ai-agent-tool"
+secondary-categories:
+  - "cli-client"
+
+features:
+  ai-integration: true
+  ai-provider: "Gemini"
+  issue-creation: true
+
+installation:
+  go-install: "github.com/filipjaj/linear-cli@latest"
+
+authentication:
+  env-var: "LINEAR_API_KEY"
+
+platforms:
+  linux: true
+  macos: true
+  windows: true
+
+documentation:
+  readme: true
+
+notes:
+  - "AI-powered issue creation"
+  - "Uses Gemini AI for assistance"

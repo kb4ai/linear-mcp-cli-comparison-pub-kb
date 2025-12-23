@@ -1,0 +1,59 @@
+last-update: "2025-12-22"
+repo-url: "https://www.npmjs.com/package/@anoncam/linear-cli"
+
+name: "@anoncam/linear-cli"
+description: "Feature-rich CLI for cross-team analysis and reporting"
+language: "JavaScript"
+languages:
+  - "JavaScript"
+  - "Node.js"
+license: "MIT"
+
+category: "cross-team"
+secondary-categories:
+  - "cli-client"
+
+features:
+  cross-team-queries: true
+  kanban-view: true
+  ai-integration: true
+  ai-provider: "Claude"
+  label-management: true
+  report-generation: true
+  issue-view: true
+  issue-search: true
+  team-management: true
+  output-formats:
+    - "json"
+    - "markdown"
+    - "table"
+
+installation:
+  npm: "@anoncam/linear-cli"
+
+authentication:
+  env-var: "LINEAR_API_KEY"
+
+platforms:
+  linux: true
+  macos: true
+  windows: true
+
+documentation:
+  readme: true
+
+commands:
+  - "linear-cli teams"
+  - "linear-cli issues <team-id> [time]"
+  - "linear-cli my-issues [timeframe]"
+  - "linear-cli set-team <team-id>"
+  - "linear-cli --format json"
+  - "linear-cli -k"
+
+notes:
+  - "Cross-team queries and analysis"
+  - "Interactive terminal-based kanban board visualization (-k flag)"
+  - "AI-assisted label management with Claude integration"
+  - "Report generation in markdown format"
+  - "Flexible filtering by creator, assignee, project, initiative"
+  - "Direct GraphQL API integration"

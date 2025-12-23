@@ -1,0 +1,387 @@
+# Linear CLI Tools Comparison - YAML Schema Specification
+# This file defines the schema for project YAML files in projects/
+
+# ============================================================================
+# TRACKING FIELDS (Required - always first)
+# ============================================================================
+
+tracking:
+  last-update:
+    type: date
+    format: "YYYY-MM-DD"
+    required: true
+    description: "Date of last update to this YAML file"
+    example: "2025-12-22"
+
+  repo-url:
+    type: url
+    required: true
+    description: "GitHub/GitLab repository URL"
+    example: "https://github.com/schpet/linear-cli"
+
+  repo-commit:
+    type: string
+    required: false
+    description: "Git commit hash analyzed (for reproducibility)"
+    example: "abc123def"
+
+# ============================================================================
+# BASIC INFO
+# ============================================================================
+
+basic:
+  name:
+    type: string
+    required: true
+    description: "Human-readable project name"
+    example: "linear-cli"
+
+  description:
+    type: string
+    required: true
+    description: "Brief one-line description"
+    example: "Git-aware Linear CLI for developers"
+
+  language:
+    type: string
+    required: true
+    description: "Primary programming language"
+    enum: ["TypeScript", "JavaScript", "Python", "Rust", "Go", "Ruby", "Deno"]
+    example: "TypeScript"
+
+  languages:
+    type: array
+    required: false
+    description: "All programming languages used"
+    example: ["TypeScript", "Bash"]
+
+  license:
+    type: string
+    required: false
+    description: "License identifier (SPDX)"
+    example: "MIT"
+
+# ============================================================================
+# REPUTATION & MAINTENANCE
+# ============================================================================
+
+reputation:
+  stars:
+    type: integer
+    required: false
+    description: "GitHub stars count"
+
+  forks:
+    type: integer
+    required: false
+
+  contributors:
+    type: integer
+    required: false
+
+  open-issues:
+    type: integer
+    required: false
+
+  last-commit:
+    type: date
+    format: "YYYY-MM-DD"
+    required: false
+    description: "Date of most recent commit"
+
+  created:
+    type: date
+    format: "YYYY-MM-DD"
+    required: false
+    description: "Repository creation date"
+
+  archived:
+    type: boolean
+    required: false
+    default: false
+
+  organization:
+    type: string
+    required: false
+    description: "Parent organization if notable"
+    example: "schpet"
+
+# ============================================================================
+# CATEGORY & CLASSIFICATION
+# ============================================================================
+
+category:
+  type: string
+  required: true
+  description: "Primary tool category"
+  enum:
+    - cli-client          # Standard CLI for Linear operations
+    - tui-client          # Terminal User Interface (interactive)
+    - ai-agent-tool       # Designed for AI agent integration
+    - importer-exporter   # Bulk import/export operations
+    - git-workflow        # Focused on git/GitHub integration
+    - cross-team          # Multi-team reporting and analysis
+
+secondary-categories:
+  type: array
+  required: false
+  description: "Additional applicable categories"
+
+# ============================================================================
+# FEATURES (Linear CLI specific)
+# ============================================================================
+
+features:
+  git-integration:
+    type: boolean
+    description: "Branch name parsing, auto-detection of issue from branch"
+
+  github-pr-creation:
+    type: boolean
+    description: "Can create GitHub PRs with Linear issue details"
+
+  branch-management:
+    type: boolean
+    description: "Create/switch branches based on issues"
+
+  kanban-view:
+    type: boolean
+    description: "Terminal-based kanban board visualization"
+
+  ai-integration:
+    type: boolean
+    description: "AI-assisted features (label management, issue creation)"
+
+  ai-provider:
+    type: string
+    description: "Which AI provider if ai-integration is true"
+    enum: ["Claude", "Gemini", "OpenAI", "Custom"]
+
+  cross-team-queries:
+    type: boolean
+    description: "Query across multiple Linear teams"
+
+  bulk-operations:
+    type: boolean
+    description: "Batch import/export of issues"
+
+  issue-creation:
+    type: boolean
+    description: "Create new issues from CLI"
+
+  issue-update:
+    type: boolean
+    description: "Update existing issues"
+
+  issue-search:
+    type: boolean
+    description: "Search/filter issues"
+
+  issue-view:
+    type: boolean
+    description: "View issue details"
+
+  team-management:
+    type: boolean
+    description: "List/manage teams"
+
+  project-management:
+    type: boolean
+    description: "List/manage projects"
+
+  label-management:
+    type: boolean
+    description: "Create/manage labels"
+
+  report-generation:
+    type: boolean
+    description: "Generate reports (markdown, JSON, etc.)"
+
+  mcp-server:
+    type: boolean
+    description: "MCP (Model Context Protocol) server support"
+
+  image-download:
+    type: boolean
+    description: "Download images/attachments from issues"
+
+  output-formats:
+    type: array
+    description: "Supported output formats"
+    example: ["json", "markdown", "table", "plain"]
+
+  interactive-mode:
+    type: boolean
+    description: "Interactive prompts for issue selection"
+
+# ============================================================================
+# INSTALLATION METHODS
+# ============================================================================
+
+installation:
+  npm:
+    type: string
+    description: "npm package name"
+    example: "@schpet/linear-cli"
+
+  pip:
+    type: string
+    description: "PyPI package name"
+    example: "linearator"
+
+  brew:
+    type: string
+    description: "Homebrew formula"
+    example: "schpet/tap/linear"
+
+  cargo:
+    type: string
+    description: "Cargo crate name"
+    example: "lt"
+
+  go-install:
+    type: string
+    description: "Go install path"
+    example: "github.com/dorkitude/linctl@latest"
+
+  deno:
+    type: string
+    description: "Deno/JSR package"
+    example: "jsr:@schpet/linear-cli"
+
+  aur:
+    type: string
+    description: "Arch User Repository package"
+    example: "linear-cli"
+
+  binary:
+    type: boolean
+    description: "Pre-built binaries available"
+
+  docker:
+    type: string
+    description: "Docker image name"
+
+# ============================================================================
+# AUTHENTICATION
+# ============================================================================
+
+authentication:
+  env-var:
+    type: string
+    description: "Environment variable name for API key"
+    example: "LINEAR_API_KEY"
+
+  config-file:
+    type: boolean
+    description: "Supports configuration file"
+
+  keyring:
+    type: boolean
+    description: "System keyring integration"
+
+  encrypted-file:
+    type: boolean
+    description: "Encrypted credential file support"
+
+  setup-wizard:
+    type: boolean
+    description: "Interactive setup/configuration wizard"
+
+# ============================================================================
+# PLATFORM SUPPORT
+# ============================================================================
+
+platforms:
+  linux:
+    type: boolean
+  macos:
+    type: boolean
+  windows:
+    type: boolean
+
+# ============================================================================
+# DOCUMENTATION
+# ============================================================================
+
+documentation:
+  readme:
+    type: boolean
+    description: "Has comprehensive README"
+
+  examples:
+    type: boolean
+    description: "Usage examples provided"
+
+  api-docs:
+    type: boolean
+    description: "API documentation"
+
+  man-page:
+    type: boolean
+    description: "Man page available"
+
+# ============================================================================
+# NOTES
+# ============================================================================
+
+notes:
+  type: array
+  description: "General observations and notes"
+
+commands:
+  type: array
+  description: "Key CLI commands available"
+  example:
+    - "linear issue list"
+    - "linear issue start"
+    - "linear issue pr"
+
+# ============================================================================
+# EXAMPLE COMPLETE ENTRY
+# ============================================================================
+
+_example:
+  last-update: "2025-12-22"
+  repo-url: "https://github.com/schpet/linear-cli"
+  repo-commit: "abc123"
+
+  name: "linear-cli"
+  description: "Git-aware Linear CLI that keeps you in context"
+  language: "TypeScript"
+  languages: ["TypeScript", "Bash"]
+  license: "MIT"
+
+  stars: 500
+  forks: 25
+  contributors: 5
+  last-commit: "2025-12-20"
+
+  category: "git-workflow"
+  secondary-categories: ["cli-client"]
+
+  features:
+    git-integration: true
+    github-pr-creation: true
+    branch-management: true
+    issue-creation: true
+    interactive-mode: true
+
+  installation:
+    brew: "schpet/tap/linear"
+    deno: "jsr:@schpet/linear-cli"
+
+  authentication:
+    env-var: "LINEAR_API_KEY"
+    setup-wizard: true
+
+  platforms:
+    linux: true
+    macos: true
+    windows: false
+
+  commands:
+    - "linear config"
+    - "linear issue list"
+    - "linear issue start"
+    - "linear issue pr"
