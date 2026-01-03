@@ -1,0 +1,13 @@
+{
+  "url": "https://linear.app/developers/graphql",
+  "archived_date": "2026-01-04",
+  "title": "Linear GraphQL API: Getting Started Guide",
+  "description": "Complete documentation for getting started with the Linear GraphQL API, including authentication, queries, mutations, and best practices",
+  "type": "documentation",
+  "extraction_method": "WebFetch",
+  "related_urls": [
+    "https://github.com/linear/linear/blob/master/packages/sdk/src/schema.graphql",
+    "https://studio.apollographql.com/public/Linear-API/schema/reference",
+    "https://linear.app/developers"
+  ]
+}
