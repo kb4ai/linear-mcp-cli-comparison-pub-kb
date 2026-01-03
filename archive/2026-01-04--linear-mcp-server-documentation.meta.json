@@ -1,0 +1,17 @@
+{
+  "url": "https://linear.app/docs/mcp",
+  "archived_date": "2026-01-04",
+  "title": "Linear MCP Server Documentation",
+  "description": "Complete documentation for Linear's Model Context Protocol (MCP) server implementation, including setup instructions for various platforms and authentication methods",
+  "type": "documentation",
+  "extraction_method": "WebFetch",
+  "endpoints": {
+    "http": "https://mcp.linear.app/mcp",
+    "sse": "https://mcp.linear.app/sse"
+  },
+  "related_urls": [
+    "https://modelcontextprotocol.io/",
+    "https://linear.app/developers/graphql",
+    "https://linear.app/developers"
+  ]
+}
