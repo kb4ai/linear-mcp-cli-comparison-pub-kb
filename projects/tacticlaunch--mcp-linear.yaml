@@ -1,0 +1,27 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/tacticlaunch/mcp-linear"
+name: "mcp-linear"
+description: "MCP server that enables AI assistants to interact with Linear project management system through natural language, allowing users to retrieve, create, and update issues, projects, and teams"
+language: "TypeScript"
+stars: 121
+category: "linear-mcp-server"
+reputable-source: false
+features:
+  - "Retrieve issues, projects, teams, and other data from Linear"
+  - "Create and update issues"
+  - "Change issue status"
+  - "Assign issues to team members"
+  - "Add comments to issues"
+  - "Natural language interaction"
+transports:
+  stdio: true
+  http: false
+  sse: false
+auth:
+  api-key: true
+  oauth: false
+installation:
+  npm: "npm install -g @tacticlaunch/mcp-linear"
+notes:
+  - "Active community implementation"
+  - "Uses Linear GraphQL API"

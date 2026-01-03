@@ -1,0 +1,26 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/anoncam/linear-mcp"
+name: "linear-mcp"
+description: "A Linear MCP implementation that handles all Linear resource types"
+language: "TypeScript"
+stars: 2
+category: "linear-mcp-server"
+reputable-source: false
+features:
+  - "Handles all Linear resource types"
+  - "Issues, projects, teams, users, roadmaps, documents, initiatives"
+  - "Resources for accessing various Linear entities"
+  - "Tools for create/update operations"
+  - "Manage projects and link to initiatives"
+  - "Search capabilities"
+  - "Prompts/templates for issue creation, bug reports, feature requests"
+transports:
+  stdio: true
+  http: false
+  sse: false
+auth:
+  api-key: true
+  oauth: false
+notes:
+  - "Comprehensive resource type coverage"
+  - "Includes prompt templates for common workflows"

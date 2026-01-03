@@ -1,0 +1,54 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/mcp-use/mcp-use"
+name: "mcp-use"
+description: "Easiest way to build MCP servers, clients, and AI agents in Python and TypeScript"
+language: "Python, TypeScript"
+stars: null  # Not found in search results
+category: "mcp-cli-auth"
+features:
+  - "MCP Agents - AI agents with tool usage and multi-step reasoning"
+  - "MCP Clients - connect any LLM to any MCP server"
+  - "6 lines of code to get started"
+  - "Build custom MCP servers with tools, resources, prompts"
+  - "Interactive web-based inspector for testing/debugging"
+  - "Cloud deployment and management"
+  - "Direct tool calling without agent layer"
+  - "Browse web, manage files, and more"
+  - "Both Python and TypeScript implementations"
+transports:
+  stdio: true
+  http: true  # Not explicitly detailed
+  sse: false  # Not explicitly mentioned
+  streamable-http: false  # Not explicitly mentioned
+auth:
+  bearer-header: false  # Awaiting documentation
+  api-key: false
+  oauth: false
+  custom-headers: false
+mcptools-compatible: false  # Different approach (library vs CLI)
+project-structure:
+  python: "libraries/python/ - core library, examples, docs"
+  typescript: "libraries/typescript/ - packages including mcp-use, CLI, web inspector, scaffolding"
+typescript-packages:
+  - "mcp-use core framework"
+  - "CLI build tool"
+  - "Web inspector"
+  - "Scaffolding tool (create-mcp-use-app)"
+author: "Pietro Zullo and Contributors"
+year: 2025
+notes: |
+  - Dual-language support (Python + TypeScript)
+  - Focuses on ease of use (6 lines to start)
+  - Agent-first approach with LLM integration
+  - Interactive debugging tools
+  - Cloud deployment capabilities
+  - Open issue asking about auth token provisioning
+  - More of a library/framework than CLI tool
+related-sdks:
+  - "Official Python SDK: 20.8k stars, 2.9k forks"
+  - "Official TypeScript SDK: 11.1k stars, 1.5k forks"
+issues:
+  - "Issue #137: How to provision auth token with mcp client (open)"
+sources:
+  - "https://github.com/mcp-use/mcp-use"
+  - "https://github.com/mcp-use/mcp-use/issues/137"

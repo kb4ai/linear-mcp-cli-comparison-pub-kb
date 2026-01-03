@@ -1,0 +1,53 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/chrishayuk/mcp-cli"
+name: "mcp-cli"
+description: "Python-based CLI for MCP servers with chat, interactive shell, and automation modes"
+language: "Python"
+stars: 1700
+forks: 294
+license: "MIT"
+category: "mcp-cli-auth"
+features:
+  - "Chat Mode - conversational interface with streaming responses"
+  - "Interactive Mode - command-driven shell interface"
+  - "Command Mode - Unix-friendly scriptable automation"
+  - "Direct Commands for server operations"
+  - "Integration with CHUK Tool Processor (async tool execution)"
+  - "Integration with CHUK-LLM (unified LLM provider)"
+  - "Integration with CHUK-Term (enhanced terminal UI)"
+  - "Default Ollama integration with gpt-oss reasoning model"
+  - "Local, privacy-focused operation without API keys"
+  - "Production-grade middleware (timeouts, retries, circuit breakers)"
+  - "Dynamic model discovery"
+  - "llama.cpp integration"
+transports:
+  stdio: true
+  http: true  # Via CHUK-MCP protocol library
+  sse: false  # Not explicitly mentioned
+  streamable-http: false  # Not explicitly mentioned
+auth:
+  bearer-header: false  # Not explicitly documented
+  api-key: false
+  oauth: false
+  custom-headers: false  # Not explicitly documented
+mcptools-compatible: false  # Different implementation
+installation:
+  - "uvx mcp-cli --help  # Recommended"
+  - "pip install -e .  # From source"
+python-version: ">=3.11"
+architecture:
+  - "CHUK Tool Processor - async tool execution"
+  - "CHUK-LLM - unified LLM provider"
+  - "CHUK-Term - enhanced terminal UI"
+  - "MCP CLI - command orchestration layer"
+protocol-library: "chuk-mcp (pyodide compatible pure Python MCP implementation)"
+notes: |
+  - Modular architecture with clean separation of concerns
+  - Core protocol moved to separate chuk-mcp package
+  - Defaults to local Ollama for privacy
+  - Multiple operational modes for different use cases
+  - Rich formatting and theming support
+sources:
+  - "https://github.com/chrishayuk/mcp-cli"
+  - "https://pypi.org/project/mcp-cli/"
+  - "https://lobehub.com/mcp/chrishayuk-mcp-cli"

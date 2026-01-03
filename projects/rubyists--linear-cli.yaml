@@ -5,6 +5,7 @@ name: "linear-cli"
 description: "Ruby-based Linear CLI"
 language: "Ruby"
 license: "MIT"
+stars: 7
 
 category: "cli-client"
 
@@ -14,6 +15,7 @@ features:
 
 installation:
   binary: true
+  container: true
 
 authentication:
   env-var: "LINEAR_API_KEY"
@@ -29,3 +31,4 @@ documentation:
 notes:
   - "Ruby implementation"
   - "For Ruby developers"
+  - "OCI container image available - can run without installation"

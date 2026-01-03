@@ -8,6 +8,7 @@ languages:
   - "TypeScript"
   - "Deno"
 license: "MIT"
+stars: 120
 
 category: "git-workflow"
 secondary-categories:
@@ -69,3 +70,6 @@ notes:
   - "Creates/switches to issue branches and marks them as started"
   - "Creates GitHub PRs with issue details via gh pr create"
   - "Opens the right view in Linear based on current branch"
+  - "Supports both git and jj version control systems"
+  - "Includes Claude Code skill for LLM integration"
+  - "Similar UX to GitHub CLI (gh)"

@@ -1,0 +1,74 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/geelen/mcp-remote"
+name: "mcp-remote"
+description: "OAuth proxy enabling stdio-only MCP clients to connect to remote servers with authentication"
+language: "TypeScript"
+stars: null  # Not found in search results
+category: "mcp-cli-auth"
+features:
+  - "OAuth 2.1 + PKCE authentication flow"
+  - "Dynamic Client Registration (DCR)"
+  - "Browser-based OAuth authorization"
+  - "Automatic token refresh"
+  - "Token storage in ~/.mcp-auth/"
+  - "Custom header support for Bearer tokens"
+  - "Configurable OAuth timeout"
+  - "Static OAuth client metadata support"
+  - "Transport strategy configuration (SSE vs HTTP)"
+  - "Credential caching and management"
+  - "Loopback redirect URI support"
+transports:
+  stdio: true  # Wraps stdio servers for remote access
+  http: true
+  sse: true
+  streamable-http: true
+auth:
+  bearer-header: true
+  api-key: false
+  oauth: true  # Full OAuth 2.1 + PKCE support
+  custom-headers: true
+mcptools-compatible: true  # Works with stdio-only clients like Claude Desktop, Cursor
+oauth-features:
+  dynamic-client-registration: true
+  pkce: true
+  token-refresh: true
+  browser-launch: true
+  callback-handling: true
+  token-storage: "~/.mcp-auth/{hash}_tokens.json"
+configuration-example: |
+  {
+    "mcpServers": {
+      "remote-example": {
+        "command": "npx",
+        "args": [
+          "mcp-remote",
+          "https://remote.mcp.server/sse",
+          "--header",
+          "Authorization: Bearer ${AUTH_TOKEN}"
+        ],
+        "env": {
+          "AUTH_TOKEN": "..."
+        }
+      }
+    }
+  }
+cli-options:
+  - "--header: Custom headers for authentication"
+  - "--auth-timeout: OAuth callback timeout (default 30s)"
+  - "Transport strategy selection"
+installation:
+  - "npx mcp-remote [url] [options]"
+notes: |
+  - Bridges gap between stdio-only clients and remote OAuth servers
+  - Implements MCP Authorization specification (added 2025-03-25)
+  - Default OAuth callback port: 3334 (auto-selects if unavailable)
+  - Supports servers without DCR via static client config
+  - Credential storage in MCP_REMOTE_CONFIG_DIR or ~/.mcp-auth
+  - Workaround for Cursor/Claude Desktop Windows bug with spaces in args
+limitations:
+  - "Most MCP clients don't yet support OAuth flows natively"
+  - "Primarily for stdio-only clients"
+sources:
+  - "https://github.com/geelen/mcp-remote"
+  - "https://deepwiki.com/geelen/mcp-remote"
+  - "https://lobehub.com/mcp/geelen-mcp-remote"

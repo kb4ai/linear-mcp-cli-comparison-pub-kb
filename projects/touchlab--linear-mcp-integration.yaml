@@ -1,0 +1,21 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/touchlab/linear-mcp-integration"
+name: "linear-mcp-integration"
+description: "Linear MCP Integration for AI Agent tools"
+language: "TypeScript"
+stars: 1
+category: "linear-mcp-server"
+reputable-source: false
+features:
+  - "Linear API integration for AI agents"
+  - "Based on cline/linear-mcp"
+transports:
+  stdio: true
+  http: false
+  sse: false
+auth:
+  api-key: true
+  oauth: false
+notes:
+  - "Based on/forked from cline/linear-mcp"
+  - "Designed for AI agent tooling"

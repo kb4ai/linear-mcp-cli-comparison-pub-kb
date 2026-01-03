@@ -1,0 +1,41 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/obot-platform/mcp-oauth-proxy"
+name: "MCP OAuth Proxy"
+description: "OAuth 2.1 proxy server that authenticates clients and proxies requests to MCP servers"
+language: "Go"
+stars: null
+category: "proxy-bridge"
+features:
+  - "OAuth 2.1 authorization server"
+  - "PKCE support"
+  - "MCP integration with user context injection"
+  - "Multi-provider OAuth support"
+  - "Auto-discovery for OAuth providers"
+  - "PostgreSQL or SQLite storage"
+  - "Access token issuance"
+  - "External identity provider validation"
+transports:
+  streamable-http: true
+bridge-direction: "auth-layer"
+auth:
+  oauth: true
+  pkce: true
+  user-context-injection: true
+identity-providers:
+  - "Google"
+  - "Microsoft"
+  - "GitHub"
+  - "Any OAuth 2.0 provider"
+infrastructure:
+  database-postgresql: true
+  database-sqlite: true
+installation:
+  - "docker run ghcr.io/obot-platform/mcp-oauth-proxy:latest"
+requirements:
+  - "Streamable HTTP MCP server"
+integration: "Obot MCP platform"
+example-servers:
+  - "Obot Gmail MCP server (http://localhost:9000/mcp/gmail)"
+notes: "Full OAuth 2.1 authorization server sitting in front of MCP servers. Redirects to external auth providers for user verification. Issues access tokens after successful authentication. Requires Streamable HTTP transport on backend MCP server."
+use-case: "Add OAuth authentication layer to Streamable HTTP MCP servers"
+platform: "Part of Obot MCP platform ecosystem"

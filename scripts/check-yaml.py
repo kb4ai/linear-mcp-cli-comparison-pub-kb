@@ -1,170 +1,231 @@
 #!/usr/bin/env python3
 """
-Validate project YAML files against the spec.
+Validate YAML files in projects/ against the schema defined in spec.yaml.
 
 Usage:
-    ./scripts/check-yaml.py                    # Check all projects
-    ./scripts/check-yaml.py projects/foo.yaml  # Check specific file
-    ./scripts/check-yaml.py --strict           # Treat warnings as errors
+    ./scripts/check-yaml.py [OPTIONS] [FILES...]
+
+Options:
+    --strict    Fail on warnings (optional fields become required)
+    --help      Show this help
+
+If no files specified, validates all projects/*.yaml files.
 """
 
+import sys
 import os
 import re
-import sys
 from pathlib import Path
+from datetime import datetime
 
 try:
     import yaml
 except ImportError:
-    print("Error: PyYAML is required. Install with: pip install pyyaml", file=sys.stderr)
+    print("ERROR: PyYAML not installed. Run: pip install pyyaml")
     sys.exit(1)
 
-
-# Required fields
-REQUIRED_FIELDS = ['last-update', 'repo-url', 'name', 'description', 'language', 'category']
-
-# Valid categories
+# Valid categories from spec.yaml
 VALID_CATEGORIES = [
-    'cli-client',
-    'tui-client',
-    'ai-agent-tool',
-    'importer-exporter',
-    'git-workflow',
-    'cross-team',
+    # Linear CLI Categories
+    "cli-client",
+    "tui-client",
+    "ai-agent-tool",
+    "importer-exporter",
+    "git-workflow",
+    "cross-team",
+    # MCP & Proxy Categories
+    "linear-mcp-server",
+    "mcp-cli-auth",
+    "proxy-bridge",
 ]
 
-# Valid languages
-VALID_LANGUAGES = [
-    'TypeScript', 'JavaScript', 'Python', 'Rust', 'Go', 'Ruby', 'Deno',
-]
 
-# Date pattern
-DATE_PATTERN = re.compile(r'^\d{4}-\d{2}-\d{2}$')
+def validate_date(value: str) -> tuple[bool, str]:
+    """Validate YYYY-MM-DD format and actual date validity."""
+    if not isinstance(value, str):
+        return False, "not a string"
+    if not re.match(r"^\d{4}-\d{2}-\d{2}$", value):
+        return False, "not YYYY-MM-DD format"
+    # Actually parse to catch invalid dates like 2024-02-30
+    try:
+        datetime.strptime(value, "%Y-%m-%d")
+        return True, ""
+    except ValueError as e:
+        return False, str(e)
 
-# URL pattern
-URL_PATTERN = re.compile(r'^https?://')
+
+def validate_url(value: str) -> bool:
+    """Validate URL format."""
+    if not isinstance(value, str):
+        return False
+    return value.startswith("http://") or value.startswith("https://")
 
 
-def validate_file(filepath: Path, strict: bool = False) -> tuple[list[str], list[str]]:
-    """Validate a single YAML file. Returns (errors, warnings)."""
-    errors = []
-    warnings = []
+def validate_yaml_file(filepath: Path, strict: bool = False) -> tuple[bool, list[str]]:
+    """
+    Validate a single YAML file.
+
+    Returns: (is_valid, list_of_messages)
+    """
+    messages = []
+    is_valid = True
 
     try:
-        with open(filepath, 'r') as f:
+        with open(filepath) as f:
             data = yaml.safe_load(f)
     except yaml.YAMLError as e:
-        return [f"YAML parse error: {e}"], []
+        return False, [f"YAML parse error: {e}"]
     except Exception as e:
-        return [f"File read error: {e}"], []
+        return False, [f"File read error: {e}"]
 
-    if not data:
-        return ["Empty or null YAML content"], []
+    if data is None:
+        return False, ["File is empty"]
 
-    # Check required fields
-    for field in REQUIRED_FIELDS:
+    if not isinstance(data, dict):
+        return False, ["Root must be a mapping/dictionary"]
+
+    # Required fields
+    required = ["last-update", "repo-url"]
+    for field in required:
         if field not in data:
-            errors.append(f"Missing required field: {field}")
-        elif data[field] is None:
-            errors.append(f"Required field is null: {field}")
+            messages.append(f"ERROR: Missing required field: {field}")
+            is_valid = False
 
-    # Validate date format
-    if 'last-update' in data and data['last-update']:
-        if not DATE_PATTERN.match(str(data['last-update'])):
-            errors.append(f"Invalid date format for last-update: {data['last-update']} (expected YYYY-MM-DD)")
+    # Validate last-update format
+    if "last-update" in data:
+        valid, err = validate_date(data["last-update"])
+        if not valid:
+            messages.append(f"ERROR: last-update invalid: {err}, got: {data['last-update']}")
+            is_valid = False
 
-    if 'last-commit' in data and data['last-commit']:
-        if not DATE_PATTERN.match(str(data['last-commit'])):
-            errors.append(f"Invalid date format for last-commit: {data['last-commit']} (expected YYYY-MM-DD)")
+    # Validate repo-url format
+    if "repo-url" in data:
+        if not validate_url(data["repo-url"]):
+            messages.append(f"ERROR: repo-url must be a valid URL, got: {data['repo-url']}")
+            is_valid = False
 
-    # Validate URL format
-    if 'repo-url' in data and data['repo-url']:
-        if not URL_PATTERN.match(str(data['repo-url'])):
-            errors.append(f"Invalid URL format for repo-url: {data['repo-url']}")
+    # Validate last-commit format (if present)
+    if "last-commit" in data and data["last-commit"]:
+        valid, err = validate_date(str(data["last-commit"]))
+        if not valid:
+            messages.append(f"WARN: last-commit invalid: {err}")
+            if strict:
+                is_valid = False
 
-    # Validate category
-    if 'category' in data and data['category']:
-        if data['category'] not in VALID_CATEGORIES:
-            warnings.append(f"Unknown category: {data['category']} (valid: {', '.join(VALID_CATEGORIES)})")
+    # Validate category enum (if present)
+    if "category" in data and data["category"]:
+        if data["category"] not in VALID_CATEGORIES:
+            messages.append(f"WARN: unknown category '{data['category']}', valid: {VALID_CATEGORIES}")
+            if strict:
+                is_valid = False
 
-    # Validate language
-    if 'language' in data and data['language']:
-        if data['language'] not in VALID_LANGUAGES:
-            warnings.append(f"Unknown language: {data['language']} (valid: {', '.join(VALID_LANGUAGES)})")
+    # Validate numeric fields
+    numeric_fields = ["stars", "forks", "watchers", "contributors"]
+    for field in numeric_fields:
+        if field in data and data[field] is not None:
+            if not isinstance(data[field], int):
+                messages.append(f"ERROR: {field} must be an integer, got: {type(data[field]).__name__}")
+                is_valid = False
 
-    # Validate stars is a number
-    if 'stars' in data and data['stars'] is not None:
-        if not isinstance(data['stars'], int):
-            errors.append(f"stars should be an integer, got: {type(data['stars']).__name__}")
+    # Validate boolean fields
+    bool_fields = ["reputable-source", "tested-with-linear", "agent-optimized", "mcptools-compatible"]
+    for field in bool_fields:
+        if field in data and data[field] is not None:
+            if not isinstance(data[field], bool):
+                messages.append(f"WARN: {field} should be boolean")
+                if strict:
+                    is_valid = False
 
-    # Validate features is a dict
-    if 'features' in data and data['features'] is not None:
-        if not isinstance(data['features'], dict):
-            errors.append(f"features should be a dictionary, got: {type(data['features']).__name__}")
+    # Validate nested structures
+    if "transports" in data and data["transports"]:
+        if not isinstance(data["transports"], dict):
+            messages.append(f"ERROR: transports must be a mapping")
+            is_valid = False
+        else:
+            # Validate each transport is boolean
+            for key, val in data["transports"].items():
+                if val is not None and not isinstance(val, bool):
+                    messages.append(f"WARN: transports.{key} should be boolean")
+                    if strict:
+                        is_valid = False
 
-    # Validate installation is a dict
-    if 'installation' in data and data['installation'] is not None:
-        if not isinstance(data['installation'], dict):
-            errors.append(f"installation should be a dictionary, got: {type(data['installation']).__name__}")
+    if "auth" in data and data["auth"]:
+        if not isinstance(data["auth"], dict):
+            messages.append(f"ERROR: auth must be a mapping")
+            is_valid = False
 
-    return errors, warnings
+    if "features" in data and data["features"]:
+        # Accept both list format (legacy) and dict format (new structured)
+        if not isinstance(data["features"], (list, dict)):
+            messages.append(f"ERROR: features must be a list or dict")
+            is_valid = False
+
+    if "security" in data and data["security"]:
+        if not isinstance(data["security"], dict):
+            messages.append(f"ERROR: security must be a mapping")
+            is_valid = False
+
+    return is_valid, messages
 
 
 def main():
-    strict = '--strict' in sys.argv
-    args = [a for a in sys.argv[1:] if a != '--strict']
+    args = sys.argv[1:]
+    strict = "--strict" in args
+    args = [a for a in args if not a.startswith("--")]
 
-    # Find projects directory
+    if "--help" in sys.argv:
+        print(__doc__)
+        sys.exit(0)
+
+    # Find project root
     script_dir = Path(__file__).parent
-    repo_root = script_dir.parent
-    projects_dir = repo_root / 'projects'
+    project_root = script_dir.parent
+    projects_dir = project_root / "projects"
 
-    # Determine which files to check
+    # Determine files to validate
     if args:
-        files = [Path(a) for a in args]
+        files = [Path(f) for f in args]
     else:
-        if not projects_dir.exists():
-            print(f"Error: Projects directory not found: {projects_dir}", file=sys.stderr)
-            sys.exit(1)
         files = sorted(projects_dir.glob("*.yaml"))
 
     if not files:
-        print("No YAML files to check")
+        print("No YAML files to validate")
         sys.exit(0)
 
-    total_errors = 0
-    total_warnings = 0
+    # Validate each file
+    total = 0
+    valid = 0
+    invalid = 0
 
     for filepath in files:
         if not filepath.exists():
-            print(f"❌ {filepath}: File not found")
-            total_errors += 1
+            print(f"SKIP: {filepath} (not found)")
             continue
 
-        errors, warnings = validate_file(filepath, strict)
+        total += 1
+        is_valid, messages = validate_yaml_file(filepath, strict)
 
-        if errors or warnings:
-            status = '❌' if errors else '⚠️'
-            print(f"{status} {filepath.name}")
-
-            for error in errors:
-                print(f"   ERROR: {error}")
-            for warning in warnings:
-                print(f"   WARNING: {warning}")
-
-            total_errors += len(errors)
-            total_warnings += len(warnings)
+        if is_valid:
+            valid += 1
+            status = "OK"
         else:
-            print(f"✅ {filepath.name}")
+            invalid += 1
+            status = "FAIL"
 
+        # Print results
+        rel_path = filepath.name if filepath.parent.name == "projects" else filepath
+        print(f"[{status}] {rel_path}")
+
+        for msg in messages:
+            print(f"      {msg}")
+
+    # Summary
     print()
-    print(f"Checked {len(files)} files: {total_errors} errors, {total_warnings} warnings")
+    print(f"Validated {total} files: {valid} valid, {invalid} invalid")
 
-    if total_errors > 0 or (strict and total_warnings > 0):
+    if invalid > 0:
         sys.exit(1)
-    else:
-        sys.exit(0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

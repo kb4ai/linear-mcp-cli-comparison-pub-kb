@@ -1,0 +1,63 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/Dicklesworthstone/ultimate_mcp_client"
+name: "ultimate_mcp_client"
+description: "Full-featured async Python MCP client with Web UI and CLI supporting all transports"
+language: "Python"
+stars: null  # Not found in search results
+category: "mcp-cli-auth"
+features:
+  - "Asyncio-based architecture for efficient I/O"
+  - "Web UI with Alpine.js, DaisyUI, Tailwind CSS"
+  - "Real-time chat streaming via WebSockets"
+  - "Feature-rich interactive CLI shell"
+  - "Autocompletion support"
+  - "Rich Markdown rendering"
+  - "Custom RobustStdioSession for noisy servers"
+  - "Noise filtering for non-JSON-RPC output"
+  - "Direct future resolution for faster responses"
+  - "Reliable process lifecycle management"
+  - "mDNS discovery via zeroconf (_mcp._tcp.local)"
+  - "Local port scanning for MCP server discovery"
+  - "Real-time server notifications (appear/disappear)"
+  - "FastMCP library integration"
+  - "Component-based design (MCPClient, ServerManager)"
+  - "Server configuration and lifecycle management"
+  - "Capability aggregation across servers"
+transports:
+  stdio: true
+  http: true
+  sse: true  # HTTP Server-Sent Events
+  streamable-http: true  # Native support via FastMCP
+auth:
+  bearer-header: false  # Not explicitly documented
+  api-key: false
+  oauth: false
+  custom-headers: false  # Not explicitly documented
+mcptools-compatible: false  # Custom implementation
+architecture:
+  - "MCPClient - main application class (UI, commands, core logic)"
+  - "ServerManager - configuration, lifecycle, discovery, aggregation"
+  - "RobustStdioSession - handles noisy/non-compliant stdio servers"
+  - "Async I/O for HTTP, WebSockets, SSE, stdio, filesystem"
+  - "Concurrent background tasks for monitoring, discovery"
+discovery-methods:
+  - "mDNS via zeroconf library"
+  - "Local port scanning with configurable IP ranges"
+  - "Automatic MCP initialize handshake on detected ports"
+stdio-features:
+  - "Noise filtering - ignores non-JSON-RPC output"
+  - "Direct future resolution"
+  - "Reliable process lifecycle management"
+notes: |
+  - Built entirely on Python asyncio
+  - Tackles significant engineering challenges around stdio communication
+  - Supports potentially noisy or non-compliant stdio servers
+  - Network I/O: HTTP, WebSockets, SSE
+  - Subprocess communication: stdio
+  - Filesystem operations: aiofiles
+  - Concurrent background tasks for monitoring
+  - Modern streaming-http transport via FastMCP
+  - Real-time server discovery on local network
+sources:
+  - "https://github.com/Dicklesworthstone/ultimate_mcp_client"
+  - "https://github.com/topics/mcp-client"

@@ -1,0 +1,137 @@
+# Research Scope Definition
+
+> **INSTRUCTIONS**: Fill in this template to define your research scope, then rename to `SCOPE.md` and commit.
+
+## Research Title
+
+<!-- What are you comparing? Be specific. -->
+**Title:** [e.g., "Linear CLI and MCP Tools Comparison"]
+
+## Research Question
+
+<!-- What question(s) are you trying to answer? -->
+
+* [e.g., "What tools exist for interacting with Linear via CLI?"]
+* [e.g., "Which tools provide MCP server integration for Linear?"]
+
+## Scope Definition
+
+### In Scope
+
+<!-- What types of projects/tools ARE you looking for? -->
+
+* [ ] CLI tools for [specific service/platform]
+* [ ] MCP servers for [specific service/platform]
+* [ ] API wrappers/clients
+* [ ] Browser extensions
+* [ ] IDE integrations
+* [ ] Other: _______________
+
+### Out of Scope
+
+<!-- What are you explicitly NOT researching? -->
+
+* [ ] Official first-party tools (unless comparing to third-party)
+* [ ] Abandoned projects (no commits in 2+ years)
+* [ ] Non-open-source tools
+* [ ] Other: _______________
+
+## Target Platform/Service
+
+<!-- What service/API/platform does this research focus on? -->
+
+**Primary:** [e.g., Linear, GitHub, Slack, etc.]
+**Official API Docs:** [URL to official API documentation]
+
+## Categories
+
+<!-- Define the categories you'll use to classify projects -->
+
+| Category ID | Description |
+|-------------|-------------|
+| `cli-client` | Command-line interface tools |
+| `mcp-server` | MCP server implementations |
+| `api-wrapper` | API client libraries |
+| `integration` | Third-party integrations |
+| `add-more...` | Define more as needed |
+
+## Data Points to Collect
+
+<!-- What information will you gather for each project? Check all that apply. -->
+
+### Required Fields
+
+- [x] `repo-url` - Repository URL
+- [x] `last-update` - Date of last analysis
+- [x] `name` - Project name
+- [x] `description` - Brief description
+
+### Optional Fields (check what's relevant)
+
+- [ ] `stars` - GitHub stars
+- [ ] `language` - Primary programming language
+- [ ] `license` - License type
+- [ ] `last-commit` - Date of last commit
+- [ ] `category` - Project category
+- [ ] `reputable-source` - From known organization?
+- [ ] `organization` - Parent organization
+- [ ] `features` - List of features
+- [ ] `installation` - Installation methods
+- [ ] `authentication` - Auth methods supported
+- [ ] `security` - Security analysis results
+- [ ] `documentation` - Documentation quality
+
+### Custom Fields
+
+<!-- Add any domain-specific fields you need -->
+
+| Field | Type | Description |
+|-------|------|-------------|
+| | | |
+
+## Search Strategy
+
+<!-- Where will you look for projects? -->
+
+### GitHub Searches
+
+```
+# Example search queries to run
+"linear cli" language:typescript
+"linear api" topic:cli
+"linear mcp server"
+```
+
+### Other Sources
+
+* [ ] Official integrations page: [URL]
+* [ ] Awesome lists: [URLs]
+* [ ] Community forums: [URLs]
+* [ ] Package registries (npm, PyPI, etc.)
+
+## Success Criteria
+
+<!-- How will you know when research is complete? -->
+
+* [ ] Found all major projects (at least ___ projects)
+* [ ] Analyzed security for top ___ projects
+* [ ] Generated comparison tables
+* [ ] Documented findings in ramblings/
+
+## Timeline (Optional)
+
+<!-- If this research has deadlines -->
+
+* Discovery phase: _______________
+* Analysis phase: _______________
+* Documentation: _______________
+
+---
+
+## After Completing This Template
+
+1. Rename this file to `SCOPE.md`
+2. Update `spec.yaml` with your custom fields
+3. Commit with message: "Define research scope: [title]"
+4. Tag the commit: `git tag -a scope-defined -m "Research scope defined"`
+5. Begin discovery phase (see PROCESS.md)

@@ -1,0 +1,53 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/sparfenyuk/mcp-proxy"
+name: "mcp-proxy"
+description: "Python bridge between Streamable HTTP and stdio MCP transports with authentication"
+language: "Python"
+stars: null
+category: "mcp-cli-auth"
+features:
+  - "stdio to SSE conversion"
+  - "SSE to stdio conversion"
+  - "Bidirectional transport bridging"
+  - "Remote server access for local clients"
+  - "Local server exposure via SSE"
+  - "Custom host and port configuration"
+  - "Multiple server support"
+  - "Header-based authentication support"
+  - "OAuth client credentials authentication"
+  - "Environment variable configuration"
+  - "Enforced transport type selection"
+  - "Stateless mode for serverless environments"
+transports:
+  stdio: true
+  sse: true
+  streamable-http: true
+bridge-direction: "bidirectional"
+auth:
+  bearer-header: true
+  api-key: true
+  oauth: true
+  custom-headers: true
+installation:
+  - "uv tool install mcp-proxy"
+  - "pipx install mcp-proxy"
+  - "brew install mcp-proxy"
+  - "docker run ghcr.io/sparfenyuk/mcp-proxy"
+license: "MIT"
+authentication-options:
+  - "--headers flag for Bearer tokens: mcp-proxy --headers Authorization 'Bearer YOUR_TOKEN' http://localhost:8080/sse"
+  - "--client-id CLIENT_ID for OAuth"
+  - "--client-secret CLIENT_SECRET for OAuth"
+  - "--token-url TOKEN_URL for OAuth token endpoint"
+  - "SSE_URL environment variable"
+  - "API_ACCESS_TOKEN environment variable"
+transport-options:
+  - "--transport=streamablehttp to enforce Streamable HTTP"
+  - "--stateless for serverless mode"
+related-projects:
+  - "secure-mcp-proxy (gws8820/secure-mcp-proxy) - fork with enhanced security and MCP_PROXY_API_TOKEN support"
+notes: "Available on PyPI and Homebrew. Supports both stdio→SSE and SSE→stdio modes. Allows Claude Desktop to connect to remote SSE servers. v0.7.0+ supports Streamable HTTP transport. Can proxy multiple STDIO servers from single instance."
+sources:
+  - "https://github.com/sparfenyuk/mcp-proxy"
+  - "https://pypi.org/project/mcp-proxy/"
+  - "https://github.com/gws8820/secure-mcp-proxy"

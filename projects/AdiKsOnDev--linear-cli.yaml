@@ -1,0 +1,45 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/AdiKsOnDev/linear-cli"
+
+name: "linear-cli"
+description: "CLI program for Linear Issue Tracker automation available on PyPI and AUR"
+language: "Python"
+stars: 5
+
+category: "linear-cli"
+reputable-source: false
+
+features:
+  - "GraphQL client with comprehensive Linear API integration"
+  - "Modular command structure for all Linear operations"
+  - "OAuth and API key support"
+  - "Secure credential storage"
+  - "Flexible output: table, JSON, and YAML formats"
+  - "Available on PyPI and AUR"
+
+installation:
+  pypi: "linear-app-cli"
+  aur: "linear-cli"
+
+auth:
+  api-key: true
+  oauth: true
+  env-var: true
+
+linear-api-coverage: "comprehensive"
+
+json-output: true
+yaml-output: true
+
+linear-features:
+  - "issues"
+  - "projects"
+  - "teams"
+  - "authentication"
+  - "all Linear operations"
+
+notes:
+  - "Also known as Linearator"
+  - "Built with Python for automation workflows"
+  - "Supports multiple output formats"
+  - "Available on Arch User Repository"

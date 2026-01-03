@@ -1,0 +1,31 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/brrock/mcp-bridge"
+name: "MCP Bridge"
+description: "Convert stdio servers to SSE or streamable HTTP with web management UI"
+language: "TypeScript"
+stars: null
+category: "proxy-bridge"
+features:
+  - "stdio to SSE conversion"
+  - "stdio to Streamable HTTP conversion"
+  - "Web management UI"
+  - "PostgreSQL-backed persistence"
+  - "Redis integration"
+  - "Server lifecycle management"
+  - "Serverless environment support"
+  - "Database migrations"
+transports:
+  stdio: true
+  sse: true
+  streamable-http: true
+bridge-direction: "stdio-to-http"
+auth:
+  bearer-header: null
+infrastructure:
+  requires-postgresql: true
+  requires-redis: true
+  serverless-compatible: true
+deployment:
+  type: "web-service"
+  ui: "included"
+notes: "Robust enterprise solution with web UI for managing MCP servers. Requires PostgreSQL and Redis infrastructure. Designed for production deployments and serverless environments. Full MCP protocol compatibility throughout translation."

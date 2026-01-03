@@ -1,0 +1,48 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/microsoft/mcp-gateway"
+name: "MCP Gateway"
+description: "Reverse proxy and management layer for MCP servers, enabling scalable, session-aware stateful routing and lifecycle management in Kubernetes"
+language: "Go"
+stars: null
+category: "proxy-bridge"
+features:
+  - "Reverse proxy for MCP servers"
+  - "Session-aware stateful routing"
+  - "MCP server lifecycle management (deploy, update, delete)"
+  - "Tool registration with dynamic routing"
+  - "Kubernetes-native deployment"
+  - "StatefulSet and headless service support"
+  - "Azure Entra ID authentication"
+  - "Workload identity for Azure resources"
+  - "Local to cloud transformation"
+  - "Telemetry and observability"
+  - "Access control"
+  - "Tool Gateway Router"
+transports:
+  sse: true
+  streamable-http: true
+bridge-direction: "bidirectional"
+auth:
+  azure-entra-id: true
+  bearer-token: true
+  workload-identity: true
+infrastructure:
+  kubernetes: true
+  statefulsets: true
+  headless-services: true
+deployment:
+  type: "enterprise-gateway"
+  scale: "production-grade"
+  cloud: "Azure"
+architecture-components:
+  - "Data gateway (routing with session affinity)"
+  - "Control plane (lifecycle management)"
+  - "Tool Gateway Router (intelligent routing)"
+routing:
+  session-affinity: true
+  tool-based-routing: true
+  dynamic-registration: true
+documentation: "https://microsoft.github.io/mcp-gateway/"
+notes: "Enterprise-grade MCP gateway for Kubernetes environments. Session affinity ensures all requests with same session_id route to same instance. Transform local stdio MCP servers into cloud-accessible services. Intelligent tool router directs execution to appropriate registered servers. Designed for scalable AI workflows with Azure integration."
+use-case: "Enterprise Kubernetes deployment of MCP servers with session management, tool routing, and lifecycle control"
+platform: "Microsoft Azure"

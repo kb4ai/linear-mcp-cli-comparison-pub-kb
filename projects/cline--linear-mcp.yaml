@@ -1,0 +1,28 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/cline/linear-mcp"
+name: "linear-mcp"
+description: "A private MCP server for accessing Linear"
+language: "TypeScript"
+stars: 121
+category: "linear-mcp-server"
+reputable-source: false
+features:
+  - "Create issues with full field support (title, description, team, project, parent/child relationships)"
+  - "Update existing issues (priority, description, etc.)"
+  - "Delete issues (single or bulk deletion)"
+  - "Search issues with filtering"
+  - "Associate issues with projects"
+  - "Create parent/child issue relationships"
+  - "Read and create comments and threaded comments"
+  - "Rich text description handling with legacy support"
+transports:
+  stdio: true
+  http: false
+  sse: false
+auth:
+  api-key: true
+  oauth: false
+notes:
+  - "Designed for Cline IDE integration"
+  - "Supports Linear's rich documentContent field"
+  - "Automatic fallback for description handling"

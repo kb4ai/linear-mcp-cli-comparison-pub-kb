@@ -115,12 +115,17 @@ category:
   required: true
   description: "Primary tool category"
   enum:
+    # Linear CLI Categories
     - cli-client          # Standard CLI for Linear operations
     - tui-client          # Terminal User Interface (interactive)
     - ai-agent-tool       # Designed for AI agent integration
     - importer-exporter   # Bulk import/export operations
     - git-workflow        # Focused on git/GitHub integration
     - cross-team          # Multi-team reporting and analysis
+    # MCP & Proxy Categories (for broader research scope)
+    - linear-mcp-server   # MCP servers exposing Linear functionality
+    - mcp-cli-auth        # MCP CLI tools with HTTP auth support
+    - proxy-bridge        # stdio↔HTTP bridges with auth support
 
 secondary-categories:
   type: array
@@ -422,6 +427,57 @@ commands:
     - "linear issue list"
     - "linear issue start"
     - "linear issue pr"
+
+# ============================================================================
+# MCP & PROXY FIELDS (for MCP servers and proxy/bridge tools)
+# ============================================================================
+
+transports:
+  description: "MCP transport protocols supported (for MCP tools)"
+  stdio:
+    type: boolean
+    description: "Supports stdio transport"
+  http:
+    type: boolean
+    description: "Supports HTTP transport"
+  sse:
+    type: boolean
+    description: "Supports SSE (Server-Sent Events) transport"
+  websocket:
+    type: boolean
+    description: "Supports WebSocket transport"
+
+bridge-direction:
+  type: string
+  enum: [stdio-to-http, http-to-stdio, bidirectional]
+  description: "Direction of protocol bridging (for proxy tools)"
+
+mcptools-compatible:
+  type: boolean
+  description: "Can be used as a command with mcptools CLI"
+
+# ============================================================================
+# TOKEN EFFICIENCY (for agent use cases)
+# ============================================================================
+
+token-efficiency:
+  description: "Token cost for LLM agent usage"
+  connection-overhead:
+    type: integer
+    description: "Approximate tokens consumed on connection/initialization"
+  tool-count:
+    type: integer
+    description: "Number of tools exposed (for MCP servers)"
+  json-output:
+    type: boolean
+    description: "Provides machine-parseable JSON output"
+  single-command-docs:
+    type: boolean
+    description: "Single command to get usage documentation"
+
+agent-optimized:
+  type: boolean
+  description: "Designed/optimized for LLM agent usage"
 
 # ============================================================================
 # EXAMPLE COMPLETE ENTRY

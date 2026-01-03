@@ -1,0 +1,36 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/jms830/mcp-remote"
+name: "mcp-remote"
+description: "Remote proxy for Model Context Protocol, allowing local-only clients to connect to remote servers using OAuth"
+language: "TypeScript"
+stars: null
+category: "proxy-bridge"
+features:
+  - "OAuth 2.1 authentication"
+  - "stdio to remote HTTP bridging"
+  - "Custom header injection"
+  - "Token refresh handling"
+  - "Static OAuth client metadata"
+  - "Debug logging to file"
+  - "Custom OAuth port configuration"
+  - "HTTP connections for private networks"
+transports:
+  stdio: true
+  http: true
+  sse: true
+bridge-direction: "stdio-to-http"
+auth:
+  oauth: true
+  bearer-header: true
+  custom-headers: true
+  token-storage: "~/.mcp-auth/"
+configuration:
+  default-oauth-port: 3334
+  default-host: "localhost"
+  flags:
+    - "--host"
+    - "--allow-http"
+    - "--debug"
+    - "--header"
+notes: "Experimental OAuth proxy connecting stdio-only clients to remote servers. Supports MCP Authorization specification. Enables secure remote server sharing without local code execution. Debug logs written to ~/.mcp-auth/{server_hash}_debug.log"
+use-case: "Connect local-only MCP clients (Claude Desktop) to remote OAuth-enabled MCP servers"

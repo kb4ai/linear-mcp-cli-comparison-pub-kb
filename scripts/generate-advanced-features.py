@@ -65,7 +65,13 @@ def format_support(value) -> str:
 def get_advanced_feature(project: dict, feature: str):
     """Get advanced feature value from project."""
     features = project.get('features', {})
-    return features.get(feature, None)
+    # Handle both dict and list formats for features
+    if isinstance(features, dict):
+        return features.get(feature, None)
+    elif isinstance(features, list):
+        # For list-style features, we can't check specific feature flags
+        return None
+    return None
 
 
 def generate_priority_features_table(projects: list[dict]) -> str:
@@ -148,6 +154,12 @@ def generate_best_for_workflow(projects: list[dict]) -> str:
         repo_url = p.get('repo-url', '')
         features = p.get('features', {})
 
+        def safe_get_feature(feat_dict, key):
+            """Safely get feature from dict or return None for lists."""
+            if isinstance(feat_dict, dict):
+                return feat_dict.get(key)
+            return None
+
         def score_feature(val):
             if val is True:
                 return 2
@@ -159,27 +171,27 @@ def generate_best_for_workflow(projects: list[dict]) -> str:
 
         # Agile workflow: estimates + sub-issues + cycles
         agile = (
-            score_feature(features.get('estimates')) * 3 +  # Weighted heavily
-            score_feature(features.get('sub-issues')) * 2 +
-            score_feature(features.get('cycles'))
+            score_feature(safe_get_feature(features, 'estimates')) * 3 +  # Weighted heavily
+            score_feature(safe_get_feature(features, 'sub-issues')) * 2 +
+            score_feature(safe_get_feature(features, 'cycles'))
         )
         agile_scores.append((agile, name, repo_url))
 
         # Dependency tracking: blocking + related + sub-issues
         deps = (
-            score_feature(features.get('blocking-blocked-by')) * 3 +
-            score_feature(features.get('related-issues')) * 2 +
-            score_feature(features.get('sub-issues'))
+            score_feature(safe_get_feature(features, 'blocking-blocked-by')) * 3 +
+            score_feature(safe_get_feature(features, 'related-issues')) * 2 +
+            score_feature(safe_get_feature(features, 'sub-issues'))
         )
         dependency_scores.append((deps, name, repo_url))
 
         # Comprehensive: all advanced features
         comp = (
-            score_feature(features.get('sub-issues')) +
-            score_feature(features.get('estimates')) +
-            score_feature(features.get('blocking-blocked-by')) +
-            score_feature(features.get('due-dates')) +
-            score_feature(features.get('related-issues'))
+            score_feature(safe_get_feature(features, 'sub-issues')) +
+            score_feature(safe_get_feature(features, 'estimates')) +
+            score_feature(safe_get_feature(features, 'blocking-blocked-by')) +
+            score_feature(safe_get_feature(features, 'due-dates')) +
+            score_feature(safe_get_feature(features, 'related-issues'))
         )
         comprehensive_scores.append((comp, name, repo_url))
 

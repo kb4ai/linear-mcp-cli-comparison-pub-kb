@@ -1,0 +1,37 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/nooesc/linear-4-terminal"
+
+name: "linear-4-terminal"
+description: "A comprehensive command-line interface for Linear's project management API, built in Rust"
+language: "Rust"
+stars: 6
+
+category: "linear-cli"
+reputable-source: false
+
+features:
+  - "Comprehensive Linear API integration"
+  - "Manage issues, projects, teams"
+  - "Seamless Git integration"
+  - "Link commits, branches, and PRs with Linear issues"
+  - "Built in Rust for performance"
+
+auth:
+  api-key: true
+  env-var: true
+
+linear-api-coverage: "comprehensive"
+
+linear-features:
+  - "issues"
+  - "projects"
+  - "teams"
+  - "git integration"
+  - "commits"
+  - "branches"
+  - "pull requests"
+
+notes:
+  - "Comprehensive API coverage"
+  - "Git workflow integration"
+  - "Rust implementation for speed"

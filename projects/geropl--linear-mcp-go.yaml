@@ -1,0 +1,27 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/geropl/linear-mcp-go"
+name: "linear-mcp-go"
+description: "Linear MCP server based on mcp-go"
+language: "Go"
+stars: 11
+category: "linear-mcp-server"
+reputable-source: false
+features:
+  - "Linear API interaction via MCP protocol"
+  - "Pre-built binaries for Linux, macOS, and Windows"
+  - "Go-based implementation"
+transports:
+  stdio: true
+  http: false
+  sse: false
+auth:
+  api-key: true
+  oauth: false
+platform-support:
+  - "Linux"
+  - "macOS"
+  - "Windows"
+notes:
+  - "Only Go-based Linear MCP server found"
+  - "Pre-compiled binaries available on GitHub Releases"
+  - "Uses mcp-go framework"

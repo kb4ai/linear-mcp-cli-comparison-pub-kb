@@ -1,0 +1,28 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/achetronic/mcp-proxy"
+name: "mcp-proxy (achetronic)"
+description: "Proxy for Model Context Protocol servers that adds authentication, authorization, and enterprise features to any MCP backend"
+language: "Go"
+stars: null
+category: "proxy-bridge"
+features:
+  - "Authentication layer"
+  - "Authorization enforcement"
+  - "Enterprise features"
+  - "OAuth integration"
+  - "JWT validation"
+  - "Production-ready deployment"
+  - "Template for MCP servers"
+transports:
+  stdio: true
+  http: true
+bridge-direction: "auth-layer"
+auth:
+  oauth: true
+  jwt: true
+  enterprise-grade: true
+notes: "Transforms local MCP servers into secure, scalable services ready for remote access. Provides OAuth authentication and JWT validation out of the box. Used as template base for enterprise MCP projects like Prometheus MCP server. Production-ready enterprise-grade features."
+use-case: "Add enterprise authentication and authorization to MCP backends"
+template-usage: "Base template for enterprise MCP server projects"
+related-projects:
+  - "freepik-company/prometheus-mcp (built using this template)"

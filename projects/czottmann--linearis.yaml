@@ -72,6 +72,9 @@ notes:
   - "Full CRUD for basic issue fields"
   - "Missing: estimates, blocking/blocked-by, due dates, attachments"
   - "Tested commit: 3b3ccd18299cfd70c427482aacadf0a65b43e4c4"
+  - "Built as alternative to token-heavy MCP server (~13k tokens just to connect)"
+  - "Author uses with Claude Code, sst/opencode, charmbracelet/crush"
+  - "Blog post: https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html"
 
 # Feature request tracking
 missing-feature-issues:

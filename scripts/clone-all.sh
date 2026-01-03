@@ -1,67 +1,140 @@
-#!/bin/bash
-# Clone all project repositories to tmp/ for analysis
-# Usage: ./scripts/clone-all.sh [--update]
+#!/usr/bin/env bash
+#
+# Clone all repositories listed in projects/*.yaml to tmp/
+#
+# Usage:
+#   ./scripts/clone-all.sh [OPTIONS]
+#
+# Options:
+#   --shallow    Shallow clone (--depth 1)
+#   --update     Update existing clones with git pull
+#   --help       Show this help
+#
 
-set -e
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$(dirname "$SCRIPT_DIR")"
-TMP_DIR="$REPO_ROOT/tmp"
-PROJECTS_DIR="$REPO_ROOT/projects"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+TMP_DIR="$PROJECT_ROOT/tmp"
 
-mkdir -p "$TMP_DIR"
-
-UPDATE_MODE=false
-if [[ "$1" == "--update" ]]; then
-    UPDATE_MODE=true
-    echo "Running in update mode..."
+# Check for yq dependency
+if ! command -v yq &> /dev/null; then
+    echo "❌ Error: yq is required but not installed."
+    echo ""
+    echo "Install with:"
+    echo "  brew install yq       # macOS"
+    echo "  pip install yq        # pip"
+    echo "  pacman -S yq          # Arch Linux"
+    echo "  apt install yq        # Debian/Ubuntu"
+    exit 1
 fi
 
-# Extract repo URLs from YAML files
-for yaml_file in "$PROJECTS_DIR"/*.yaml; do
-    if [[ ! -f "$yaml_file" ]]; then
+# Parse arguments
+SHALLOW=false
+UPDATE=false
+
+for arg in "$@"; do
+    case $arg in
+        --shallow)
+            SHALLOW=true
+            ;;
+        --update)
+            UPDATE=true
+            ;;
+        --help)
+            head -20 "$0" | grep "^#" | sed 's/^# //' | sed 's/^#//'
+            exit 0
+            ;;
+    esac
+done
+
+# Increment helper (works with set -e)
+incr() { eval "$1=\$((\$1 + 1))" || true; }
+
+# Create tmp directory
+mkdir -p "$TMP_DIR"
+
+# Counters
+total=0
+cloned=0
+updated=0
+skip_count=0
+failed=0
+
+echo "Scanning projects/*.yaml for repositories..."
+echo ""
+
+for yaml_file in "$PROJECT_ROOT"/projects/*.yaml; do
+    [ -f "$yaml_file" ] || continue
+
+    # Skip .gitkeep and non-yaml files
+    [[ "$yaml_file" == *.yaml ]] || continue
+
+    incr total
+
+    # Extract repo URL
+    repo_url=$(yq -r '.repo-url // ""' "$yaml_file" 2>/dev/null || echo "")
+
+    if [ -z "$repo_url" ]; then
+        echo "WARN: No repo-url in $yaml_file"
+        incr skip_count
         continue
     fi
 
-    # Extract repo-url from YAML
-    repo_url=$(grep -E "^repo-url:" "$yaml_file" | sed 's/repo-url: *["'"'"']\?\([^"'"'"']*\)["'"'"']\?/\1/' | tr -d ' ')
+    # Extract owner and repo from URL
+    # Handles: https://github.com/owner/repo or https://github.com/owner/repo.git
+    repo_path=$(echo "$repo_url" | sed -E 's|https?://[^/]+/||' | sed 's/\.git$//')
+    owner=$(echo "$repo_path" | cut -d'/' -f1)
+    repo=$(echo "$repo_path" | cut -d'/' -f2)
 
-    if [[ -z "$repo_url" ]]; then
-        echo "Warning: No repo-url found in $yaml_file"
+    if [ -z "$owner" ] || [ -z "$repo" ]; then
+        echo "WARN: Could not parse owner/repo from $repo_url"
+        incr skip_count
         continue
     fi
 
-    # Skip non-GitHub URLs (e.g., npmjs.com, crates.io)
-    if [[ ! "$repo_url" =~ github\.com ]]; then
-        echo "Skipping non-GitHub URL: $repo_url"
-        continue
-    fi
+    target_dir="$TMP_DIR/${owner}--${repo}"
 
-    # Extract owner/repo from URL
-    owner_repo=$(echo "$repo_url" | sed -E 's|https://github\.com/([^/]+/[^/]+).*|\1|')
-
-    if [[ -z "$owner_repo" ]]; then
-        echo "Warning: Could not extract owner/repo from $repo_url"
-        continue
-    fi
-
-    # Create directory name
-    dir_name=$(echo "$owner_repo" | tr '/' '--')
-    target_dir="$TMP_DIR/$dir_name"
-
-    if [[ -d "$target_dir" ]]; then
-        if $UPDATE_MODE; then
-            echo "Updating $owner_repo..."
-            (cd "$target_dir" && git pull --ff-only 2>/dev/null) || echo "  Failed to update (may have diverged)"
+    if [ -d "$target_dir" ]; then
+        if [ "$UPDATE" = true ]; then
+            echo -n "📥 Updating: $owner/$repo ... "
+            if (cd "$target_dir" && git pull --quiet 2>/dev/null); then
+                commit=$(cd "$target_dir" && git rev-parse --short HEAD 2>/dev/null || echo "???")
+                echo "✅ ($commit)"
+                incr updated
+            else
+                echo "❌ failed"
+                incr failed
+            fi
         else
-            echo "Already exists: $dir_name"
+            echo "⏭️  Skip (exists): $owner/$repo"
+            incr skip_count
         fi
     else
-        echo "Cloning $owner_repo..."
-        git clone --depth 1 "$repo_url" "$target_dir" 2>/dev/null || echo "  Failed to clone $repo_url"
+        echo -n "📦 Cloning: $owner/$repo ... "
+
+        clone_args=()
+        if [ "$SHALLOW" = true ]; then
+            clone_args+=(--depth 1)
+        fi
+
+        if git clone "${clone_args[@]}" "$repo_url" "$target_dir" 2>/dev/null; then
+            commit=$(cd "$target_dir" && git rev-parse --short HEAD 2>/dev/null || echo "???")
+            echo "✅ ($commit)"
+            incr cloned
+        else
+            echo "❌ failed"
+            incr failed
+        fi
     fi
 done
 
 echo ""
-echo "Done. Repositories are in: $TMP_DIR"
-echo "Total: $(ls -1 "$TMP_DIR" 2>/dev/null | wc -l) repositories"
+echo "========================================="
+echo "Summary:"
+echo "  Total YAML files:  $total"
+echo "  Cloned:            $cloned"
+echo "  Updated:           $updated"
+echo "  Skipped:           $skip_count"
+echo "  Failed:            $failed"
+echo "========================================="

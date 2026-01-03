@@ -1,0 +1,35 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/evangodon/linear-cli"
+
+name: "linear-cli"
+description: "A CLI for interacting with the Linear API"
+language: "TypeScript"
+stars: 89
+
+category: "linear-cli"
+reputable-source: false
+
+features:
+  - "View, create and update issues"
+  - "Show issue comments with -c flag"
+  - "Show issue description with -d flag"
+  - "Open issue in browser with -o flag"
+  - "Uses lr as command alias"
+
+installation:
+  npm: "@evangodon/linear-cli"
+
+auth:
+  api-key: true
+  env-var: true
+
+linear-api-coverage: "partial"
+
+linear-features:
+  - "issues"
+  - "comments"
+  - "browser integration"
+
+notes:
+  - "Simple interface with lr command"
+  - "Focus on quick issue viewing and manipulation"

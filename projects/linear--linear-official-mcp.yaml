@@ -1,0 +1,29 @@
+last-update: "2025-12-22"
+repo-url: "https://mcp.linear.app"
+name: "Linear Official MCP Server"
+description: "Official centrally-hosted MCP server from Linear for accessing Linear data"
+category: "linear-mcp-server"
+reputable-source: true
+organization: "Linear"
+features:
+  - "OAuth 2.1 authentication with dynamic client registration"
+  - "Find, create, and update Linear issues"
+  - "Manage projects and comments"
+  - "Centrally hosted and managed by Linear"
+  - "Native integration with Claude, Cursor, and other MCP clients"
+transports:
+  stdio: false
+  http: true
+  sse: true
+auth:
+  api-key: true
+  oauth: true
+endpoints:
+  http: "https://mcp.linear.app/mcp"
+  sse: "https://mcp.linear.app/sse"
+notes:
+  - "Official server follows authenticated remote MCP spec"
+  - "No public GitHub repository - centrally hosted service"
+  - "Recommended over community implementations"
+  - "Use mcp-remote module for backwards compatibility"
+documentation: "https://linear.app/docs/mcp"

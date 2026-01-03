@@ -1,17 +1,31 @@
-# Cloned repositories for analysis
+# Cloned repositories
 tmp/
 
-# Claude Code working directory
-.claude/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
 
-# Editor files
+# Node
+node_modules/
+
+# IDE
+.idea/
+.vscode/
 *.swp
 *.swo
 *~
 
-# Python cache
-__pycache__/
-*.pyc
+# OS
+.DS_Store
+Thumbs.db
 
-# Node modules (if any scripts use them)
-node_modules/
+# Build artifacts
+dist/
+build/
+*.o
+*.a

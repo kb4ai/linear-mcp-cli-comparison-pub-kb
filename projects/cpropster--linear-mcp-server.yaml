@@ -1,0 +1,21 @@
+last-update: "2025-12-22"
+repo-url: "https://github.com/cpropster/linear-mcp-server"
+name: "linear-mcp-server"
+description: "MCP server for Linear integration"
+language: "TypeScript"
+stars: 2
+category: "linear-mcp-server"
+reputable-source: false
+features:
+  - "Linear API integration"
+  - "OAuth token authentication"
+transports:
+  stdio: true
+  http: false
+  sse: false
+auth:
+  api-key: false
+  oauth: true
+notes:
+  - "Requires Linear OAuth token"
+  - "Configured via MCP configuration file"

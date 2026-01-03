@@ -1,105 +1,179 @@
-# Linear CLI Tools Comparison - Research Process
+# Research Process
 
-## Discovery Methodology
+This document describes the methodology for conducting tool comparison research.
 
-### 1. Initial Research Sources
+> **For step-by-step instructions, see [CONTRIBUTING.md](CONTRIBUTING.md)**
 
-* GitHub search: `linear cli`, `linear-cli`, `linear app cli`
-* npm search: `linear-cli`, `@*/linear`
-* PyPI search: `linear`, `linearator`
-* crates.io: `linear`
-* AUR: `linear`
-* Reddit: r/Linear, r/commandline
-* Perplexity/web search for curated lists
+## Prerequisites
 
-### 2. Evaluation Criteria
+Before starting research, complete:
 
-Each tool is evaluated on:
+1. [ ] Fill out [SCOPE.md.template](SCOPE.md.template) and rename to `SCOPE.md`
+2. [ ] Customize [spec.yaml](spec.yaml) with your fields
+3. [ ] Commit and tag: `git tag -a scope-defined -m "Research scope defined"`
 
-1. **Existence & Accessibility**
-   * Repository is public
-   * Code is available
-   * Some form of documentation exists
-
-2. **Maintenance Status**
-   * Last commit within 12 months (active)
-   * Responds to issues (maintained)
-   * Clear development trajectory
-
-3. **Functionality**
-   * Core Linear API coverage
-   * Unique features or focus area
-   * Quality of implementation
-
-4. **Installation**
-   * Published to package registry (npm, PyPI, crates.io, etc.)
-   * Homebrew formula available
-   * Binary releases
-
-### 3. Data Collection Process
-
-1. **Clone Repository**
-
-   ```bash
-   ./scripts/clone-all.sh
-   ```
-
-2. **Analyze README**
-   * Extract description, features, installation
-   * Note unique capabilities
-
-3. **Examine Code**
-   * Identify language, dependencies
-   * Check authentication methods
-   * Note API integration approach
-
-4. **Check Package Registries**
-   * npm: `npm info @scope/package`
-   * PyPI: `pip show package`
-   * crates.io: `cargo search package`
-
-5. **Capture Metrics**
-   * GitHub stars, forks, contributors
-   * Last commit date
-   * Open issues count
-
-### 4. Update Schedule
-
-* **Weekly**: Check for new tools, major updates
-* **Monthly**: Refresh star counts, last-commit dates
-* **Quarterly**: Full review of all entries
-
-## Tool Categories
-
-### Primary Categories
-
-| Category | Description | Example |
-|----------|-------------|---------|
-| `cli-client` | Standard CLI interface | linearator |
-| `tui-client` | Terminal UI application | lt |
-| `ai-agent-tool` | AI agent integration | linctl |
-| `git-workflow` | Git-centric workflow | schpet/linear-cli |
-| `cross-team` | Multi-team reporting | @anoncam/linear-cli |
-| `importer-exporter` | Bulk operations | linear-issue-importer |
-
-### Feature Tags
-
-* `git-integration` - Detects Linear issue from branch
-* `github-pr-creation` - Creates PRs with Linear details
-* `kanban-view` - Terminal kanban board
-* `ai-integration` - AI-assisted features
-* `bulk-operations` - Batch import/export
-* `mcp-server` - MCP protocol support
-
-## Research Notes Location
-
-Exploratory findings and discoveries go in `ramblings/`:
+## Workflow Overview
 
 ```
-ramblings/YYYY-MM-DD--topic-description.md
+1. Define Scope  →  2. Discover  →  3. Clone  →  4. Analyze  →  5. Compare
+   (SCOPE.md)        (search)       (script)     (manual)       (generate)
 ```
 
-Examples:
+## Phase 1: Define Scope
 
-* `2025-12-22--initial-research-perplexity.md`
-* `2025-12-22--git-integration-comparison.md`
+Fill out `SCOPE.md` to establish:
+
+* Research question(s)
+* In-scope vs out-of-scope projects
+* Categories for classification
+* Data points to collect
+* Search strategy
+
+## Phase 2: Discovery
+
+Search for projects using strategies defined in SCOPE.md:
+
+* GitHub searches with relevant keywords
+* Package registries (npm, PyPI, crates.io)
+* Awesome lists and community resources
+* Official integration pages
+
+Record findings in `ramblings/YYYY-MM-DD--discovery.md`.
+
+For each project found:
+
+```bash
+# Create YAML file
+touch projects/{owner}--{repo}.yaml
+
+# Add minimum required fields
+cat > projects/{owner}--{repo}.yaml << 'EOF'
+last-update: "YYYY-MM-DD"
+repo-url: "https://github.com/owner/repo"
+name: "repo-name"
+description: "Brief description"
+EOF
+```
+
+## Phase 3: Clone Repositories
+
+```bash
+# Clone all repos to tmp/ for analysis
+./scripts/clone-all.sh
+
+# Update existing clones
+./scripts/clone-all.sh --update
+```
+
+## Phase 4: Analyze
+
+For each repository, examine:
+
+1. **README.md**: Features, usage, installation
+2. **Code structure**: Architecture, dependencies, quality
+3. **Security** (if applicable): Dangerous patterns, input validation
+4. **Documentation**: Quality, completeness, examples
+5. **Tests**: Coverage, quality
+
+Update the YAML file with your findings.
+
+### Analysis Commands
+
+```bash
+cd tmp/{owner}--{repo}
+
+# Get current commit
+git rev-parse --short HEAD
+
+# Check language composition
+find . -name "*.ts" -o -name "*.py" -o -name "*.go" | head -20
+
+# Count test files
+find . -name "*test*" -o -name "*spec*" | wc -l
+
+# Check documentation
+ls -la docs/ README* 2>/dev/null
+```
+
+## Phase 5: Generate Comparisons
+
+```bash
+# Validate all YAML files
+./scripts/check-yaml.py
+
+# Generate comparison tables
+./scripts/generate-tables.py > comparisons/auto-generated.md
+```
+
+## Data Sources
+
+### Primary Fields
+
+| Field | Source |
+|-------|--------|
+| `stars`, `forks` | GitHub API or web |
+| `last-commit` | `git log -1` or GitHub |
+| `repo-commit` | Current HEAD when analyzing |
+| `language` | GitHub repo page |
+| `license` | LICENSE file or GitHub |
+
+### Analysis Fields
+
+| Field | Source |
+|-------|--------|
+| `features` | README + code inspection |
+| `security.*` | Manual code review |
+| `documentation.*` | Manual inspection |
+
+## Using yq for Data Extraction
+
+```bash
+# List all projects with their stars
+for f in projects/*.yaml; do
+  name=$(yq '.name // "unknown"' "$f")
+  stars=$(yq '.stars // 0' "$f")
+  echo "$name: $stars"
+done | sort -t: -k2 -rn
+
+# Get all projects in a category
+for f in projects/*.yaml; do
+  if yq -e '.category == "cli-client"' "$f" 2>/dev/null; then
+    echo "$f"
+  fi
+done
+```
+
+## Freshness Policy
+
+* Re-check star counts monthly
+* Re-analyze repos when major versions released
+* Always update `last-update` when modifying YAML
+* Track `repo-commit` for analysis versioning
+
+## Maintenance Schedule
+
+### Monthly Tasks
+
+1. Update star counts for all projects
+2. Check for new releases
+3. Regenerate tables
+
+### Quarterly Tasks
+
+1. Run new discovery searches
+2. Re-analyze projects with significant changes
+3. Archive abandoned projects (no commits in 6+ months)
+
+## Output Files
+
+| File | Generated By | Purpose |
+|------|--------------|---------|
+| `comparisons/auto-generated.md` | `generate-tables.py` | Main comparison tables |
+| `ramblings/*.md` | Manual | Research notes |
+
+## Related Documents
+
+* [SCOPE.md](SCOPE.md) - Your research scope definition
+* [CONTRIBUTING.md](CONTRIBUTING.md) - Step-by-step contribution guide
+* [GUIDELINES.md](GUIDELINES.md) - Data collection standards
+* [spec.yaml](spec.yaml) - YAML schema for project files

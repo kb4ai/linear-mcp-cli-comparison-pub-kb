@@ -5,6 +5,7 @@ name: "linctl"
 description: "A Linear CLI tool purpose-built for AI agents (Claude Code, Cursor, Amp)"
 language: "Go"
 license: "MIT"
+stars: 78
 
 category: "ai-agent-tool"
 secondary-categories:
