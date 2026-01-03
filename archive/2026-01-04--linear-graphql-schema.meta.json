@@ -1,0 +1,16 @@
+{
+  "url": "https://github.com/linear/linear/blob/master/packages/sdk/src/schema.graphql",
+  "raw_url": "https://raw.githubusercontent.com/linear/linear/master/packages/sdk/src/schema.graphql",
+  "archived_date": "2026-01-04",
+  "title": "Linear GraphQL Schema Definition",
+  "description": "Complete GraphQL schema file for the Linear API, including all types, queries, mutations, subscriptions, and field definitions",
+  "type": "schema",
+  "format": "graphql",
+  "extraction_method": "curl (raw GitHub)",
+  "file_size_lines": 37827,
+  "repository": {
+    "url": "https://github.com/linear/linear",
+    "branch": "master",
+    "path": "packages/sdk/src/schema.graphql"
+  }
+}

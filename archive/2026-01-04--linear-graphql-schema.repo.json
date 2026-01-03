@@ -1,0 +1,9 @@
+{
+  "repository_url": "https://github.com/linear/linear",
+  "commit_hash": "master",
+  "branch_name": "master",
+  "file_path": "packages/sdk/src/schema.graphql",
+  "clone_command": "git clone https://github.com/linear/linear.git",
+  "timestamp": "2026-01-04",
+  "download_method": "raw GitHub URL"
+}
