@@ -1,0 +1,26 @@
+{
+  "url": "https://modelcontextprotocol.io/specification/2025-11-25",
+  "archived_date": "2026-01-04",
+  "title": "Model Context Protocol (MCP) - Version 2025-11-25 Specification",
+  "description": "Official specification for the Model Context Protocol (MCP) version 2025-11-25, defining the standard for connecting AI applications to external data sources and tools",
+  "type": "specification",
+  "version": "2025-11-25",
+  "extraction_method": "WebFetch",
+  "protocol_details": {
+    "message_format": "JSON-RPC 2.0",
+    "transports": ["Server-Sent Events", "Streamable HTTP"],
+    "authentication": "OAuth 2.1 with dynamic client registration",
+    "security_standards": ["RFC 2119", "RFC 8707"]
+  },
+  "related_urls": [
+    "https://modelcontextprotocol.io",
+    "https://github.com/modelcontextprotocol/modelcontextprotocol",
+    "https://blog.modelcontextprotocol.io",
+    "https://www.rfc-editor.org/rfc/rfc8707"
+  ],
+  "previous_versions": [
+    "2025-06-18",
+    "2025-03-26",
+    "2024-11-05"
+  ]
+}
