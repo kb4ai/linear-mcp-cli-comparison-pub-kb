@@ -1,0 +1,21 @@
+{
+  "url": "https://linear.app/developers",
+  "archived_date": "2026-01-04",
+  "title": "Linear GraphQL API Documentation Overview",
+  "description": "High-level overview of Linear's GraphQL API documentation with links to key features and resources",
+  "type": "documentation",
+  "extraction_method": "WebFetch + WebSearch",
+  "rate_limits": {
+    "api_key": "1500 requests/hour/user",
+    "oauth": "500 requests/hour/user/app",
+    "unauthenticated": "60 requests/hour/ip",
+    "complexity": "250000 points/hour/user"
+  },
+  "related_urls": [
+    "https://linear.app/developers/graphql",
+    "https://developers.linear.app/docs/graphql/working-with-the-graphql-api",
+    "https://studio.apollographql.com/public/Linear-API/schema/reference",
+    "https://github.com/linear/linear/blob/master/packages/sdk/src/schema.graphql",
+    "https://linear.app/docs/api-and-webhooks"
+  ]
+}
