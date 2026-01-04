@@ -10,8 +10,11 @@ category: "linear-cli"
 reputable-source: false
 
 features:
-  - "Cycle management commands"
-  - "Version and help options"
+  - "Cycle viewing with issue grouping (by project or assignee)"
+  - "Issue detail viewing by ID"
+  - "Project issue listing"
+  - "React-based terminal UI (ink)"
+  - "GraphQL code generation for type safety"
 
 auth:
   api-key: true
@@ -21,7 +24,25 @@ linear-api-coverage: "partial"
 
 linear-features:
   - "cycles"
+  - "issues (read-only)"
+  - "projects (read-only)"
 
 notes:
   - "Focus on Linear cycles"
   - "Minimal documentation"
+
+api-coverage:
+  queries-supported:
+    - "issue (by ID) - fetches issue details including state, assignee, cycle, project, labels"
+    - "cycle (by ID) - fetches cycle with associated issues"
+    - "cycles (current/future) - lists issues grouped by project or assignee"
+    - "project (by ID) - lists issues for a project"
+  mutations-supported: []
+  evidence:
+    - "README shows only cycle command examples"
+    - "src/index.tsx registers 3 commands: cycle, issue, project"
+    - "IssueQuery.ts defines Issue query with fields: createdAt, updatedAt, completedAt, description, url, title, identifier, priorityLabel, state, assignee, cycle, project, labels"
+    - "CycleQuery.ts defines Cycle query with fields: number, name, completedScopeHistory, scopeHistory, issues (with state, assignee, project)"
+    - "Uses @linear/sdk v1.10.0 and graphql-codegen for type-safe queries"
+    - "Read-only tool: no mutations found in source code"
+    - "ink-based React terminal UI for display"

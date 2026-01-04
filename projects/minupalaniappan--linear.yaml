@@ -1,4 +1,4 @@
-last-update: "2025-12-22"
+last-update: "2026-01-04"
 repo-url: "https://github.com/minupalaniappan/linear-cli"
 
 name: "@minupalaniappan/linear"
@@ -57,6 +57,89 @@ commands:
   - "linear branch"
   - "linear open"
   - "linear new"
+
+api-coverage:
+  queries-supported:
+    - "viewer"           # linear me - account information
+    - "team"             # linear team - team info from branch context
+    - "issue"            # linear branch - ticket info from current branch
+
+  mutations-supported:
+    - "issueCreate"      # linear new - creates sub-issues with parentId and assigneeId
+
+  operations-not-supported:
+    - "issueUpdate"      # No update commands
+    - "issueDelete"      # No delete commands
+    - "commentCreate"    # No comment operations
+    - "labelAssign"      # Labels not implemented
+    - "projectAssign"    # Projects not implemented
+    - "cycleAssign"      # Cycles not implemented
+
+  features-supported:
+    issues:
+      create: true       # linear new
+      read: true         # linear branch
+      update: false
+      delete: false
+      list: false
+      search: false
+    sub-issues:
+      create: true       # Creates via parentId in createIssueAPI
+      read: false
+      link: false
+    comments:
+      create: false
+      read: false
+      update: false
+      delete: false
+    labels:
+      create: false
+      read: false
+      update: false
+      assign: false
+    teams:
+      read: true         # linear team
+      list: false
+    projects:
+      create: false
+      read: false
+      list: false
+    cycles:
+      create: false
+      read: false
+      list: false
+    estimates:
+      read: false
+      update: false
+    blocking-relations:
+      read: false
+      create: false
+    due-dates:
+      read: false
+      update: false
+    status:
+      read: false
+      update: false
+    priority:
+      read: false
+      update: false
+    assignments:
+      read: false
+      update: true       # assigneeId in createIssueAPI
+
+  coverage-notes:
+    - "Very limited API coverage - focused on git branch workflow"
+    - "Only mutation is issueCreate for sub-issues from current branch"
+    - "Queries limited to viewer, team, and single issue from branch context"
+    - "No issue listing, searching, or updating capabilities"
+    - "SDK fields for estimates/due-dates exist but not utilized"
+
+  evidence:
+    source-type: "readme-and-source"
+    source-url: "https://github.com/minupalaniappan/linear-cli"
+    retrieved-date: "2026-01-04"
+    confidence: "high"
+    notes: "Based on bin/index.js source code analysis (2025-12-23) and README documentation"
 
 notes:
   - "Designed to work with git branches that include Linear ticket identifiers"

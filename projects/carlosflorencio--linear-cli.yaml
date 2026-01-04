@@ -29,3 +29,39 @@ documentation:
 notes:
   - "Go implementation"
   - "Simple and lightweight"
+  - "Work in progress - very limited functionality"
+
+api-coverage:
+  queries-supported:
+    - viewer  # Returns user id, name, email via Me query
+
+  mutations-supported: []  # None implemented yet
+
+  features:
+    issue-read: false
+    issue-create: false
+    issue-update: false
+    issue-delete: false
+    comments: false
+    labels: false
+    teams: false  # Has --team flag but no team operations
+    projects: false
+    cycles: false
+    sub-issues: false
+    estimates: false
+    blocking-relationships: false
+    due-dates: false
+    assignees: false
+    priorities: false
+    workflows-states: false
+
+  evidence:
+    source-type: readme-and-source-code
+    source-url: "https://github.com/carlosflorencio/linear-cli"
+    retrieved-date: "2026-01-04"
+    confidence: high
+    notes:
+      - "README states 'Work in Progress'"
+      - "Only user command implemented per source code review"
+      - "linear/linear.go contains only viewer query: 'query Me { viewer { id name email } }'"
+      - "Has foundation (fetch helper, config) for additional API calls"

@@ -28,6 +28,42 @@ auth:
 
 linear-api-coverage: "comprehensive"
 
+api-coverage:
+  queries-supported:
+    - issue
+    - issues
+    - team
+    - teams
+    - project
+    - projects
+    - labels
+    - users
+    - search
+  mutations-supported:
+    - issueCreate
+    - issueUpdate
+    - labelCreate
+    - labelUpdate
+    - labelDelete
+    - projectStatusUpdate
+  bulk-operations:
+    - batch-state-update
+    - batch-label-management
+    - batch-reassignment
+  not-documented:
+    - commentCreate
+    - sub-issues
+    - estimates
+    - blocking-blocked-by
+    - due-dates
+    - cycles
+  evidence:
+    source-type: readme
+    source-url: "https://github.com/AdiKsOnDev/linear-cli"
+    retrieved-date: "2026-01-04"
+    confidence: medium
+    notes: "README indicates 'full CRUD operations' on issues with advanced filtering; bulk operations supported; no explicit documentation for comments, sub-issues, estimates, blocking relationships, due dates, or cycles"
+
 json-output: true
 yaml-output: true
 

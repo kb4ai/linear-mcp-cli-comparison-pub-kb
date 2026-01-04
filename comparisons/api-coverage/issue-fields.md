@@ -40,7 +40,7 @@
 | Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
 |------|----|----|----|----|----|----|----|----|----------|
 | [linear-cli](https://github.com/schpet/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
-| [@minupalaniappan/linear](https://github.com/minupalaniappan/linear-cli) | ⚠️ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | 18% |
+| [@minupalaniappan/linear](https://github.com/minupalaniappan/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
 
 ## Ai Agent Tool
 
@@ -85,7 +85,7 @@
 
 
 1. [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) - 100%
-2. [linctl](https://github.com/dorkitude/linctl) - 100%
-3. [Linear Official MCP Server](https://mcp.linear.app) - 100%
-4. [linear-cli](https://github.com/rubyists/linear-cli) - 100%
-5. [linear-cli](https://github.com/schpet/linear-cli) - 100%
+2. [@minupalaniappan/linear](https://github.com/minupalaniappan/linear-cli) - 100%
+3. [linctl](https://github.com/dorkitude/linctl) - 100%
+4. [Linear Official MCP Server](https://mcp.linear.app) - 100%
+5. [linear-cli](https://github.com/rubyists/linear-cli) - 100%

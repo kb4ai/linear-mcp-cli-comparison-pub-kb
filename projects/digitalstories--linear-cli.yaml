@@ -1,11 +1,11 @@
-last-update: "2025-12-22"
+last-update: "2026-01-04"
 repo-url: "https://www.npmjs.com/package/@digitalstories/linear-cli"
 
 name: "@digitalstories/linear-cli"
 description: "Linear CLI with French language support"
-language: "JavaScript"
+language: "TypeScript"
 languages:
-  - "JavaScript"
+  - "TypeScript"
   - "Node.js"
 license: "MIT"
 
@@ -14,6 +14,9 @@ category: "cli-client"
 features:
   issue-view: true
   issue-creation: true
+  team-management: true
+  project-management: true
+  multi-language: true
 
 installation:
   npm: "@digitalstories/linear-cli"
@@ -32,7 +35,34 @@ documentation:
 
 commands:
   - "linear config set-token <token>"
+  - "linear config set-language"
+  - "linear config get-language"
+  - "linear teams list"
+  - "linear teams select"
+  - "linear teams current"
+  - "linear teams clear"
+  - "linear projects list"
+  - "linear projects create"
+
+api-coverage:
+  queries-supported:
+    - "teams (list all teams)"
+    - "projects (list all projects)"
+  mutations-supported:
+    - "projects.create (create new project)"
+  evidence:
+    - "Commands documented on npm package page"
+    - "teams list, teams select, teams current for team queries"
+    - "projects list for project queries"
+    - "projects create for project mutation"
+    - "No issue list/create commands visible in documentation"
+  notes:
+    - "Limited API coverage - primarily team and project operations"
+    - "Issue management mentioned in features but commands not documented"
+    - "Config commands for token and language are local-only operations"
 
 notes:
-  - "French language support"
+  - "French language support (English and French)"
   - "Simple CLI for basic Linear operations"
+  - "TypeScript-based (compiled from TypeScript)"
+  - "Version 1.4.1 as of search date"

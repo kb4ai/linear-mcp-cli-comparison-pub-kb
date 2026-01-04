@@ -27,7 +27,7 @@
 | [linear-cli](https://github.com/rubyists/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ❓ | ❓ | 71% |
 | [linearis](https://github.com/czottmann/linearis) | ✅ | ✅ | ✅ | ✅ | ✅ | ❓ | ❓ | 71% |
 | [@digitalstories/linear-cli](https://www.npmjs.com/package/@digitalstories/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
-| [linear-app-cli](https://www.piwheels.org/project/linear-app-cli/) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
+| [linear-app-cli](https://github.com/royreznik/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
 | [linear-cli](https://github.com/carlosflorencio/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
 | [linear-cli](https://github.com/max-muoto/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
 | [linear_cli](https://github.com/eriksandfort/linear_cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |

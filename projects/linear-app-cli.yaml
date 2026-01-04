@@ -1,5 +1,5 @@
 last-update: "2025-12-22"
-repo-url: "https://www.piwheels.org/project/linear-app-cli/"
+repo-url: "https://github.com/royreznik/linear-cli"
 
 name: "linear-app-cli"
 description: "Python-based Linear API CLI"
@@ -26,6 +26,18 @@ platforms:
 documentation:
   readme: true
 
+api-coverage:
+  queries-supported:
+    - "issues list"
+    - "projects list"
+    - "user profile (me)"
+    - "default project get"
+  mutations-supported:
+    - "issue create"
+    - "default project set/clear"
+  evidence: "Based on README at https://github.com/royreznik/linear-cli - limited API surface focusing on basic issue listing and creation"
+
 notes:
   - "Python CLI for Linear API"
   - "Available on PyPI via piwheels"
+  - "Actual source repo: https://github.com/royreznik/linear-cli"

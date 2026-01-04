@@ -22,6 +22,23 @@ auth:
 
 linear-api-coverage: "comprehensive"
 
+api-coverage:
+  queries-supported: 8-10
+  mutations-supported: 12-15
+  evidence:
+    - "List issues with filtering by status (todo, triage, progress, done)"
+    - "Filter issues by assignee, team, and search text"
+    - "Advanced filtering with operators (equals, greater than, less than, contains)"
+    - "View issue details with descriptions and metadata"
+    - "List projects and teams"
+    - "User info via whoami command"
+    - "Full CRUD on issues and projects"
+    - "Update title, description, priority, status, assignee, labels"
+    - "Archive issues and projects"
+    - "Full CRUD on issue comments with markdown support"
+    - "Bulk operations: update, move, or archive multiple issues"
+    - "Quick status changes, label editing, project assignment"
+
 linear-features:
   - "issues"
   - "projects"

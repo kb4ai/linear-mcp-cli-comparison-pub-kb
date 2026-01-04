@@ -26,5 +26,18 @@ platforms:
 documentation:
   readme: true
 
+api-coverage:
+  queries-supported:
+    - "viewer-assigned-issues"
+    - "teams-list"
+  mutations-supported:
+    - "issue-create"
+  evidence:
+    - "README documents 3 commands: init, create, view"
+    - "li view - shows currently assigned issues"
+    - "li create - create issue for a given team"
+    - "No update, delete, or comment functionality documented"
+    - "Early-stage project (35 commits, 4 open issues as of analysis)"
+
 notes:
   - "Rust implementation"

@@ -17,11 +17,45 @@ auth:
   api-key: true
   env-var: true
 
-linear-api-coverage: "partial"
+linear-api-coverage: "minimal"
 
 linear-features:
   - "issues"
 
+api-coverage:
+  queries-supported:
+    - viewer  # `linear me` - account info
+    - team    # `linear team` - team from current branch
+    - issue   # `linear branch` - issue from branch name
+  mutations-supported:
+    - issueCreate  # `linear new` - create sub-issue from branch
+  features-not-supported:
+    - issueUpdate
+    - issueDelete
+    - commentCreate
+    - commentUpdate
+    - labelCreate
+    - labelAssign
+    - projectCreate
+    - projectUpdate
+    - cycleCreate
+    - cycleUpdate
+    - estimateSet
+    - dueDateSet
+    - blockingRelationship
+    - subIssueManagement  # only create, no list/update/delete
+  evidence:
+    source-type: readme
+    source-url: "https://github.com/minupalaniappan/linear-cli"
+    retrieved-date: "2026-01-04"
+    confidence: high
+    analysis-notes:
+      - "Commands: me, team, branch, new, key, clear, open"
+      - "Primary focus: branch-to-issue mapping workflow"
+      - "Roadmap section says 'Coming soon' - suggests limited current scope"
+      - "Only supports one API key at a time"
+
 notes:
   - "Companion to native and web Linear experience"
   - "JavaScript-based implementation"
+  - "Designed for developers using git branches with Linear ticket naming"

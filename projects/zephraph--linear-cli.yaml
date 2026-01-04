@@ -19,6 +19,17 @@ auth:
 
 linear-api-coverage: "minimal"
 
+api-coverage:
+  queries-supported: []
+  mutations-supported:
+    - "createIssue (linear create command)"
+  evidence:
+    - "README shows single command: 'linear create' for issue creation"
+    - "Supports flags: --team, --title, --label for issue creation"
+    - "No query commands documented - no data retrieval capabilities"
+    - "No update or delete operations supported"
+    - "Repository archived on 2019-09-15 - no further development"
+
 linear-features:
   - "issues"
   - "issue creation"

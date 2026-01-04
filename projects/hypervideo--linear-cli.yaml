@@ -20,6 +20,16 @@ auth:
 
 linear-api-coverage: "partial"
 
+api-coverage:
+  queries-supported:
+    - "me (authenticated user info)"
+    - "team list"
+    - "issue show (single issue details)"
+    - "issue list (with filtering: assignee, state, sort by updated)"
+  mutations-supported:
+    - "issue update (limited documentation on capabilities)"
+  evidence: "README shows init, me, team list, issue show, issue list, issue update commands. Minimal mutation support documented."
+
 linear-features:
   - "issues"
   - "teams"

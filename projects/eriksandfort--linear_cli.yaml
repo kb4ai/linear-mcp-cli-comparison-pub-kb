@@ -26,6 +26,17 @@ platforms:
 documentation:
   readme: true
 
+api-coverage:
+  queries-supported:
+    - "me (current user info)"
+    - "teams (list all teams)"
+    - "issues:ready (user issues in Ready state)"
+    - "issues:active (user issues in In Progress state)"
+    - "issue:selected (selected issue details)"
+  mutations-supported:
+    - "issue:selected:clear (clear selected issue context)"
+  evidence: "README documents query-focused operations; mutations limited to local context management"
+
 notes:
   - "Rust implementation"
   - "Basic Linear CLI functionality"

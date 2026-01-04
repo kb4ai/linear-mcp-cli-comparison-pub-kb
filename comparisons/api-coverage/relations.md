@@ -30,7 +30,7 @@
 - [@digitalstories/linear-cli](https://www.npmjs.com/package/@digitalstories/linear-cli) (cli-client)
 - [linctl](https://github.com/dorkitude/linctl) (ai-agent-tool)
 - [Linear Official MCP Server](https://mcp.linear.app) (linear-mcp-server)
-- [linear-app-cli](https://www.piwheels.org/project/linear-app-cli/) (cli-client)
+- [linear-app-cli](https://github.com/royreznik/linear-cli) (cli-client)
 - [linear-cli](https://github.com/carlosflorencio/linear-cli) (cli-client)
 - [linear-cli](https://github.com/filipjaj/linear-cli) (ai-agent-tool)
 - [linear-cli](https://github.com/max-muoto/linear-cli) (cli-client)

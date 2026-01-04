@@ -20,6 +20,19 @@ auth:
 
 linear-api-coverage: "partial"
 
+api-coverage:
+  queries-supported:
+    - "issues.list"
+    - "issues.view"
+  mutations-supported:
+    - "issues.create"
+  evidence: |
+    README documents three CLI commands: `linear-cli issues list`,
+    `linear-cli issues create -i`, and `linear-cli issues view ISSUE-123`.
+    Repository marked as WIP with only 7 commits. No documentation for
+    projects, teams, users, labels, cycles, comments, or update/delete
+    operations. Uses Linear TypeScript SDK but exposes minimal functionality.
+
 linear-features:
   - "issues"
   - "Linear SDK integration"

@@ -26,6 +26,12 @@ platforms:
 documentation:
   readme: true
 
+api-coverage:
+  queries-supported: []
+  mutations-supported: []
+  evidence: "Source code analysis (2025-12-22) reveals linear.py contains only a Click tutorial example (greeting command) with no actual Linear API integration. setup.py lists only 'click' as dependency - no HTTP/GraphQL client libraries. Repository appears incomplete/placeholder with 5 commits since May 2020."
+
 notes:
   - "Built with Click framework"
   - "Python CLI implementation"
+  - "WARNING: Repository appears incomplete - no actual Linear API code found"

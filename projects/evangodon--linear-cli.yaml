@@ -33,3 +33,69 @@ linear-features:
 notes:
   - "Simple interface with lr command"
   - "Focus on quick issue viewing and manipulation"
+  - "UNMAINTAINED - Repository states it should not be used"
+
+api-coverage:
+  queries-supported:
+    - issue
+    - issues
+    - teams
+    - viewer
+    - issueSearch
+  mutations-supported:
+    - issueCreate
+    - issueUpdate
+  features-supported:
+    issues:
+      create: true
+      read: true
+      update: true
+      delete: false
+      list: true
+      search: true
+    comments:
+      create: false
+      read: true
+      update: false
+      delete: false
+    labels:
+      create: false
+      read: false
+      update: false
+      assign: false
+    teams:
+      read: true
+      list: true
+    projects:
+      create: false
+      read: false
+      list: false
+    cycles:
+      create: false
+      read: false
+      list: false
+    sub-issues:
+      create: false
+      read: false
+      link: false
+    estimates:
+      read: false
+      update: false
+    blocking-relations:
+      read: false
+      create: false
+    due-dates:
+      read: false
+      update: false
+    status:
+      read: true
+      update: true
+    assignments:
+      read: true
+      update: true
+  evidence:
+    source-type: readme
+    source-url: "https://github.com/evangodon/linear-cli"
+    retrieved-date: "2026-01-04"
+    confidence: high
+    notes: "README explicitly lists all available commands with lr --help output"
