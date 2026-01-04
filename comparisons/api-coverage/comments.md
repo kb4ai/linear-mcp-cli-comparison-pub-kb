@@ -47,6 +47,9 @@
 | Tool | commentCreate | comments (read) | Coverage |
 |------|----|----|----------|
 | [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | ✅ | ✅ | 100% |
+| [linear-mcp](https://github.com/cline/linear-mcp) | ✅ | ✅ | 100% |
+| [mcp-linear](https://github.com/tacticlaunch/mcp-linear) | ✅ | ✅ | 100% |
+| [linear-mcp-go](https://github.com/geropl/linear-mcp-go) | ✅ | ✅ | 100% |
 | [Linear Official MCP Server](https://mcp.linear.app) | ✅ | ✅ | 100% |
 
 ---
@@ -62,4 +65,4 @@
 2. [Linear Official MCP Server](https://mcp.linear.app) - 100%
 3. [linear-cli](https://github.com/rubyists/linear-cli) - 100%
 4. [linear-cli](https://github.com/schpet/linear-cli) - 100%
-5. [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) - 100%
+5. [linear-mcp](https://github.com/cline/linear-mcp) - 100%

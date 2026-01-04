@@ -69,6 +69,8 @@
 | Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
 |------|----|----|----|----|----|----|----|----|----------|
 | [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+| [linear-mcp](https://github.com/cline/linear-mcp) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+| [linear-mcp-go](https://github.com/geropl/linear-mcp-go) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
 | [Linear Official MCP Server](https://mcp.linear.app) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
 
 ---

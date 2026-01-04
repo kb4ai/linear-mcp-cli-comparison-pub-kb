@@ -47,6 +47,13 @@
 |------|----|----|----|----------|
 | [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) | ✅ | ✅ | ✅ | 100% |
 
+## Linear Mcp Server
+
+
+| Tool | issueAddLabel | issueRemoveLabel | issueLabelCreate | Coverage |
+|------|----|----|----|----------|
+| [mcp-linear](https://github.com/tacticlaunch/mcp-linear) | ✅ | ✅ | ❓ | 66% |
+
 ---
 
 

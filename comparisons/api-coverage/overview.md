@@ -23,7 +23,7 @@
 | Importer Exporter | 1 |
 | Tui Client | 1 |
 
-**Tools with `api-coverage` data:** 11/56
+**Tools with `api-coverage` data:** 15/56
 
 
 ## Key API Coverage Gaps
@@ -68,7 +68,7 @@ This is a significant gap for dependency tracking workflows.
 | [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | linear-mcp-server | 68% | ⭐ 339 |
 | [linear-cli](https://github.com/rubyists/linear-cli) | cli-client | 68% | ⭐ 7 |
 | [Linear Official MCP Server](https://mcp.linear.app) | linear-mcp-server | 68% | - |
+| [linear-mcp](https://github.com/cline/linear-mcp) | linear-mcp-server | 48% | ⭐ 121 |
+| [linear-mcp-go](https://github.com/geropl/linear-mcp-go) | linear-mcp-server | 48% | ⭐ 11 |
+| [mcp-linear](https://github.com/tacticlaunch/mcp-linear) | linear-mcp-server | 32% | ⭐ 121 |
 | [linear-cli](https://github.com/carlosflorencio/linear-cli) | cli-client | 8% | - |
-| [@digitalstories/linear-cli](https://www.npmjs.com/package/@digitalstories/linear-cli) | cli-client | 8% | - |
-| [linear_cli](https://github.com/eriksandfort/linear_cli) | cli-client | 8% | - |
-| [pylinear](https://github.com/hxghhhh/pylinear) | cli-client | 8% | - |

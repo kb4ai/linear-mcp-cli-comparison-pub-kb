@@ -55,6 +55,7 @@
 | Tool | team (read) | teams (list) | Coverage |
 |------|----|----|----------|
 | [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | ✅ | ✅ | 100% |
+| [mcp-linear](https://github.com/tacticlaunch/mcp-linear) | ✅ | ✅ | 100% |
 | [Linear Official MCP Server](https://mcp.linear.app) | ✅ | ✅ | 100% |
 
 ---

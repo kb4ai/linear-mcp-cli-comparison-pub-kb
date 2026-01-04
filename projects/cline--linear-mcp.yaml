@@ -26,3 +26,64 @@ notes:
   - "Designed for Cline IDE integration"
   - "Supports Linear's rich documentContent field"
   - "Automatic fallback for description handling"
+api-coverage:
+  mcp-tools:
+    # Authentication
+    - linear_auth
+    - linear_auth_callback
+    # Issue Management
+    - linear_create_issue
+    - linear_create_issues
+    - linear_search_issues
+    - linear_bulk_update_issues
+    - linear_delete_issue
+    - linear_delete_issues
+    - linear_get_issue_comments
+    - linear_create_comment
+    # Project Management
+    - linear_create_project_with_issues
+    - linear_get_project
+    - linear_search_projects
+    # Milestone Management
+    - linear_create_project_milestone
+    - linear_create_project_milestones
+    - linear_get_project_milestone
+    - linear_get_project_milestones
+    - linear_search_project_milestones
+    - linear_update_project_milestone
+    - linear_delete_project_milestone
+    # User & Team
+    - linear_get_user
+    - linear_get_teams
+  queries-supported:
+    - issues (with filtering by team, assignee, state, priority)
+    - issue (single issue lookup)
+    - issue.comments (with pagination)
+    - project (single project details)
+    - projects (search by name)
+    - projectMilestone (single milestone)
+    - projectMilestones (list with pagination)
+    - viewer (current authenticated user)
+    - teams (with states and labels)
+  mutations-supported:
+    - issueCreate
+    - issueUpdate
+    - issueDelete
+    - commentCreate
+    - projectCreate
+    - projectMilestoneCreate
+    - projectMilestoneUpdate
+    - projectMilestoneDelete
+  coverage-notes:
+    - "22 MCP tools covering issues, projects, milestones, teams, and auth"
+    - "Strong batch operation support (bulk create, update, delete)"
+    - "Milestone management is comprehensive (full CRUD + search)"
+    - "OAuth flow tools exist but marked as NOT IMPLEMENTED in practice"
+    - "Rich text description handling via documentContent field"
+    - "Complex search filters and pagination in development"
+  evidence:
+    source-type: readme-and-source
+    source-url: "https://github.com/cline/linear-mcp"
+    retrieved-date: "2026-01-04"
+    confidence: high
+    notes: "Tool names extracted from src/core/types/tool.types.ts"
