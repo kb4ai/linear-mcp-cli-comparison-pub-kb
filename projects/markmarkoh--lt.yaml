@@ -55,3 +55,29 @@ notes:
   - "Search issues by search term ('/')"
   - "Optimized color schemes for light/dark terminals"
   - "Requires modern terminal (kitty, Ghostty, iTerm2) and Nerdfont"
+
+api-coverage:
+  queries-supported:
+    - viewer              # Current user info for 'My Issues'
+    - issue               # Individual issue details (description, priority, status, etc.)
+    - issues              # Issue search and listing
+    - workflowStates      # Status display
+    - projects            # Project info in issue view
+    - labels              # Labels/tags display
+    - cycles              # Cycle info display
+    - customViews         # Custom Linear app views navigation
+
+  mutations-supported: []  # Read-only TUI - no mutations
+
+  coverage-notes:
+    - "Explicitly read-only TUI - no write operations supported"
+    - "Focuses on browsing 'My Issues' and custom views"
+    - "No issue creation, updates, or commenting capabilities"
+    - "Query list inferred from displayed data fields (priority, status, labels, projects, cycles)"
+    - "customViews query inferred from Tab/Shift+Tab view switching feature"
+
+  evidence:
+    source-type: readme
+    source-url: "https://github.com/markmarkoh/lt"
+    retrieved-date: "2026-01-04"
+    confidence: likely

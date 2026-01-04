@@ -72,3 +72,40 @@ notes:
   - "Report generation in markdown format"
   - "Flexible filtering by creator, assignee, project, initiative"
   - "Direct GraphQL API integration"
+
+api-coverage:
+  queries-supported:
+    - "teams"                  # GetTeams - lists all teams with id, name, key
+    - "issueLabels"            # GetLabels - workspace labels with team info
+    - "workflowStates"         # GetWorkflowStates - workflow states with filtering
+    - "projects"               # GetProjects - list all projects
+    - "issues"                 # Issues query with comprehensive filtering
+    - "viewer"                 # GetViewer - current authenticated user
+    - "team.members"           # GetTeamMembers - members of specific team
+
+  mutations-supported:
+    - "issueCreate"            # Create new issues with labels, assignee, state, priority, project
+    - "issueLabelCreate"       # Create labels with name, color, description
+    - "issueLabelUpdate"       # Modify existing labels
+    - "issueLabelDelete"       # Remove labels by ID
+
+  operations-partial:
+    - operation: "issues"
+      limitation: "Read-focused; filtering by teams, creators, assignees, projects, labels, states, priorities, date ranges"
+      fields-available:
+        - "id, identifier, title, description, priority"
+        - "createdAt, updatedAt, state, team"
+        - "creator, assignee, project, labels"
+
+  coverage-notes:
+    - "Primarily query/read-focused tool designed for cross-team analysis and reporting"
+    - "Issue creation supported but issue updates (status, priority, assignee changes) not exposed via CLI"
+    - "Strong label management with full CRUD operations for AI-assisted label organization"
+    - "No support for: comments, cycles, sub-issues, estimates, due-dates, relations"
+
+  evidence:
+    source-type: "source-code"
+    source-url: "https://github.com/anoncam/linear-cli"
+    source-file: "scripts/linearCli.ts"
+    retrieved-date: "2026-01-04"
+    confidence: "high"

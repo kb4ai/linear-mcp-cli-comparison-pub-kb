@@ -23,6 +23,7 @@
 
 | Tool | team (read) | teams (list) | Coverage |
 |------|----|----|----------|
+| [linear-cli](https://github.com/rubyists/linear-cli) | ✅ | ✅ | 100% |
 | [linearator](https://github.com/AdiKsOnDev/linear-cli) | ✅ | ✅ | 100% |
 | [linearis](https://github.com/czottmann/linearis) | ✅ | ✅ | 100% |
 
@@ -60,5 +61,5 @@
 1. [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) - 100%
 2. [@minupalaniappan/linear](https://github.com/minupalaniappan/linear-cli) - 100%
 3. [linctl](https://github.com/dorkitude/linctl) - 100%
-4. [linear-cli](https://github.com/schpet/linear-cli) - 100%
-5. [linearator](https://github.com/AdiKsOnDev/linear-cli) - 100%
+4. [linear-cli](https://github.com/rubyists/linear-cli) - 100%
+5. [linear-cli](https://github.com/schpet/linear-cli) - 100%

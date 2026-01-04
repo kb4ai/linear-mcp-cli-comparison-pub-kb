@@ -24,8 +24,8 @@
 | Tool | issueCreate | issueUpdate | issue | issues | issueSearch | issueBatchCreate | issueBatchUpdate | Coverage |
 |------|----|----|----|----|----|----|----|----------|
 | [linearator](https://github.com/AdiKsOnDev/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+| [linear-cli](https://github.com/rubyists/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ❓ | ❓ | 71% |
 | [linearis](https://github.com/czottmann/linearis) | ✅ | ✅ | ✅ | ✅ | ✅ | ❓ | ❓ | 71% |
-| [linear-cli](https://github.com/rubyists/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
 | [@digitalstories/linear-cli](https://www.npmjs.com/package/@digitalstories/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
 | [linear-app-cli](https://www.piwheels.org/project/linear-app-cli/) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
 | [linear-cli](https://github.com/carlosflorencio/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
@@ -61,7 +61,7 @@
 
 | Tool | issueCreate | issueUpdate | issue | issues | issueSearch | issueBatchCreate | issueBatchUpdate | Coverage |
 |------|----|----|----|----|----|----|----|----------|
-| [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) | ❓ | ❓ | ✅ | ✅ | ✅ | ❓ | ❓ | 42% |
+| [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) | ✅ | ❓ | ✅ | ✅ | ✅ | ❓ | ❓ | 57% |
 
 ## Importer Exporter
 
@@ -81,6 +81,6 @@
 
 1. [linearator](https://github.com/AdiKsOnDev/linear-cli) - 100%
 2. [linctl](https://github.com/dorkitude/linctl) - 71%
-3. [linear-cli](https://github.com/schpet/linear-cli) - 71%
-4. [linearis](https://github.com/czottmann/linearis) - 71%
-5. [linear-issue-importer](https://crates.io/crates/linear-issue-importer) - 57%
+3. [linear-cli](https://github.com/rubyists/linear-cli) - 71%
+4. [linear-cli](https://github.com/schpet/linear-cli) - 71%
+5. [linearis](https://github.com/czottmann/linearis) - 71%

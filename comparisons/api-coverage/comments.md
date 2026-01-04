@@ -23,6 +23,7 @@
 
 | Tool | commentCreate | comments (read) | Coverage |
 |------|----|----|----------|
+| [linear-cli](https://github.com/rubyists/linear-cli) | ✅ | ✅ | 100% |
 | [linearator](https://github.com/AdiKsOnDev/linear-cli) | ✅ | ✅ | 100% |
 | [linearis](https://github.com/czottmann/linearis) | ✅ | ✅ | 100% |
 
@@ -50,6 +51,7 @@
 
 
 1. [linctl](https://github.com/dorkitude/linctl) - 100%
-2. [linear-cli](https://github.com/schpet/linear-cli) - 100%
-3. [linearator](https://github.com/AdiKsOnDev/linear-cli) - 100%
-4. [linearis](https://github.com/czottmann/linearis) - 100%
+2. [linear-cli](https://github.com/rubyists/linear-cli) - 100%
+3. [linear-cli](https://github.com/schpet/linear-cli) - 100%
+4. [linearator](https://github.com/AdiKsOnDev/linear-cli) - 100%
+5. [linearis](https://github.com/czottmann/linearis) - 100%

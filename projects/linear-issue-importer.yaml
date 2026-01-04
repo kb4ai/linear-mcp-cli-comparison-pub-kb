@@ -50,3 +50,38 @@ notes:
   - "Designed for batch operations"
   - "Supports JSON and CSV input formats"
   - "Create and update issues in bulk"
+
+api-coverage:
+  queries-supported:
+    - "teams"                    # Required for teamId validation
+    - "workflowStates"           # For stateId validation
+    - "users"                    # For assigneeId validation
+    - "labels"                   # For labelIds validation
+    - "projects"                 # For projectId validation
+    - "cycles"                   # For cycleId validation
+
+  mutations-supported:
+    - "issueCreate"              # Core mutation via IssueCreateInput
+    - "issueUpdate"              # For updating existing issues
+
+  operations-partial:
+    - mutation: "issueCreate"
+      note: "Client-side batching (configurable batch-size, default 50), not native issueBatchCreate"
+    - mutation: "issueRelationCreate"
+      note: "Not supported - blocking/blocked-by relations require separate mutations"
+    - mutation: "issueAddLabel"
+      note: "Labels set via labelIds in IssueCreateInput, not separate mutation"
+
+  coverage-notes:
+    - "IssueCreateInput fields: title, description, teamId, assigneeId, priority, stateId, labelIds, projectId, projectMilestoneId, cycleId, parentId, dueDate, estimate, subscriberIds, templateId, createAsUser, delegateId"
+    - "Batching is client-side with configurable --batch-size (default 50 issues per batch)"
+    - "Rate limiting handled automatically with inter-batch delays"
+    - "Dry-run validation supported before actual API calls"
+    - "No comment creation support"
+    - "No issue relation/blocking support"
+
+  evidence:
+    source-type: "readme"
+    source-url: "https://github.com/SeanningTatum/linear-issue-importer"
+    retrieved-date: "2026-01-04"
+    confidence: "likely"

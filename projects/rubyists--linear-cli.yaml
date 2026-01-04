@@ -32,3 +32,36 @@ notes:
   - "Ruby implementation"
   - "For Ruby developers"
   - "OCI container image available - can run without installation"
+
+api-coverage:
+  queries-supported:
+    - viewer              # whoami/whodat commands, current user info
+    - issues              # list issues with filtering
+    - issue               # view specific issue details
+    - teams               # team listing and filtering (--teams flag)
+    - labels              # label retrieval for assignment
+
+  mutations-supported:
+    - issueCreate         # lc issue create command
+    - issueUpdate         # lc issue update, close, cancel operations
+    - commentCreate       # --comment flag on issue update
+
+  operations-partial:
+    - issueUpdate:
+        notes: "Supports batch operations on up to 50 issues, close with reason, cancel with trash"
+    - labels:
+        notes: "Labels used for filtering and assignment, unclear if labelCreate supported"
+
+  coverage-notes:
+    - "CLI supports batch operations on multiple issues (up to 50)"
+    - "Git branch management via 'develop' command (local operation, not API)"
+    - "GitHub CLI integration for PR creation (uses gh, not Linear API)"
+    - "Convenience aliases: lcls, lcreate, lclose, lcomment"
+    - "Interactive prompting for comments when parameter is '-'"
+    - "No explicit project, cycle, or roadmap operations documented"
+
+  evidence:
+    source-type: readme
+    source-url: "https://github.com/rubyists/linear-cli"
+    retrieved-date: "2026-01-04"
+    confidence: likely

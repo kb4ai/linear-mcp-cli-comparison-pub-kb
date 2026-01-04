@@ -23,7 +23,7 @@
 | Importer Exporter | 1 |
 | Tui Client | 1 |
 
-**Tools with `api-coverage` data:** 4/56
+**Tools with `api-coverage` data:** 8/56
 
 
 ## Key API Coverage Gaps
@@ -65,7 +65,7 @@ This is a significant gap for dependency tracking workflows.
 | [linearator](https://github.com/AdiKsOnDev/linear-cli) | cli-client | 88% | - |
 | [linctl](https://github.com/dorkitude/linctl) | ai-agent-tool | 76% | ⭐ 78 |
 | [linearis](https://github.com/czottmann/linearis) | cli-client | 76% | - |
-| [linear-cli](https://github.com/rubyists/linear-cli) | cli-client | 8% | ⭐ 7 |
+| [linear-cli](https://github.com/rubyists/linear-cli) | cli-client | 68% | ⭐ 7 |
 | [linear-cli](https://github.com/carlosflorencio/linear-cli) | cli-client | 8% | - |
 | [@digitalstories/linear-cli](https://www.npmjs.com/package/@digitalstories/linear-cli) | cli-client | 8% | - |
 | [linear_cli](https://github.com/eriksandfort/linear_cli) | cli-client | 8% | - |
