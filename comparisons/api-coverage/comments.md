@@ -49,6 +49,7 @@
 | [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | ✅ | ✅ | 100% |
 | [linear-mcp](https://github.com/cline/linear-mcp) | ✅ | ✅ | 100% |
 | [mcp-linear](https://github.com/tacticlaunch/mcp-linear) | ✅ | ✅ | 100% |
+| [linear-streamable-mcp-server](https://github.com/iceener/linear-streamable-mcp-server) | ✅ | ✅ | 100% |
 | [linear-mcp-go](https://github.com/geropl/linear-mcp-go) | ✅ | ✅ | 100% |
 | [Linear Official MCP Server](https://mcp.linear.app) | ✅ | ✅ | 100% |
 

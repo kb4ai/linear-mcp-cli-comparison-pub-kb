@@ -34,3 +34,123 @@ notes:
   - "OAuth setup for development (not production-grade)"
   - "Local auth server runs on PORT+1"
   - "Optimized for LLM understanding and usage"
+api-coverage:
+  queries-supported:
+    - "viewer"
+    - "teams"
+    - "team"
+    - "issues"
+    - "issue"
+    - "users"
+    - "cycles"
+    - "projects"
+    - "workflowStates"
+    - "labels"
+    - "favorites"
+    - "comments"
+  mutations-supported:
+    - "issueCreate"
+    - "issueUpdate"
+    - "issueArchive"
+    - "issueUnarchive"
+    - "commentCreate"
+    - "commentUpdate"
+    - "projectCreate"
+    - "projectUpdate"
+    - "projectArchive"
+    - "projectUnarchive"
+  mcp-tools:
+    - name: "workspace_metadata"
+      description: "Discovers all workspace entities in a single call (viewer, teams, workflow states, labels, projects, favorites)"
+    - name: "list_issues"
+      description: "Search and filter issues with GraphQL filtering, supports team/project/state/assignee/text filters"
+    - name: "get_issues"
+      description: "Fetch issues by ID in batch operations"
+    - name: "create_issues"
+      description: "Create multiple issues in one call (batch support)"
+    - name: "update_issues"
+      description: "Batch update issues (state, labels, assignee, project, priority, archive)"
+    - name: "list_teams"
+      description: "Lists teams with pagination"
+    - name: "list_users"
+      description: "Lists users with pagination"
+    - name: "list_comments"
+      description: "Lists comments for an issue"
+    - name: "add_comments"
+      description: "Adds new comments to issues"
+    - name: "update_comments"
+      description: "Modifies existing comments"
+    - name: "list_cycles"
+      description: "Lists cycles for a team (when cycles enabled)"
+    - name: "list_projects"
+      description: "Lists projects with filtering and pagination"
+    - name: "create_projects"
+      description: "Creates new projects with name, description, lead, dates, teams"
+    - name: "update_projects"
+      description: "Updates project fields (name, description, lead, state, archive)"
+  mcp-tool-coverage:
+    workspace_metadata:
+      queries: ["viewer", "teams", "team", "workflowStates", "labels", "projects", "favorites"]
+      mutations: []
+    list_issues:
+      queries: ["issues"]
+      mutations: []
+    get_issues:
+      queries: ["issue"]
+      mutations: []
+    create_issues:
+      queries: []
+      mutations: ["issueCreate"]
+    update_issues:
+      queries: []
+      mutations: ["issueUpdate", "issueArchive", "issueUnarchive"]
+    list_teams:
+      queries: ["teams"]
+      mutations: []
+    list_users:
+      queries: ["users"]
+      mutations: []
+    list_comments:
+      queries: ["comments"]
+      mutations: []
+    add_comments:
+      queries: []
+      mutations: ["commentCreate"]
+    update_comments:
+      queries: []
+      mutations: ["commentUpdate"]
+    list_cycles:
+      queries: ["cycles"]
+      mutations: []
+    list_projects:
+      queries: ["projects"]
+      mutations: []
+    create_projects:
+      queries: []
+      mutations: ["projectCreate"]
+    update_projects:
+      queries: []
+      mutations: ["projectUpdate", "projectArchive", "projectUnarchive"]
+  evidence:
+    source: "GitHub repository source code analysis"
+    analysis-date: "2026-01-04"
+    files-examined:
+      - "src/shared/tools/linear/index.ts"
+      - "src/shared/tools/registry.ts"
+      - "src/shared/tools/linear/list-issues.ts"
+      - "src/shared/tools/linear/create-issues.ts"
+      - "src/shared/tools/linear/update-issues.ts"
+      - "src/shared/tools/linear/get-issues.ts"
+      - "src/shared/tools/linear/workspace-metadata.ts"
+      - "src/shared/tools/linear/list-teams.ts"
+      - "src/shared/tools/linear/list-users.ts"
+      - "src/shared/tools/linear/cycles.ts"
+      - "src/shared/tools/linear/projects.ts"
+      - "src/shared/tools/linear/comments.ts"
+    notes:
+      - "Uses Linear SDK (@linear/sdk) which abstracts GraphQL operations"
+      - "Raw GraphQL used for ListIssues query to avoid N+1 problem"
+      - "All other operations use SDK methods (client.createIssue, etc.)"
+      - "14 MCP tools total covering issues, projects, teams, users, comments, cycles"
+      - "Batch-first design for create/update operations"
+      - "workspace_metadata aggregates multiple queries for LLM efficiency"

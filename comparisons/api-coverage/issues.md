@@ -76,6 +76,7 @@
 | Tool | issueCreate | issueUpdate | issue | issues | issueSearch | issueBatchCreate | issueBatchUpdate | Coverage |
 |------|----|----|----|----|----|----|----|----------|
 | [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | ✅ | ✅ | ✅ | ✅ | ✅ | ❓ | ❓ | 71% |
+| [linear-streamable-mcp-server](https://github.com/iceener/linear-streamable-mcp-server) | ✅ | ✅ | ✅ | ✅ | ✅ | ❓ | ❓ | 71% |
 | [Linear Official MCP Server](https://mcp.linear.app) | ✅ | ✅ | ✅ | ✅ | ✅ | ❓ | ❓ | 71% |
 | [linear-mcp](https://github.com/cline/linear-mcp) | ✅ | ✅ | ❓ | ❓ | ❓ | ❓ | ❓ | 28% |
 | [mcp-linear](https://github.com/tacticlaunch/mcp-linear) | ❓ | ❓ | ❓ | ✅ | ✅ | ❓ | ❓ | 28% |
