@@ -19,3 +19,30 @@ auth:
 notes:
   - "Requires Linear OAuth token"
   - "Configured via MCP configuration file"
+api-coverage:
+  queries-supported:
+    - "teams (with states and labels)"
+    - "issues (with filtering and pagination)"
+    - "cycles (by team)"
+    - "projects"
+  mutations-supported:
+    - "issueCreate"
+    - "issueUpdate"
+  mcp-tools:
+    - "linear_get_teams"
+    - "linear_search_issues"
+    - "linear_get_cycles"
+    - "linear_get_projects"
+    - "linear_create_issue"
+    - "linear_update_issue"
+  coverage-notes:
+    - "6 MCP tools total: 4 read operations, 2 write operations"
+    - "Issue creation supports: team, title, description, assignee, state, priority (0-4), estimate, cycle, project, labels"
+    - "Issue update supports same fields as creation"
+    - "Pagination via 'first' parameter (default: 50 items)"
+    - "Uses official Linear SDK"
+  evidence:
+    source-type: readme
+    source-url: "https://github.com/cpropster/linear-mcp-server"
+    retrieved-date: "2026-01-04"
+    confidence: likely

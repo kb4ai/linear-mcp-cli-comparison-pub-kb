@@ -80,6 +80,7 @@
 | [linear-mcp](https://github.com/cline/linear-mcp) | ✅ | ✅ | ❓ | ❓ | ❓ | ❓ | ❓ | 28% |
 | [mcp-linear](https://github.com/tacticlaunch/mcp-linear) | ❓ | ❓ | ❓ | ✅ | ✅ | ❓ | ❓ | 28% |
 | [linear-mcp-go](https://github.com/geropl/linear-mcp-go) | ✅ | ✅ | ❓ | ❓ | ❓ | ❓ | ❓ | 28% |
+| [linear-mcp-server](https://github.com/cpropster/linear-mcp-server) | ✅ | ✅ | ❓ | ❓ | ❓ | ❓ | ❓ | 28% |
 
 ---
 

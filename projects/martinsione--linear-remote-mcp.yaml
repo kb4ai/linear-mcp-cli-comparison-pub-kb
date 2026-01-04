@@ -14,8 +14,46 @@ transports:
   http: true
   sse: true
 auth:
-  api-key: true
-  oauth: false
+  api-key: false
+  oauth: true
 notes:
   - "Designed for remote deployment"
   - "Alternative to local stdio-based servers"
+api-coverage:
+  queries-supported:
+    - "issue (get single issue by ID)"
+    - "issues (list issues with filters)"
+    - "searchIssues (search issues by query)"
+    - "team (get single team by ID)"
+    - "teams (list all teams)"
+    - "viewer (get current authenticated user)"
+    - "user (get user by ID)"
+    - "users (list all users)"
+    - "workflowStates (list workflow states)"
+  mutations-supported:
+    - "createIssue (create new issue with title, description, team, assignee, cycle, parent, milestone, state)"
+    - "updateIssue (update existing issue properties)"
+  mcp-tools:
+    - "get_issue_by_id"
+    - "list_issues"
+    - "search_issue"
+    - "create_issue"
+    - "update_issue"
+    - "get_team_by_id"
+    - "list_teams"
+    - "whoami"
+    - "get_user_by_id"
+    - "list_users"
+    - "list_workflows"
+    - "logout"
+  coverage-notes:
+    - "Focused on core issue management operations"
+    - "Includes team, user, and workflow state queries for context"
+    - "OAuth-based authentication with session management (logout tool)"
+    - "Uses Linear SDK client methods rather than raw GraphQL"
+    - "No project, cycle, label, or comment operations exposed"
+  evidence:
+    source-type: "source-code"
+    source-url: "https://github.com/martinsione/linear-remote-mcp/tree/main/src/mcp/tools"
+    retrieved-date: "2026-01-04"
+    confidence: "high"
