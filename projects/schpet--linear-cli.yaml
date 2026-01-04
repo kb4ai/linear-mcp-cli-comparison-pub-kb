@@ -1,4 +1,4 @@
-last-update: "2025-12-22"
+last-update: "2026-01-04"
 repo-url: "https://github.com/schpet/linear-cli"
 
 name: "linear-cli"
@@ -24,10 +24,10 @@ features:
   team-management: true
   interactive-mode: true
 
-  # Advanced Linear features (researched 2025-12-23)
-  sub-issues: partial          # --parent flag exists, reads parent info
-  estimates: read-only         # Displayed in queries, no write support
-  blocking-blocked-by: false   # Feature request open (GH #26)
+  # Advanced Linear features (verified 2026-01-04)
+  sub-issues: false            # No --parent flag documented in README
+  estimates: read-only         # May be displayed in queries, no write flags documented
+  blocking-blocked-by: false   # GH #26 requests improved blocked status display
   due-dates: false
   related-issues: false
   labels: true
@@ -68,7 +68,7 @@ commands:
 api-coverage:
   queries-supported:
     - "issue"              # linear issue view, linear issue id, linear issue title, linear issue url
-    - "issues"             # linear issue list with filtering/sorting
+    - "issues"             # linear issue list with -s/--state and --sort filters
     - "team"               # linear team id
     - "teams"              # linear team list
     - "teamMembers"        # linear team members
@@ -76,33 +76,32 @@ api-coverage:
     - "projects"           # linear project list
     - "project"            # linear project view
     - "comments"           # linear issue comment list
-    - "workflowStates"     # issue state/status transitions
+    - "workflowStates"     # issue state/status transitions (for linear issue start)
 
   mutations-supported:
-    - "issueCreate"        # linear issue create
+    - "issueCreate"        # linear issue create (-t title, -d description)
     - "issueUpdate"        # linear issue update, linear issue start (status change)
     - "issueDelete"        # linear issue delete
-    - "commentCreate"      # linear issue comment add
-    - "commentUpdate"      # linear issue comment update
+    - "commentCreate"      # linear issue comment add (-p for parent comment replies)
+    - "commentUpdate"      # linear issue comment update <id>
     - "teamCreate"         # linear team create
 
   operations-partial:
-    - operation: "issueCreate/issueUpdate with parentId"
-      limitation: "--parent flag exists for reading parent info; write support unclear"
-      feature: "sub-issues"
     - operation: "issueUpdate with estimate"
-      limitation: "Estimates displayed in queries but no documented write flags"
+      limitation: "Estimates may be displayed in queries but no documented write flags"
       feature: "estimates"
 
   coverage-notes:
     - "Strong issue CRUD coverage with view/list/create/update/delete"
-    - "Comment operations fully supported including replies to parent comments"
+    - "Comment operations fully supported including -p flag for replies to parent comments"
     - "Team management includes listing, creation, and member queries"
     - "Project list/view queries available"
-    - "Branch management integrates with issue state transitions"
-    - "No blocking/blocked-by relation support (open feature request GH #26)"
+    - "Branch management integrates with issue state transitions via linear issue start"
+    - "GitHub autolinks configuration via linear team autolinks"
+    - "No sub-issues parent flag documented in README"
+    - "No blocking/blocked-by relation support (GH #26 requests improved blocked status display)"
     - "No due-dates or related-issues mutations documented"
-    - "Labels, status, priority, assignee, project, cycle listed as features but specific mutation flags not documented in README"
+    - "Labels, status, priority, assignee, project, cycle listed as features but specific mutation flags not detailed in README"
 
   evidence:
     source-type: "readme"

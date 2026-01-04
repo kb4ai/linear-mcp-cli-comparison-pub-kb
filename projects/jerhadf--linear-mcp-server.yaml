@@ -29,6 +29,82 @@ tools:
 installation:
   npm: "npx @smithery/cli install linear-mcp-server --client claude"
 license: "MIT"
+api-coverage:
+  queries-supported:
+    - "issues"
+    - "issue"
+    - "viewer"
+    - "user"
+    - "team"
+    - "organization"
+  mutations-supported:
+    - "issueCreate"
+    - "issueUpdate"
+    - "commentCreate"
+  mcp-tools:
+    - "linear_create_issue"
+    - "linear_update_issue"
+    - "linear_search_issues"
+    - "linear_get_user_issues"
+    - "linear_add_comment"
+  mcp-tool-coverage:
+    linear_create_issue:
+      operations:
+        - "issueCreate"
+      description: "Creates new issues with title, teamId, optional description/priority/status"
+    linear_update_issue:
+      operations:
+        - "issueUpdate"
+      description: "Modifies existing issue properties by ID"
+    linear_search_issues:
+      operations:
+        - "issues"
+        - "issue"
+      description: "Queries issues with text, team, status, assignee, labels, priority filters"
+    linear_get_user_issues:
+      operations:
+        - "viewer"
+        - "user"
+      description: "Retrieves assigned issues for specified or current user"
+    linear_add_comment:
+      operations:
+        - "commentCreate"
+      description: "Adds markdown comments with optional custom attribution"
+  resources:
+    - uri: "linear-issue:///{issueId}"
+      operations:
+        - "issue"
+      description: "Individual issue details"
+    - uri: "linear-team:///{teamId}/issues"
+      operations:
+        - "team"
+        - "issues"
+      description: "Team-level issues"
+    - uri: "linear-user:///{userId}/assigned"
+      operations:
+        - "user"
+      description: "User assignment view"
+    - uri: "linear-organization:"
+      operations:
+        - "organization"
+      description: "Organizational context with teams and users"
+    - uri: "linear-viewer:"
+      operations:
+        - "viewer"
+      description: "Authenticated user context"
+  coverage-notes:
+    - "Uses Linear TypeScript SDK which wraps GraphQL operations"
+    - "Basic CRUD operations for issues and comments"
+    - "Read-only resources for organization, teams, and user contexts"
+    - "No support for projects, cycles, roadmaps, or advanced features"
+    - "Priority uses 0-4 numeric scale"
+    - "Deprecated in favor of official Linear MCP server"
+  evidence:
+    source-type: "readme-and-source"
+    source-url: "https://github.com/jerhadf/linear-mcp-server"
+    retrieved-date: "2026-01-04"
+    confidence: "high"
+    verification-method: "Analyzed index.ts source code for Linear SDK method calls"
 notes:
   - "First major community Linear MCP server"
   - "No longer maintained - use official server instead"

@@ -41,6 +41,14 @@
 |------|----|----|----------|
 | [linctl](https://github.com/dorkitude/linctl) | ✅ | ✅ | 100% |
 
+## Linear Mcp Server
+
+
+| Tool | commentCreate | comments (read) | Coverage |
+|------|----|----|----------|
+| [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | ✅ | ✅ | 100% |
+| [Linear Official MCP Server](https://mcp.linear.app) | ✅ | ✅ | 100% |
+
 ---
 
 
@@ -51,7 +59,7 @@
 
 
 1. [linctl](https://github.com/dorkitude/linctl) - 100%
-2. [linear-cli](https://github.com/rubyists/linear-cli) - 100%
-3. [linear-cli](https://github.com/schpet/linear-cli) - 100%
-4. [linearator](https://github.com/AdiKsOnDev/linear-cli) - 100%
-5. [linearis](https://github.com/czottmann/linearis) - 100%
+2. [Linear Official MCP Server](https://mcp.linear.app) - 100%
+3. [linear-cli](https://github.com/rubyists/linear-cli) - 100%
+4. [linear-cli](https://github.com/schpet/linear-cli) - 100%
+5. [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) - 100%

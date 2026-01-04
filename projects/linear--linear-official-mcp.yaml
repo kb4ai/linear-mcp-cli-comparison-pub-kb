@@ -1,4 +1,4 @@
-last-update: "2025-12-22"
+last-update: "2026-01-04"
 repo-url: "https://mcp.linear.app"
 name: "Linear Official MCP Server"
 description: "Official centrally-hosted MCP server from Linear for accessing Linear data"
@@ -27,3 +27,119 @@ notes:
   - "Recommended over community implementations"
   - "Use mcp-remote module for backwards compatibility"
 documentation: "https://linear.app/docs/mcp"
+
+api-coverage:
+  # Based on official Linear MCP documentation and third-party analysis
+  # The official server exposes ~21-22 tools covering core Linear operations
+
+  queries-supported:
+    - viewer           # Get authenticated user information
+    - teams            # List all teams in workspace
+    - team             # Get specific team details
+    - users            # List workspace users
+    - issue            # Get issue by ID
+    - issues           # List/search issues with filtering
+    - projects         # List all projects
+    - project          # Get specific project details
+    - workflowStates   # Get workflow states for teams
+    - comments         # Get issue comments
+    - labels           # Get available labels
+    - documents        # Get Linear documents
+    - cycles           # Get sprint/cycle information
+    - assignedIssues   # Get issues assigned to user
+
+  mutations-supported:
+    - issueCreate      # Create new issues
+    - issueUpdate      # Modify issue properties
+    - issueArchive     # Archive/soft-delete issues
+    - commentCreate    # Add comments to issues
+    - projectCreate    # Create new projects
+    - projectUpdate    # Modify project properties
+    - attachmentCreate # Add attachments to issues
+    - issueLabelConnect    # Add labels to issues
+    - issueLabelDisconnect # Remove labels from issues
+
+  mcp-tools:
+    # Issue Management (Core)
+    - list_issues          # Comprehensive issue listing with advanced filtering
+    - get_issue            # Detailed issue retrieval including attachments
+    - create_issue         # Intelligent issue creation with context awareness
+    - update_issue         # Dynamic issue modification and status updates
+    - list_my_issues       # Personal task management and priority tracking
+
+    # Project & Team Coordination
+    - list_projects        # Strategic project overview
+    - get_project          # Project detail retrieval
+    - create_project       # AI-powered project creation
+    - update_project       # Project lifecycle management
+    - list_teams           # Team structure insights
+    - get_team             # Team detail retrieval
+    - list_users           # Team member coordination
+    - get_user             # User detail retrieval
+
+    # Communication & Documentation
+    - list_comments        # Contextual communication retrieval
+    - create_comment       # Add feedback and commentary
+    - list_issue_statuses  # Workflow state management
+    - get_issue_status     # Status detail retrieval
+    - list_issue_labels    # Advanced categorization and filtering
+    - get_document         # Documentation integration
+    - list_documents       # Knowledge management
+    - search_documentation # AI-powered Linear feature discovery
+
+  mcp-tool-coverage:
+    # Read Operations -> GraphQL Queries
+    list_issues: "issues query with filtering parameters"
+    get_issue: "issue query by ID with nested relations"
+    list_my_issues: "viewer.assignedIssues query"
+    list_projects: "projects query"
+    get_project: "project query by ID"
+    list_teams: "teams query"
+    get_team: "team query by ID"
+    list_users: "users query"
+    get_user: "user query by ID"
+    list_comments: "issue.comments nested query"
+    list_issue_statuses: "workflowStates query"
+    get_issue_status: "workflowState query by ID"
+    list_issue_labels: "issueLabels query"
+    get_document: "document query by ID"
+    list_documents: "documents query"
+    search_documentation: "Linear feature search (likely internal API)"
+
+    # Write Operations -> GraphQL Mutations
+    create_issue: "issueCreate mutation"
+    update_issue: "issueUpdate mutation"
+    create_project: "projectCreate mutation"
+    update_project: "projectUpdate mutation"
+    create_comment: "commentCreate mutation"
+
+  coverage-notes:
+    - "Official server provides ~21 specialized MCP tools"
+    - "Covers core Linear workflow: issues, projects, teams, comments"
+    - "Uses ~13,000 tokens on connection for comprehensive tool schemas"
+    - "No public source code - centrally hosted proprietary service"
+    - "Token overhead is high compared to minimal CLI tools"
+    - "Some tools map 1:1 to GraphQL operations"
+    - "Other tools combine multiple queries for convenience"
+    - "Documentation tools may use internal APIs beyond public GraphQL"
+    - "More functionality announced as 'on the way' by Linear"
+    - "Follows authenticated remote MCP spec (2025-03-26)"
+
+  evidence:
+    source-type: documentation
+    sources:
+      - url: "https://linear.app/docs/mcp"
+        description: "Official Linear MCP documentation"
+      - url: "https://linear.app/changelog/2025-05-01-mcp"
+        description: "Linear MCP server announcement changelog"
+      - url: "https://www.remote-mcp.com/servers/linear"
+        description: "Third-party MCP registry with 21 tools enumeration"
+      - url: "https://linear.app/developers/graphql"
+        description: "Linear GraphQL API documentation"
+    retrieved-date: "2026-01-04"
+    confidence: partially-verified
+    confidence-notes: |
+      Tool list derived from third-party MCP registries since official
+      documentation does not enumerate specific tool names. GraphQL
+      mappings are inferred from Linear API documentation and community
+      implementations. Actual tool names may differ in the official server.

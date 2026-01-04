@@ -63,6 +63,14 @@
 |------|----|----|----|----|----|----|----|----|----------|
 | [linear-issue-importer](https://crates.io/crates/linear-issue-importer) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
 
+## Linear Mcp Server
+
+
+| Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
+|------|----|----|----|----|----|----|----|----|----------|
+| [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+| [Linear Official MCP Server](https://mcp.linear.app) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+
 ---
 
 
@@ -74,6 +82,6 @@
 
 1. [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) - 100%
 2. [linctl](https://github.com/dorkitude/linctl) - 100%
-3. [linear-cli](https://github.com/rubyists/linear-cli) - 100%
-4. [linear-cli](https://github.com/schpet/linear-cli) - 100%
-5. [linear-issue-importer](https://crates.io/crates/linear-issue-importer) - 100%
+3. [Linear Official MCP Server](https://mcp.linear.app) - 100%
+4. [linear-cli](https://github.com/rubyists/linear-cli) - 100%
+5. [linear-cli](https://github.com/schpet/linear-cli) - 100%

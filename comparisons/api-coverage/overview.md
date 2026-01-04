@@ -23,7 +23,7 @@
 | Importer Exporter | 1 |
 | Tui Client | 1 |
 
-**Tools with `api-coverage` data:** 8/56
+**Tools with `api-coverage` data:** 11/56
 
 
 ## Key API Coverage Gaps
@@ -65,10 +65,10 @@ This is a significant gap for dependency tracking workflows.
 | [linearator](https://github.com/AdiKsOnDev/linear-cli) | cli-client | 88% | - |
 | [linctl](https://github.com/dorkitude/linctl) | ai-agent-tool | 76% | ⭐ 78 |
 | [linearis](https://github.com/czottmann/linearis) | cli-client | 76% | - |
+| [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | linear-mcp-server | 68% | ⭐ 339 |
 | [linear-cli](https://github.com/rubyists/linear-cli) | cli-client | 68% | ⭐ 7 |
+| [Linear Official MCP Server](https://mcp.linear.app) | linear-mcp-server | 68% | - |
 | [linear-cli](https://github.com/carlosflorencio/linear-cli) | cli-client | 8% | - |
 | [@digitalstories/linear-cli](https://www.npmjs.com/package/@digitalstories/linear-cli) | cli-client | 8% | - |
 | [linear_cli](https://github.com/eriksandfort/linear_cli) | cli-client | 8% | - |
 | [pylinear](https://github.com/hxghhhh/pylinear) | cli-client | 8% | - |
-| [linear-app-cli](https://www.piwheels.org/project/linear-app-cli/) | cli-client | 8% | - |
-| [linear-cli](https://github.com/max-muoto/linear-cli) | cli-client | 8% | - |

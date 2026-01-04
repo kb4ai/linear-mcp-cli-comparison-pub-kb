@@ -49,6 +49,14 @@
 |------|----|----|----------|
 | [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) | ✅ | ✅ | 100% |
 
+## Linear Mcp Server
+
+
+| Tool | team (read) | teams (list) | Coverage |
+|------|----|----|----------|
+| [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | ✅ | ✅ | 100% |
+| [Linear Official MCP Server](https://mcp.linear.app) | ✅ | ✅ | 100% |
+
 ---
 
 
@@ -61,5 +69,5 @@
 1. [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) - 100%
 2. [@minupalaniappan/linear](https://github.com/minupalaniappan/linear-cli) - 100%
 3. [linctl](https://github.com/dorkitude/linctl) - 100%
-4. [linear-cli](https://github.com/rubyists/linear-cli) - 100%
-5. [linear-cli](https://github.com/schpet/linear-cli) - 100%
+4. [Linear Official MCP Server](https://mcp.linear.app) - 100%
+5. [linear-cli](https://github.com/rubyists/linear-cli) - 100%

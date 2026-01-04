@@ -70,6 +70,14 @@
 |------|----|----|----|----|----|----|----|----------|
 | [linear-issue-importer](https://crates.io/crates/linear-issue-importer) | ✅ | ✅ | ❓ | ❓ | ❓ | ✅ | ✅ | 57% |
 
+## Linear Mcp Server
+
+
+| Tool | issueCreate | issueUpdate | issue | issues | issueSearch | issueBatchCreate | issueBatchUpdate | Coverage |
+|------|----|----|----|----|----|----|----|----------|
+| [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | ✅ | ✅ | ✅ | ✅ | ✅ | ❓ | ❓ | 71% |
+| [Linear Official MCP Server](https://mcp.linear.app) | ✅ | ✅ | ✅ | ✅ | ✅ | ❓ | ❓ | 71% |
+
 ---
 
 
@@ -81,6 +89,6 @@
 
 1. [linearator](https://github.com/AdiKsOnDev/linear-cli) - 100%
 2. [linctl](https://github.com/dorkitude/linctl) - 71%
-3. [linear-cli](https://github.com/rubyists/linear-cli) - 71%
-4. [linear-cli](https://github.com/schpet/linear-cli) - 71%
-5. [linearis](https://github.com/czottmann/linearis) - 71%
+3. [Linear Official MCP Server](https://mcp.linear.app) - 71%
+4. [linear-cli](https://github.com/rubyists/linear-cli) - 71%
+5. [linear-cli](https://github.com/schpet/linear-cli) - 71%
