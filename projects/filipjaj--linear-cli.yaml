@@ -29,6 +29,13 @@ platforms:
 documentation:
   readme: true
 
+api-coverage:
+  queries-supported:
+    - none documented
+  mutations-supported:
+    - issue creation (AI-assisted)
+  evidence: "README focuses on AI-powered issue creation workflow. No query operations documented. Single-purpose wrapper around Linear's issue creation API, not a general-purpose client."
+
 notes:
   - "AI-powered issue creation"
   - "Uses Gemini AI for assistance"

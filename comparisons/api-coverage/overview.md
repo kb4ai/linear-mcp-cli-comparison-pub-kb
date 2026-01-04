@@ -23,7 +23,7 @@
 | Importer Exporter | 1 |
 | Tui Client | 1 |
 
-**Tools with `api-coverage` data:** 35/56
+**Tools with `api-coverage` data:** 36/56
 
 
 ## Key API Coverage Gaps
