@@ -1,0 +1,78 @@
+# Issue Field Support Coverage
+
+*Which issue fields can be set via create/update*
+
+*Generated from 56 project files on 2026-01-04*
+
+
+## Legend
+
+| Symbol | Meaning |
+|--------|---------|
+| ✅ | Full support |
+| ⚠️ | Partial support |
+| 👁️ | Read-only |
+| ❌ | Not supported |
+| ❓ | Unknown / Not tested |
+
+
+---
+
+## Cli Client
+
+
+| Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
+|------|----|----|----|----|----|----|----|----|----------|
+| [linearator](https://github.com/AdiKsOnDev/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+| [linearis](https://github.com/czottmann/linearis) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+
+## Tui Client
+
+
+| Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
+|------|----|----|----|----|----|----|----|----|----------|
+| [lt](https://github.com/markmarkoh/lt) | 👁️ | 👁️ | 👁️ | 👁️ | 👁️ | 👁️ | 👁️ | 👁️ | 50% |
+
+## Git Workflow
+
+
+| Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
+|------|----|----|----|----|----|----|----|----|----------|
+| [linear-cli](https://github.com/schpet/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+| [@minupalaniappan/linear](https://github.com/minupalaniappan/linear-cli) | ⚠️ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | 18% |
+
+## Ai Agent Tool
+
+
+| Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
+|------|----|----|----|----|----|----|----|----|----------|
+| [linctl](https://github.com/dorkitude/linctl) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+
+## Cross Team
+
+
+| Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
+|------|----|----|----|----|----|----|----|----|----------|
+| [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | 50% |
+
+## Importer Exporter
+
+
+| Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
+|------|----|----|----|----|----|----|----|----|----------|
+| [linear-issue-importer](https://crates.io/crates/linear-issue-importer) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+
+---
+
+
+## Gap Analysis
+
+
+### Best Coverage
+
+
+1. [linctl](https://github.com/dorkitude/linctl) - 100%
+2. [linear-cli](https://github.com/schpet/linear-cli) - 100%
+3. [linear-issue-importer](https://crates.io/crates/linear-issue-importer) - 100%
+4. [linearator](https://github.com/AdiKsOnDev/linear-cli) - 100%
+5. [linearis](https://github.com/czottmann/linearis) - 100%

@@ -1,0 +1,86 @@
+# Issue Operations Coverage
+
+*Core issue CRUD and batch operations*
+
+*Generated from 56 project files on 2026-01-04*
+
+
+## Legend
+
+| Symbol | Meaning |
+|--------|---------|
+| ✅ | Full support |
+| ⚠️ | Partial support |
+| 👁️ | Read-only |
+| ❌ | Not supported |
+| ❓ | Unknown / Not tested |
+
+
+---
+
+## Cli Client
+
+
+| Tool | issueCreate | issueUpdate | issue | issues | issueSearch | issueBatchCreate | issueBatchUpdate | Coverage |
+|------|----|----|----|----|----|----|----|----------|
+| [linearator](https://github.com/AdiKsOnDev/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+| [linearis](https://github.com/czottmann/linearis) | ✅ | ✅ | ✅ | ✅ | ✅ | ❓ | ❓ | 71% |
+| [linear-cli](https://github.com/rubyists/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
+| [@digitalstories/linear-cli](https://www.npmjs.com/package/@digitalstories/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
+| [linear-app-cli](https://www.piwheels.org/project/linear-app-cli/) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
+| [linear-cli](https://github.com/carlosflorencio/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
+| [linear-cli](https://github.com/max-muoto/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
+| [linear_cli](https://github.com/eriksandfort/linear_cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
+| [pylinear](https://github.com/hxghhhh/pylinear) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
+
+## Tui Client
+
+
+| Tool | issueCreate | issueUpdate | issue | issues | issueSearch | issueBatchCreate | issueBatchUpdate | Coverage |
+|------|----|----|----|----|----|----|----|----------|
+| [lt](https://github.com/markmarkoh/lt) | ❌ | ❌ | ✅ | ✅ | ✅ | ❓ | ❓ | 42% |
+
+## Git Workflow
+
+
+| Tool | issueCreate | issueUpdate | issue | issues | issueSearch | issueBatchCreate | issueBatchUpdate | Coverage |
+|------|----|----|----|----|----|----|----|----------|
+| [linear-cli](https://github.com/schpet/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ❓ | ❓ | 71% |
+| [@minupalaniappan/linear](https://github.com/minupalaniappan/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
+
+## Ai Agent Tool
+
+
+| Tool | issueCreate | issueUpdate | issue | issues | issueSearch | issueBatchCreate | issueBatchUpdate | Coverage |
+|------|----|----|----|----|----|----|----|----------|
+| [linctl](https://github.com/dorkitude/linctl) | ✅ | ✅ | ✅ | ✅ | ✅ | ❓ | ❓ | 71% |
+| [linear-cli](https://github.com/filipjaj/linear-cli) | ✅ | ❓ | ❓ | ❓ | ❓ | ❓ | ❓ | 14% |
+
+## Cross Team
+
+
+| Tool | issueCreate | issueUpdate | issue | issues | issueSearch | issueBatchCreate | issueBatchUpdate | Coverage |
+|------|----|----|----|----|----|----|----|----------|
+| [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) | ❓ | ❓ | ✅ | ✅ | ✅ | ❓ | ❓ | 42% |
+
+## Importer Exporter
+
+
+| Tool | issueCreate | issueUpdate | issue | issues | issueSearch | issueBatchCreate | issueBatchUpdate | Coverage |
+|------|----|----|----|----|----|----|----|----------|
+| [linear-issue-importer](https://crates.io/crates/linear-issue-importer) | ✅ | ✅ | ❓ | ❓ | ❓ | ✅ | ✅ | 57% |
+
+---
+
+
+## Gap Analysis
+
+
+### Best Coverage
+
+
+1. [linearator](https://github.com/AdiKsOnDev/linear-cli) - 100%
+2. [linctl](https://github.com/dorkitude/linctl) - 71%
+3. [linear-cli](https://github.com/schpet/linear-cli) - 71%
+4. [linearis](https://github.com/czottmann/linearis) - 71%
+5. [linear-issue-importer](https://crates.io/crates/linear-issue-importer) - 57%

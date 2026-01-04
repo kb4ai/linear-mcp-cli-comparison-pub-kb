@@ -76,6 +76,58 @@ notes:
   - "Author uses with Claude Code, sst/opencode, charmbracelet/crush"
   - "Blog post: https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html"
 
+# GraphQL API coverage analysis
+api-coverage:
+  queries-supported:
+    - "issue"                    # Read single issue details
+    - "issues"                   # List/search issues with filters
+    - "team"                     # Get team details
+    - "teams"                    # List all workspace teams
+    - "users"                    # List team members with active/inactive filtering
+    - "project"                  # Get project details
+    - "projects"                 # List all workspace projects
+    - "projectMilestones"        # Milestone support indicated
+    - "workspaceLabels"          # List labels (team-scoped)
+    - "cycle"                    # Read cycle by ID or name
+    - "cycles"                   # List cycles with team/active filtering
+    - "document"                 # Read document by ID
+    - "documents"                # List documents with project/issue filtering
+    - "comments"                 # List comments on issues
+
+  mutations-supported:
+    - "issueCreate"              # Create new issues
+    - "issueUpdate"              # Update issue fields (status, priority, labels, parent)
+    - "issueAddLabel"            # Add labels to issues
+    - "issueRemoveLabel"         # Remove labels from issues
+    - "commentCreate"            # Add comments to issues
+    - "documentCreate"           # Create markdown documents
+    - "documentUpdate"           # Modify document title/content
+    - "documentDelete"           # Move documents to trash
+    - "fileUpload"               # Upload files to Linear storage
+    # Note: File download uses signed URLs from issue embeds, not a mutation
+
+  operations-partial:
+    - name: "issueUpdate"
+      limitation: "Cannot set estimates, due dates, or blocking relations"
+    - name: "attachments"
+      limitation: "Can upload/download files but not attach to issues"
+
+  coverage-notes:
+    - "Comprehensive issue CRUD with label management"
+    - "Full document lifecycle (create/read/update/delete)"
+    - "File upload/download via Linear storage with signed URLs"
+    - "Cycle queries support isActive, isNext, isPrevious, and around-active ranges"
+    - "Smart ID resolution (e.g., ABC-123 format)"
+    - "Missing: issueRelationCreate, estimateCreate/Update, dueDate fields"
+    - "No support for GitHub integration queries (commits, PRs)"
+
+  evidence:
+    source-type: "readme"
+    source-url: "https://github.com/czottmann/linearis"
+    retrieved-date: "2026-01-04"
+    confidence: "likely"
+    notes: "Mapped from CLI commands described in README to corresponding GraphQL operations"
+
 # Feature request tracking
 missing-feature-issues:
   estimates: "https://github.com/czottmann/linearis/issues/26"

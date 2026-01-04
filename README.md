@@ -12,6 +12,7 @@ A comprehensive comparison of command-line tools for [Linear.app](https://linear
 | Understand the MCP token problem | [SCOPE.md](SCOPE.md#why-this-research-matters) |
 | See MCP servers and proxies | [MCP Tools](#mcp-servers-and-proxies) |
 | View feature comparison matrices | [Detailed Comparisons](#detailed-comparisons) |
+| **See API coverage by resource** | [API Coverage](comparisons/api-coverage/overview.md) |
 | Find workarounds for missing features | [WORKAROUNDS.md](WORKAROUNDS.md) |
 | Contribute to this research | [CONTRIBUTING.md](CONTRIBUTING.md) |
 
@@ -94,6 +95,7 @@ For users who need MCP integration:
 |----------|-------------|
 | [Feature Matrix](comparisons/features.md) | Side-by-side feature comparison |
 | [Advanced Features](comparisons/advanced-features.md) | Sub-issues, estimates, blocking |
+| [**API Coverage**](comparisons/api-coverage/overview.md) | GraphQL operations by resource |
 | [Git Integration](comparisons/git-integration.md) | Git workflow capabilities |
 | [By Language](comparisons/by-language.md) | Grouped by programming language |
 | [Auto-Generated Tables](comparisons/auto-generated.md) | Full data from all projects |

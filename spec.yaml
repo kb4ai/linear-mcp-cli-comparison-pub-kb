@@ -480,6 +480,150 @@ agent-optimized:
   description: "Designed/optimized for LLM agent usage"
 
 # ============================================================================
+# API COVERAGE (Linear GraphQL API coverage tracking)
+# ============================================================================
+
+api-coverage:
+  description: "Linear GraphQL API coverage tracking with evidence"
+  type: object
+  required: false
+
+  queries-supported:
+    type: array
+    description: "GraphQL queries this tool supports"
+    example:
+      - "issue"
+      - "issues"
+      - "issueSearch"
+      - "team"
+      - "teams"
+      - "viewer"
+
+  mutations-supported:
+    type: array
+    description: "GraphQL mutations this tool supports"
+    example:
+      - "issueCreate"
+      - "issueUpdate"
+      - "issueArchive"
+      - "commentCreate"
+      - "issueLabelCreate"
+
+  operations-partial:
+    type: array
+    description: "Operations with limited parameter support"
+    items:
+      type: object
+      properties:
+        operation:
+          type: string
+        limitation:
+          type: string
+    example:
+      - operation: "issueCreate"
+        limitation: "No estimate or dueDate parameter support"
+      - operation: "issueUpdate"
+        limitation: "Cannot set parent/sub-issue relationship"
+
+  operations-planned:
+    type: array
+    description: "Operations planned for future support"
+    example:
+      - "issueRelationCreate"
+
+  # MCP-specific coverage (for MCP servers only)
+  mcp-tools:
+    type: array
+    description: "MCP tool names exposed by this server"
+    example:
+      - "linear_search_issues"
+      - "linear_create_issue"
+      - "linear_update_issue"
+
+  mcp-tool-coverage:
+    type: array
+    description: "Mapping of MCP tools to GraphQL operations"
+    items:
+      type: object
+      properties:
+        tool:
+          type: string
+          description: "MCP tool name"
+        operations:
+          type: array
+          description: "GraphQL operations this tool uses"
+    example:
+      - tool: "linear_create_issue"
+        operations: ["issueCreate"]
+      - tool: "linear_search_issues"
+        operations: ["issues", "issueSearch"]
+
+  coverage-notes:
+    type: array
+    description: "Notes about API coverage limitations"
+    example:
+      - "Strong read coverage, limited write coverage"
+      - "No blocking/blocked-by relationship support"
+
+  evidence:
+    $ref: "#/definitions/evidence"
+    description: "Source and verification info for coverage claims"
+
+# ============================================================================
+# EVIDENCE DEFINITION (reusable provenance pattern)
+# ============================================================================
+
+definitions:
+  evidence:
+    description: "Source and verification info for data claims"
+    type: object
+    required: false
+    properties:
+      source-type:
+        type: string
+        enum:
+          - source-code      # Verified by reading source code
+          - documentation    # From official documentation
+          - readme           # From repository README
+          - github-api       # From GitHub API queries
+          - manual-test      # Verified by running the tool
+          - inferred         # Inferred from behavior/context
+        description: "Type of source for this information"
+      source-url:
+        type: string
+        description: "URL to source (repo, doc page, file permalink)"
+        example: "https://github.com/schpet/linear-cli/blob/main/src/linear.ts"
+      source-commit:
+        type: string
+        description: "Git commit hash when source was analyzed"
+        example: "abc123def"
+      source-file:
+        type: string
+        description: "File path within repository"
+        example: "src/linear.ts"
+      source-lines:
+        type: string
+        description: "Line range in source file"
+        example: "45-67"
+      retrieved-date:
+        type: string
+        format: "YYYY-MM-DD"
+        description: "Date when information was retrieved/verified"
+        example: "2026-01-04"
+      confidence:
+        type: string
+        enum:
+          - verified         # Directly verified from source code or testing
+          - likely           # Strong evidence but not directly verified
+          - inferred         # Inferred from behavior or indirect evidence
+          - uncertain        # Best guess, needs verification
+        description: "Confidence level in the data accuracy"
+      notes:
+        type: string
+        description: "Additional context about source or verification"
+        example: "Analyzed GraphQL query definitions in source"
+
+# ============================================================================
 # EXAMPLE COMPLETE ENTRY
 # ============================================================================
 
@@ -527,3 +671,28 @@ _example:
     - "linear issue list"
     - "linear issue start"
     - "linear issue pr"
+
+  api-coverage:
+    queries-supported:
+      - "issue"
+      - "issues"
+      - "team"
+      - "teams"
+      - "viewer"
+    mutations-supported:
+      - "issueCreate"
+      - "issueUpdate"
+      - "issueAddLabel"
+      - "issueRemoveLabel"
+    operations-partial:
+      - operation: "issueCreate"
+        limitation: "No estimate or dueDate parameter support"
+    coverage-notes:
+      - "Strong read coverage, limited write coverage"
+      - "No blocking/blocked-by relationship support (GH #26)"
+    evidence:
+      source-type: source-code
+      source-url: "https://github.com/schpet/linear-cli"
+      retrieved-date: "2026-01-04"
+      confidence: verified
+      notes: "Analyzed GraphQL query definitions in source"

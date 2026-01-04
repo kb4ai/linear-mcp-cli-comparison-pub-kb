@@ -1,0 +1,426 @@
+# Linear GraphQL API Operations Reference
+# Curated list of important operations for CLI/MCP tool comparison
+# Generated from analysis of Linear GraphQL schema (2026-01-04)
+#
+# Source: archive/2026-01-04--linear-graphql-schema.graphql
+# Schema size: 37,827 lines
+
+version: "2026-01-04"
+schema-source: "archive/2026-01-04--linear-graphql-schema.graphql"
+
+# =============================================================================
+# RESOURCES BY CATEGORY
+# =============================================================================
+
+resources:
+
+  # ---------------------------------------------------------------------------
+  # ISSUE MANAGEMENT (Core)
+  # ---------------------------------------------------------------------------
+  Issue:
+    description: "Primary work unit in Linear"
+    queries:
+      - name: issue
+        type: single
+        description: "Fetch single issue by ID"
+      - name: issues
+        type: list
+        description: "List/filter issues with pagination"
+      - name: issueSearch
+        type: search
+        description: "Full-text search across issues"
+    mutations:
+      - name: issueCreate
+        type: create
+        input_type: IssueCreateInput
+        key_fields:
+          - title
+          - teamId
+          - description
+          - parentId        # Sub-issues
+          - estimate        # Story points
+          - dueDate
+          - priority
+          - labelIds
+          - stateId         # Status
+          - assigneeId
+          - cycleId
+          - projectId
+      - name: issueUpdate
+        type: update
+        input_type: IssueUpdateInput
+        description: "Update any issue field"
+      - name: issueBatchCreate
+        type: batch_create
+        description: "Create multiple issues at once"
+      - name: issueBatchUpdate
+        type: batch_update
+        description: "Update multiple issues at once"
+      - name: issueArchive
+        type: archive
+      - name: issueUnarchive
+        type: unarchive
+      - name: issueDelete
+        type: delete
+      - name: issueAddLabel
+        type: relation
+        description: "Add label to issue"
+      - name: issueRemoveLabel
+        type: relation
+        description: "Remove label from issue"
+      - name: issueSubscribe
+        type: subscribe
+      - name: issueUnsubscribe
+        type: unsubscribe
+
+  # ---------------------------------------------------------------------------
+  # ISSUE RELATIONSHIPS (blocking, duplicates, related)
+  # ---------------------------------------------------------------------------
+  IssueRelation:
+    description: "Relationships between issues (blocking, duplicate, related)"
+    queries:
+      - name: issueRelation
+        type: single
+      - name: issueRelations
+        type: list
+    mutations:
+      - name: issueRelationCreate
+        type: create
+        input_type: IssueRelationCreateInput
+        description: "Create relationship between two issues"
+        relation_types:
+          - blocks           # Issue A blocks Issue B
+          - duplicate        # Issue A is duplicate of Issue B
+          - related          # Issues are related
+          - similar          # Issues are similar
+      - name: issueRelationUpdate
+        type: update
+      - name: issueRelationDelete
+        type: delete
+    notes:
+      - "IMPORTANT: No CLI tool currently supports issue relations"
+      - "This is the GraphQL mutation for blocking/blocked-by"
+      - "API: issueRelationCreate(input: {issueId, relatedIssueId, type: blocks})"
+
+  # ---------------------------------------------------------------------------
+  # COMMENTS
+  # ---------------------------------------------------------------------------
+  Comment:
+    description: "Discussion comments on issues"
+    queries:
+      - name: comment
+        type: single
+      - name: comments
+        type: list
+    mutations:
+      - name: commentCreate
+        type: create
+        input_type: CommentCreateInput
+        key_fields:
+          - body
+          - issueId
+      - name: commentUpdate
+        type: update
+      - name: commentDelete
+        type: delete
+      - name: commentResolve
+        type: special
+        description: "Mark comment thread as resolved"
+      - name: commentUnresolve
+        type: special
+
+  # ---------------------------------------------------------------------------
+  # TEAMS
+  # ---------------------------------------------------------------------------
+  Team:
+    description: "Organizational units containing issues and members"
+    queries:
+      - name: team
+        type: single
+      - name: teams
+        type: list
+    mutations:
+      - name: teamCreate
+        type: create
+      - name: teamUpdate
+        type: update
+      - name: teamDelete
+        type: delete
+      - name: teamArchive
+        type: archive
+      - name: teamMembershipCreate
+        type: relation
+      - name: teamMembershipUpdate
+        type: relation
+      - name: teamMembershipDelete
+        type: relation
+
+  # ---------------------------------------------------------------------------
+  # PROJECTS
+  # ---------------------------------------------------------------------------
+  Project:
+    description: "Large initiatives spanning teams/cycles"
+    queries:
+      - name: project
+        type: single
+      - name: projects
+        type: list
+    mutations:
+      - name: projectCreate
+        type: create
+      - name: projectUpdate
+        type: update
+      - name: projectDelete
+        type: delete
+      - name: projectArchive
+        type: archive
+      - name: projectUnarchive
+        type: unarchive
+      - name: projectAddLabel
+        type: relation
+      - name: projectRemoveLabel
+        type: relation
+
+  # ---------------------------------------------------------------------------
+  # CYCLES (Sprints)
+  # ---------------------------------------------------------------------------
+  Cycle:
+    description: "Time-boxed sprint periods within teams"
+    queries:
+      - name: cycle
+        type: single
+      - name: cycles
+        type: list
+    mutations:
+      - name: cycleCreate
+        type: create
+      - name: cycleUpdate
+        type: update
+      - name: cycleArchive
+        type: archive
+
+  # ---------------------------------------------------------------------------
+  # LABELS
+  # ---------------------------------------------------------------------------
+  IssueLabel:
+    description: "Tags/categories for issues"
+    queries:
+      - name: issueLabel
+        type: single
+      - name: issueLabels
+        type: list
+    mutations:
+      - name: issueLabelCreate
+        type: create
+      - name: issueLabelUpdate
+        type: update
+      - name: issueLabelDelete
+        type: delete
+
+  # ---------------------------------------------------------------------------
+  # USERS
+  # ---------------------------------------------------------------------------
+  User:
+    description: "Team members and assignees"
+    queries:
+      - name: user
+        type: single
+      - name: users
+        type: list
+      - name: viewer
+        type: special
+        description: "Current authenticated user"
+    mutations:
+      - name: userUpdate
+        type: update
+
+  # ---------------------------------------------------------------------------
+  # WORKFLOW STATES
+  # ---------------------------------------------------------------------------
+  WorkflowState:
+    description: "Issue statuses (Backlog, In Progress, Done, etc.)"
+    queries:
+      - name: workflowState
+        type: single
+      - name: workflowStates
+        type: list
+    mutations:
+      - name: workflowStateCreate
+        type: create
+      - name: workflowStateUpdate
+        type: update
+      - name: workflowStateArchive
+        type: archive
+
+  # ---------------------------------------------------------------------------
+  # ATTACHMENTS
+  # ---------------------------------------------------------------------------
+  Attachment:
+    description: "External links and files attached to issues"
+    queries:
+      - name: attachment
+        type: single
+      - name: attachments
+        type: list
+    mutations:
+      - name: attachmentCreate
+        type: create
+      - name: attachmentUpdate
+        type: update
+      - name: attachmentDelete
+        type: delete
+      - name: attachmentLinkURL
+        type: special
+        description: "Attach a URL to an issue"
+      - name: attachmentLinkGitHubPR
+        type: special
+        description: "Link a GitHub PR to an issue"
+      - name: attachmentLinkGitLabMR
+        type: special
+        description: "Link a GitLab MR to an issue"
+
+# =============================================================================
+# FEATURE-TO-OPERATION MAPPING
+# Maps YAML feature keys to GraphQL operations for comparison tables
+# =============================================================================
+
+feature-mapping:
+  # Basic CRUD
+  issue-creation: ["issueCreate"]
+  issue-update: ["issueUpdate"]
+  issue-view: ["issue"]
+  issue-search: ["issues", "issueSearch"]
+  bulk-operations: ["issueBatchCreate", "issueBatchUpdate"]
+
+  # Issue fields
+  sub-issues: ["issueCreate:parentId", "issueUpdate:parentId"]
+  estimates: ["issueCreate:estimate", "issueUpdate:estimate"]
+  due-dates: ["issueCreate:dueDate", "issueUpdate:dueDate"]
+  priority: ["issueCreate:priority", "issueUpdate:priority"]
+  status: ["issueCreate:stateId", "issueUpdate:stateId"]
+  assignee: ["issueCreate:assigneeId", "issueUpdate:assigneeId"]
+  cycles: ["issueCreate:cycleId", "issueUpdate:cycleId"]
+  projects: ["issueCreate:projectId", "issueUpdate:projectId"]
+
+  # Issue relationships
+  blocking-blocked-by: ["issueRelationCreate:blocks"]
+  related-issues: ["issueRelationCreate:related"]
+  duplicate-marking: ["issueRelationCreate:duplicate"]
+
+  # Labels
+  labels: ["issueAddLabel", "issueRemoveLabel"]
+  label-management: ["issueLabelCreate", "issueLabelUpdate", "issueLabelDelete"]
+
+  # Comments
+  comments: ["commentCreate", "comments"]
+
+  # Team management
+  team-management: ["team", "teams", "teamCreate", "teamUpdate"]
+
+  # Other
+  attachments: ["attachmentCreate", "attachmentLinkURL"]
+
+# =============================================================================
+# COMPARISON GROUPS
+# Defines how operations are grouped in comparison tables
+# =============================================================================
+
+comparison-groups:
+  issues:
+    title: "Issue Operations"
+    description: "Core issue CRUD and batch operations"
+    operations:
+      - issueCreate
+      - issueUpdate
+      - issue
+      - issues
+      - issueSearch
+      - issueArchive
+      - issueBatchCreate
+      - issueBatchUpdate
+    include-categories:
+      - cli-client
+      - tui-client
+      - ai-agent-tool
+      - git-workflow
+      - cross-team
+      - importer-exporter
+      - linear-mcp-server
+
+  relations:
+    title: "Issue Relationships"
+    description: "Blocking, duplicates, and related issue links"
+    operations:
+      - issueRelationCreate:blocks
+      - issueRelationCreate:duplicate
+      - issueRelationCreate:related
+    include-categories:
+      - cli-client
+      - ai-agent-tool
+      - linear-mcp-server
+    highlight: true
+    note: "KEY GAP: No CLI tool currently supports issue relations"
+
+  comments:
+    title: "Comment Operations"
+    description: "Creating and managing comments on issues"
+    operations:
+      - commentCreate
+      - comments
+      - commentUpdate
+      - commentDelete
+    include-categories:
+      - cli-client
+      - ai-agent-tool
+      - linear-mcp-server
+
+  teams:
+    title: "Team Operations"
+    description: "Team listing and management"
+    operations:
+      - team
+      - teams
+      - teamCreate
+      - teamUpdate
+    include-categories:
+      - cli-client
+      - cross-team
+      - linear-mcp-server
+
+  cycles:
+    title: "Cycle/Sprint Operations"
+    description: "Sprint planning and cycle management"
+    operations:
+      - cycle
+      - cycles
+      - cycleCreate
+      - cycleUpdate
+    include-categories:
+      - cli-client
+      - cross-team
+      - linear-mcp-server
+
+  projects:
+    title: "Project Operations"
+    description: "Project management and assignment"
+    operations:
+      - project
+      - projects
+      - projectCreate
+      - projectUpdate
+    include-categories:
+      - cli-client
+      - linear-mcp-server
+
+  labels:
+    title: "Label Operations"
+    description: "Label creation and issue tagging"
+    operations:
+      - issueLabelCreate
+      - issueLabelUpdate
+      - issueAddLabel
+      - issueRemoveLabel
+    include-categories:
+      - cli-client
+      - ai-agent-tool
+      - linear-mcp-server

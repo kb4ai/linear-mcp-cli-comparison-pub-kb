@@ -57,6 +57,41 @@ documentation:
   readme: true
   examples: true
 
+api-coverage:
+  queries-supported:
+    - viewer                # Current user profile
+    - issue                 # Get detailed issue info
+    - issues                # List/search with filters (assignee, state, team, priority, date)
+    - team                  # Team details
+    - teams                 # List all teams with issue counts
+    - project               # Project details with progress metrics
+    - projects              # List projects with team/state filters
+    - users                 # List workspace users
+    - user                  # Get user by email
+    - comments              # List comments on issues
+
+  mutations-supported:
+    - issueCreate           # Create issues with title, description, team, parentId
+    - issueUpdate           # Update title, description, assignee, state, priority, dueDate
+    - commentCreate         # Add comments to issues
+
+  operations-partial:
+    - issueArchive          # Listed as "coming soon" in README
+    - projectCreate         # Listed as "coming soon" in README
+
+  coverage-notes:
+    - "Six-month default filtering on queries for performance optimization"
+    - "Full sub-issue support via parentId in issueCreate"
+    - "Rich filtering: newer-than expressions (1_year_ago, all_time, etc.)"
+    - "Can include/exclude completed and archived items"
+    - "No estimate, blocking/blocked-by, or cycle mutations observed"
+
+  evidence:
+    source-type: readme
+    source-url: "https://github.com/dorkitude/linctl"
+    retrieved-date: "2026-01-04"
+    confidence: likely
+
 notes:
   - "Purpose-built for AI agents while remaining human-friendly"
   - "Flexible credential storage: env vars, system keyring, encrypted files, JSON"

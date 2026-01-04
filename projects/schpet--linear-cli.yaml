@@ -65,6 +65,51 @@ commands:
   - "linear issue create"
   - "linear team members"
 
+api-coverage:
+  queries-supported:
+    - "issue"              # linear issue view, linear issue id, linear issue title, linear issue url
+    - "issues"             # linear issue list with filtering/sorting
+    - "team"               # linear team id
+    - "teams"              # linear team list
+    - "teamMembers"        # linear team members
+    - "viewer"             # authentication verification, user context
+    - "projects"           # linear project list
+    - "project"            # linear project view
+    - "comments"           # linear issue comment list
+    - "workflowStates"     # issue state/status transitions
+
+  mutations-supported:
+    - "issueCreate"        # linear issue create
+    - "issueUpdate"        # linear issue update, linear issue start (status change)
+    - "issueDelete"        # linear issue delete
+    - "commentCreate"      # linear issue comment add
+    - "commentUpdate"      # linear issue comment update
+    - "teamCreate"         # linear team create
+
+  operations-partial:
+    - operation: "issueCreate/issueUpdate with parentId"
+      limitation: "--parent flag exists for reading parent info; write support unclear"
+      feature: "sub-issues"
+    - operation: "issueUpdate with estimate"
+      limitation: "Estimates displayed in queries but no documented write flags"
+      feature: "estimates"
+
+  coverage-notes:
+    - "Strong issue CRUD coverage with view/list/create/update/delete"
+    - "Comment operations fully supported including replies to parent comments"
+    - "Team management includes listing, creation, and member queries"
+    - "Project list/view queries available"
+    - "Branch management integrates with issue state transitions"
+    - "No blocking/blocked-by relation support (open feature request GH #26)"
+    - "No due-dates or related-issues mutations documented"
+    - "Labels, status, priority, assignee, project, cycle listed as features but specific mutation flags not documented in README"
+
+  evidence:
+    source-type: "readme"
+    source-url: "https://github.com/schpet/linear-cli"
+    retrieved-date: "2026-01-04"
+    confidence: "likely"
+
 notes:
   - "Automatically detects Linear issue IDs from git branch names"
   - "Creates/switches to issue branches and marks them as started"

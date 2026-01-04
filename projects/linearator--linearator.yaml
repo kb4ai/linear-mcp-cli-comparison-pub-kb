@@ -65,3 +65,51 @@ notes:
   - "Team collaboration features"
   - "Small community but actively maintained"
   - "Do NOT confuse with abandoned 'linearcli' package (last updated 2022)"
+
+api-coverage:
+  queries-supported:
+    - issue           # linear issue show [ID]
+    - issues          # linear issue list, linear search
+    - team            # linear team show "name"
+    - teams           # linear team list
+    - user            # linear user show
+    - users           # linear user list
+    - project         # linear project show "name"
+    - projects        # linear project list
+    - issueLabels     # linear label list
+    - projectUpdates  # linear project updates "name"
+
+  mutations-supported:
+    - issueCreate           # linear issue create
+    - issueUpdate           # linear issue update [ID]
+    - issueDelete           # linear issue delete [ID]
+    - issueBatchUpdate      # linear bulk update-state, bulk assign
+    - issueLabelCreate      # linear label create
+    - issueLabelUpdate      # linear label update
+    - issueLabelDelete      # linear label delete
+    - projectUpdateCreate   # linear project update "name" "message"
+
+  operations-partial:
+    - issueAddLabel:
+        note: "Via linear bulk label --add"
+    - issueRemoveLabel:
+        note: "Via linear bulk label --remove"
+    - estimates:
+        note: "Field exists in API but CLI exposure unclear from docs"
+
+  coverage-notes:
+    - "Comprehensive issue CRUD operations"
+    - "Advanced search with date filtering and multiple criteria"
+    - "Bulk operations for status, labels, and assignment"
+    - "Full label lifecycle management (create/update/delete)"
+    - "Project status updates with health tracking (onTrack/atRisk/offTrack)"
+    - "User workload visibility via 'linear user workload'"
+    - "No explicit comment operations visible in README"
+    - "No cycle operations visible in README"
+    - "Blocking/blocked-by relations not supported"
+
+  evidence:
+    source-type: readme
+    source-url: "https://github.com/AdiKsOnDev/linear-cli"
+    retrieved-date: "2026-01-04"
+    confidence: likely
