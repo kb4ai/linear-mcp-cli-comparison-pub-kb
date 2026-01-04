@@ -9,8 +9,8 @@ license: "MIT"
 category: "cli-client"
 
 features:
-  issue-view: true
-  issue-creation: true
+  issue-view: false
+  issue-creation: false
 
 installation:
   pip: "pylinear"

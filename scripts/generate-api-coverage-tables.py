@@ -207,10 +207,15 @@ class Project:
             # Map feature to operations
             ops = FEATURE_OPERATION_MAP.get(feature_key, [])
             for op in ops:
-                base_op = op.split(":")[0]  # Strip field suffix
-                if base_op in mutations or base_op in queries:
+                # For field-specific operations (e.g., "issueCreate:parentId"),
+                # we can't determine support from just having the base operation.
+                # Fall through to features dict for these.
+                if ":" in op:
+                    continue  # Skip field-specific ops, use features dict instead
+
+                if op in mutations or op in queries:
                     return "✅"
-                if base_op in partial:
+                if op in partial:
                     return "⚠️"
 
         # Fall back to features dict

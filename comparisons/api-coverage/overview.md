@@ -62,13 +62,13 @@ This is a significant gap for dependency tracking workflows.
 
 | Tool | Category | Coverage | Stars |
 |------|----------|----------|-------|
-| [linearator](https://github.com/AdiKsOnDev/linear-cli) | cli-client | 88% | - |
-| [linctl](https://github.com/dorkitude/linctl) | ai-agent-tool | 76% | ⭐ 78 |
-| [linearis](https://github.com/czottmann/linearis) | cli-client | 76% | - |
-| [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | linear-mcp-server | 68% | ⭐ 339 |
-| [linear-streamable-mcp-server](https://github.com/iceener/linear-streamable-mcp-server) | linear-mcp-server | 68% | ⭐ 45 |
-| [linear-cli](https://github.com/rubyists/linear-cli) | cli-client | 68% | ⭐ 7 |
-| [Linear Official MCP Server](https://mcp.linear.app) | linear-mcp-server | 68% | - |
-| [linear-mcp](https://github.com/cline/linear-mcp) | linear-mcp-server | 48% | ⭐ 121 |
-| [linear-mcp-go](https://github.com/geropl/linear-mcp-go) | linear-mcp-server | 48% | ⭐ 11 |
-| [linear-mcp-server](https://github.com/cpropster/linear-mcp-server) | linear-mcp-server | 40% | ⭐ 2 |
+| [linearator](https://github.com/AdiKsOnDev/linear-cli) | cli-client | 86% | - |
+| [linctl](https://github.com/dorkitude/linctl) | ai-agent-tool | 72% | ⭐ 78 |
+| [linearis](https://github.com/czottmann/linearis) | cli-client | 68% | - |
+| [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | linear-mcp-server | 36% | ⭐ 339 |
+| [linear-streamable-mcp-server](https://github.com/iceener/linear-streamable-mcp-server) | linear-mcp-server | 36% | ⭐ 45 |
+| [linear-cli](https://github.com/rubyists/linear-cli) | cli-client | 36% | ⭐ 7 |
+| [Linear Official MCP Server](https://mcp.linear.app) | linear-mcp-server | 36% | - |
+| [mcp-linear](https://github.com/tacticlaunch/mcp-linear) | linear-mcp-server | 32% | ⭐ 121 |
+| [linear-mcp](https://github.com/cline/linear-mcp) | linear-mcp-server | 16% | ⭐ 121 |
+| [linear-mcp-go](https://github.com/geropl/linear-mcp-go) | linear-mcp-server | 16% | ⭐ 11 |

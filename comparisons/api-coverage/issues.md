@@ -31,7 +31,6 @@
 | [linear-cli](https://github.com/carlosflorencio/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
 | [linear-cli](https://github.com/max-muoto/linear-cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
 | [linear_cli](https://github.com/eriksandfort/linear_cli) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
-| [pylinear](https://github.com/hxghhhh/pylinear) | ✅ | ❓ | ✅ | ❓ | ❓ | ❓ | ❓ | 28% |
 
 ## Tui Client
 

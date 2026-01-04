@@ -23,9 +23,8 @@
 
 | Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
 |------|----|----|----|----|----|----|----|----|----------|
-| [linear-cli](https://github.com/rubyists/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
-| [linearator](https://github.com/AdiKsOnDev/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
-| [linearis](https://github.com/czottmann/linearis) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+| [linearator](https://github.com/AdiKsOnDev/linear-cli) | ✅ | ⚠️ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 93% |
+| [linearis](https://github.com/czottmann/linearis) | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | 75% |
 
 ## Tui Client
 
@@ -39,22 +38,22 @@
 
 | Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
 |------|----|----|----|----|----|----|----|----|----------|
-| [linear-cli](https://github.com/schpet/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
-| [@minupalaniappan/linear](https://github.com/minupalaniappan/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+| [linear-cli](https://github.com/schpet/linear-cli) | ❌ | 👁️ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | 68% |
+| [@minupalaniappan/linear](https://github.com/minupalaniappan/linear-cli) | ⚠️ | ❌ | ❌ | ❌ | ❌ | ✅ | ❌ | ❌ | 18% |
 
 ## Ai Agent Tool
 
 
 | Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
 |------|----|----|----|----|----|----|----|----|----------|
-| [linctl](https://github.com/dorkitude/linctl) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+| [linctl](https://github.com/dorkitude/linctl) | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 87% |
 
 ## Cross Team
 
 
 | Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
 |------|----|----|----|----|----|----|----|----|----------|
-| [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
+| [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ❌ | ✅ | 50% |
 
 ## Importer Exporter
 
@@ -62,18 +61,6 @@
 | Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
 |------|----|----|----|----|----|----|----|----|----------|
 | [linear-issue-importer](https://crates.io/crates/linear-issue-importer) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
-
-## Linear Mcp Server
-
-
-| Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
-|------|----|----|----|----|----|----|----|----|----------|
-| [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
-| [linear-mcp](https://github.com/cline/linear-mcp) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
-| [linear-streamable-mcp-server](https://github.com/iceener/linear-streamable-mcp-server) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
-| [linear-mcp-go](https://github.com/geropl/linear-mcp-go) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
-| [linear-mcp-server](https://github.com/cpropster/linear-mcp-server) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
-| [Linear Official MCP Server](https://mcp.linear.app) | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 100% |
 
 ---
 
@@ -84,8 +71,8 @@
 ### Best Coverage
 
 
-1. [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) - 100%
-2. [@minupalaniappan/linear](https://github.com/minupalaniappan/linear-cli) - 100%
-3. [linctl](https://github.com/dorkitude/linctl) - 100%
-4. [Linear Official MCP Server](https://mcp.linear.app) - 100%
-5. [linear-cli](https://github.com/rubyists/linear-cli) - 100%
+1. [linear-issue-importer](https://crates.io/crates/linear-issue-importer) - 100%
+2. [linearator](https://github.com/AdiKsOnDev/linear-cli) - 93%
+3. [linctl](https://github.com/dorkitude/linctl) - 87%
+4. [linearis](https://github.com/czottmann/linearis) - 75%
+5. [linear-cli](https://github.com/schpet/linear-cli) - 68%
