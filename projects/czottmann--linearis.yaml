@@ -5,8 +5,8 @@ release-version: "2025.12.03"
 release-date: "2025-12-11"
 
 name: "linearis"
-description: "macOS-native Linear CLI with AppleScript support"
-language: "Swift"
+description: "Linear CLI with comprehensive issue and document management"
+language: "TypeScript"
 license: "MIT"
 
 category: "cli-client"
@@ -57,17 +57,16 @@ authentication:
   config-file: true
 
 platforms:
-  linux: false
+  linux: true
   macos: true
-  windows: false
+  windows: true
 
 documentation:
   readme: true
   examples: true
 
 notes:
-  - "macOS-native Swift implementation"
-  - "AppleScript automation support"
+  - "TypeScript implementation using tsx"
   - "Excellent sub-issue (parent-ticket) support"
   - "Full CRUD for basic issue fields"
   - "Missing: estimates, blocking/blocked-by, due dates, attachments"

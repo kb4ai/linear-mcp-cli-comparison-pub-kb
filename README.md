@@ -51,7 +51,7 @@ A comprehensive comparison of command-line tools for [Linear.app](https://linear
 | Tool | Language | Key Features | Install |
 |------|----------|--------------|---------|
 | [schpet/linear-cli](https://github.com/schpet/linear-cli) | TypeScript/Deno | Git-aware, PR creation, branch management | `brew install schpet/tap/linear` |
-| [linearis](https://github.com/czottmann/linearis) | Swift | macOS-native, AppleScript, agent-optimized | `brew install czottmann/tap/linearis` |
+| [linearis](https://github.com/czottmann/linearis) | TypeScript | Comprehensive CLI, document management | `brew install czottmann/tap/linearis` |
 | [linctl](https://github.com/dorkitude/linctl) | Go | AI agent-friendly, flexible auth | `go install github.com/dorkitude/linctl@latest` |
 | [linearator](https://github.com/linearator/linearator) | Python | PyPI + AUR, comprehensive | `pip install linearator` |
 | [lt](https://github.com/markmarkoh/lt) | Rust | Read-only TUI, issue browser | `brew tap markmarkoh/lt && brew install lt` |
