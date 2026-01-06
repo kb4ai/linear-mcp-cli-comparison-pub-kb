@@ -24,7 +24,7 @@ A comprehensive comparison of command-line tools for [Linear.app](https://linear
 |--------------|------------------|-----|
 | Use a git-aware CLI with PR integration | [schpet/linear-cli](https://github.com/schpet/linear-cli) | Best git/GitHub integration |
 | Use Linear from AI agents (Claude, Cursor) | [linctl](https://github.com/dorkitude/linctl) | Purpose-built for agents |
-| Minimize token overhead for agents | [linearis](https://github.com/czottmann/linearis) | JSON output, focused feature set |
+| [Minimize token overhead](https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html) for agents | [linearis](https://github.com/czottmann/linearis) | JSON output, focused feature set |
 | View issues in a terminal UI | [lt](https://github.com/markmarkoh/lt) | Beautiful Rust TUI |
 | Do cross-team reporting | [@anoncam/linear-cli](https://www.npmjs.com/package/@anoncam/linear-cli) | Multi-team queries, kanban |
 | Bulk import/export issues | [linear-issue-importer](https://crates.io/crates/linear-issue-importer) | JSON/CSV batch operations |
@@ -67,9 +67,9 @@ Tools optimized for LLM agent integration with minimal token overhead:
 
 | Tool | Focus | Token Efficiency |
 |------|-------|------------------|
-| [linearis](https://github.com/czottmann/linearis) | JSON output, focused features | ~0 tokens (CLI, no schema) |
+| [linearis](https://github.com/czottmann/linearis) | JSON output, focused features | [~0 tokens (CLI, no schema)](https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html) |
 | [linctl](https://github.com/dorkitude/linctl) | Agent-friendly, structured output | ~0 tokens (CLI, no schema) |
-| Official MCP Server | Full Linear API | ~13,000 tokens on connect |
+| Official MCP Server | Full Linear API | [~13,000 tokens on connect](https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html) |
 
 See [SCOPE.md](SCOPE.md#why-this-research-matters) for the token efficiency analysis.
 

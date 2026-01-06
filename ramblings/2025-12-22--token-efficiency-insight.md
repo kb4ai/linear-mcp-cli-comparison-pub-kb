@@ -1,11 +1,11 @@
 # Token Efficiency: A Critical Evaluation Metric
 
 **Date:** 2025-12-22
-**Source:** Linearis blog post analysis
+**Source:** [Linearis blog post](https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html)
 
 ## The Insight
 
-Carlo Zottmann's blog post about building Linearis reveals a critical consideration often overlooked when comparing MCP servers to CLI tools:
+Carlo Zottmann's [blog post about building Linearis](https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html) reveals a critical consideration often overlooked when comparing MCP servers to CLI tools:
 
 > "The official MCP server consumed roughly **13,000 tokens** just by connecting"
 

@@ -6,6 +6,7 @@ release-date: "2025-12-11"
 
 name: "linearis"
 description: "Linear CLI with comprehensive issue and document management"
+blog-post: "https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html"
 language: "TypeScript"
 license: "MIT"
 

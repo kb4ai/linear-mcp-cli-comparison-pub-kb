@@ -1,6 +1,6 @@
 # Archive: Linearis - A Linear CLI Built for Agents
 
-**Source:** https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html
+**Source:** [zottmann.org/2025/09/03/linearis-my-linear-cli-built.html](https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html)
 **Author:** Carlo Zottmann
 **Archived:** 2025-12-22
 **Original Date:** 2025-09-03

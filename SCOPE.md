@@ -13,7 +13,7 @@
 
 ## Why This Research Matters
 
-> **The official Linear MCP server uses ~13,000 tokens just to connect.**
+> **The official Linear MCP server uses [~13,000 tokens just to connect](https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html).**
 
 That's 6.5% to 13% of your available context (100k-200k tokens) consumed before any actual work begins. Every conversation. Every time.
 

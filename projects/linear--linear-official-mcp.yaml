@@ -116,9 +116,9 @@ api-coverage:
   coverage-notes:
     - "Official server provides ~21 specialized MCP tools"
     - "Covers core Linear workflow: issues, projects, teams, comments"
-    - "Uses ~13,000 tokens on connection for comprehensive tool schemas"
+    - "Uses ~13,000 tokens on connection for comprehensive tool schemas (see: https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html)"
     - "No public source code - centrally hosted proprietary service"
-    - "Token overhead is high compared to minimal CLI tools"
+    - "Token overhead is high compared to minimal CLI tools like linearis"
     - "Some tools map 1:1 to GraphQL operations"
     - "Other tools combine multiple queries for convenience"
     - "Documentation tools may use internal APIs beyond public GraphQL"
