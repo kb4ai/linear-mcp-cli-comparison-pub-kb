@@ -40,10 +40,26 @@ Tools designed for AI agent usage:
 | Tool | Agent-Friendly | AI Provider | Features |
 |------|----------------|-------------|----------|
 | **linctl** | ✅ Purpose-built | - | Structured output, image download, flexible auth |
+| **linearis** | ✅ JSON output | - | JSON pipeable to jq, CSV export |
 | **filipjaj/linear-cli** | ❌ | Gemini | AI-powered issue creation |
 | **@anoncam/linear-cli** | ❌ | Claude | AI-assisted label management |
 
-**Best for AI agents:** linctl
+**Best for AI agents:** linctl, linearis
+
+**Tip:** JSON output enables powerful pipelines without LLM involvement:
+
+```bash
+# Filter issues with jq
+linearis issues list | jq '.[] | select(.state == "In Progress")'
+
+# Export to CSV
+linearis issues list | jq -r '.[] | [.identifier, .title, .state] | @csv' > issues.csv
+
+# Pretty terminal table
+... | jq -r '... | @csv' | csview
+```
+
+See [JSON CLI Workflows](../ramblings/2026-01-07--json-cli-workflows.md) for more examples.
 
 ### Terminal UI
 
@@ -66,6 +82,13 @@ Tools for batch import/export:
 | **linearator** | ✅ | ✅ | Various |
 
 **Best for bulk ops:** linear-issue-importer
+
+**Workflow:** Use jq to transform JSON before import or after export:
+
+```bash
+# Export from linearis, transform, import elsewhere
+linearis issues list | jq '[.[] | {title, description, priority}]' > export.json
+```
 
 ### Cross-Team Analysis
 

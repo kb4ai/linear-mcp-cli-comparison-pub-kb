@@ -2,7 +2,7 @@
 
 *Blocking, duplicates, and related issue links*
 
-*Generated from 56 project files on 2026-01-06*
+*Generated from 56 project files on 2026-01-07*
 
 
 ## Legend
@@ -19,7 +19,7 @@
 
 ---
 
-> **Note**: Only linearis supports issue relations (via workaround script)
+> **Note**: Only linearis supports issue relations (via [workaround script](https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc), tracked in [issue #27](https://github.com/czottmann/linearis/issues/27))
 
 
 ## Cli Client

@@ -53,6 +53,10 @@ def format_install(project: dict) -> str:
     if not install:
         return '-'
 
+    # Handle list format
+    if isinstance(install, list):
+        return ', '.join(str(i) for i in install[:2]) if install else '-'
+
     methods = []
     if install.get('brew'):
         methods.append(f"`brew install {install['brew']}`")
@@ -77,6 +81,10 @@ def format_features(project: dict) -> str:
     features = project.get('features', {})
     if not features:
         return '-'
+
+    # Handle list format (some YAMLs use list of strings)
+    if isinstance(features, list):
+        return ', '.join(features[:3]) if features else '-'
 
     feature_list = []
     if features.get('git-integration'):
@@ -217,6 +225,8 @@ def generate_feature_matrix(projects: list[dict]) -> str:
         features = p.get('features', {})
 
         def check(key):
+            if isinstance(features, list):
+                return '✅' if key in features else '❌'
             return '✅' if features.get(key) else '❌'
 
         lines.append(

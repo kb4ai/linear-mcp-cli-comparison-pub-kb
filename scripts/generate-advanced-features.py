@@ -40,7 +40,7 @@ def load_projects(projects_dir: Path) -> list[dict]:
     return projects
 
 
-def format_support(value) -> str:
+def format_support(value, with_links: bool = False, feature: str = None) -> str:
     """Format feature support as emoji indicator."""
     if value is True:
         return '✅'
@@ -52,8 +52,25 @@ def format_support(value) -> str:
         return '👁️'
     elif value == 'unknown':
         return '❓'
+    elif value == 'workaround':
+        if with_links:
+            # Map features to their tracking issues
+            issue_map = {
+                'estimates': '#26',
+                'blocking-blocked-by': '#27',
+                'related-issues': '#27',
+                'duplicate-marking': '#27',
+                'due-dates': '#29',
+            }
+            issue = issue_map.get(feature, '')
+            if issue:
+                return f'[🔧](https://github.com/czottmann/linearis/issues/{issue[1:]})'
+            return '🔧'
+        return '🔧'
     elif isinstance(value, str):
-        # Handle string values like "partial", "read-only"
+        # Handle string values like "partial", "read-only", "workaround"
+        if 'workaround' in value.lower():
+            return '🔧'
         if 'partial' in value.lower():
             return '⚠️'
         if 'read' in value.lower():
@@ -235,6 +252,7 @@ def generate_legend() -> str:
 |--------|---------|
 | ✅ | Full support (read and write) |
 | ⚠️ | Partial support |
+| 🔧 | Workaround available ([script](https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc)) |
 | 👁️ | Read-only (can view but not modify) |
 | ❌ | Not supported |
 | ❓ | Unknown / Not tested |
@@ -247,14 +265,14 @@ def generate_key_findings() -> str:
 
 ### Blocking/Blocked-by Support
 
-**No CLI tool currently supports blocking/blocked-by relationships!**
+**No CLI tool natively supports blocking/blocked-by relationships!**
 
 All tools would need to implement the `IssueRelation` GraphQL mutations:
 
 * `issueRelationCreate(type: "blocks", issueId, relatedIssueId)`
 * `issueRelationCreate(type: "blocked", issueId, relatedIssueId)`
 
-**Workaround:** Use Linear WebUI or direct GraphQL API calls.
+**Workaround:** [Python GraphQL scripts](https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc) for estimates, assignees, and blocking relations.
 
 ### Estimates Support
 
@@ -263,14 +281,81 @@ Only 2 tools support setting estimates:
 * **linear-issue-importer** (Rust) - via `estimate` field in JSON/CSV
 * **linearator** (Python) - partial support via API fields
 
+**Workaround:** [Python scripts](https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc) provide `get_issue_estimate()` and `set_issue_estimate()` functions.
+
 ### Sub-Issues Support
 
 Best support for sub-issues (parent-child):
 
-* **linearis** (Swift) - full CRUD support
+* **linearis** (TypeScript) - full CRUD support
 * **linctl** (Go) - read/write via `--parent` flag
 * **linearator** (Python) - GraphQL parent/children queries
 * **linear-issue-importer** (Rust) - via `parentId` field
+"""
+
+
+def generate_recommendations() -> str:
+    """Generate tool recommendations by use case."""
+    return """## Tool Recommendations by Use Case
+
+### For AI Agent Workflows
+**Recommended: [linctl](https://github.com/dorkitude/linctl)** (Go)
+
+* Purpose-built for AI agents (Claude Code, Cursor, Gemini)
+* `--json` flag for structured output
+* Authenticated image downloads (unique feature)
+* Sub-issues + due dates support
+
+### For Git-Integrated Workflows
+**Recommended: [schpet/linear-cli](https://github.com/schpet/linear-cli)** (TypeScript/Deno)
+
+* Auto-detects issue IDs from git branch names
+* GitHub PR creation via `gh pr create`
+* Branch management
+
+### For LLM-Optimized Token Efficiency
+**Recommended: [linearis](https://github.com/czottmann/linearis)** (TypeScript/Deno)
+
+* Minimal token output (~0 tokens vs ~13k for MCP servers)
+* JSON-first design for piping to `jq`
+* [Workaround scripts](https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc) for estimates/relations
+* Feature requests tracked: [#26 estimates](https://github.com/czottmann/linearis/issues/26), [#27 blocking](https://github.com/czottmann/linearis/issues/27), [#29 due dates](https://github.com/czottmann/linearis/issues/29)
+* See: [Token efficiency analysis](https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html)
+
+### For Cross-Platform / Python Users
+**Recommended: [linearator](https://github.com/AdiKsOnDev/linear-cli)** (Python)
+
+* PyPI: `pip install linearator`
+* AUR: `paru -S linear-cli`
+* Windows support
+* Note: GitHub repo is "linear-cli", PyPI package is "linearator"
+
+### For Bulk Import/Export with Estimates
+**Recommended: [linear-issue-importer](https://crates.io/crates/linear-issue-importer)** (Rust)
+
+* Only tool with full estimate write support
+* Sub-issues + due dates
+* JSON/CSV batch operations
+
+---
+
+## Workaround Scripts for Missing Features
+
+For **linearis** and other tools missing estimates/blocking support:
+
+**Gist:** https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc
+
+```python
+# Estimates
+get_issue_estimate(identifier)      # Returns float or None
+set_issue_estimate(identifier, 5.0) # Set to 5 points
+
+# Blocking relations
+add_issue_relation('TES-123', 'TES-456', 'blocks')
+remove_issue_relation('TES-123', 'TES-456', 'blocks')
+```
+
+Requires: `LINEAR_API_KEY` environment variable
 """
 
 
@@ -323,6 +408,8 @@ def main():
         "---",
         "",
         generate_key_findings(),
+        "",
+        generate_recommendations(),
     ]
 
     print('\n'.join(output))

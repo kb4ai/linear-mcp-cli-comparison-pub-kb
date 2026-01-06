@@ -50,6 +50,8 @@ notes:
   - "Designed for batch operations"
   - "Supports JSON and CSV input formats"
   - "Create and update issues in bulk"
+  - "Pair with jq for data transformation: `cat data.json | jq '...' | linear-issue-importer`"
+  - "CSV input works with jq @csv export from other tools: `linearis issues list | jq -r '... | @csv' > migrate.csv`"
 
 api-coverage:
   queries-supported:

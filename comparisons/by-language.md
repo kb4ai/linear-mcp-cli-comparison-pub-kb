@@ -36,6 +36,14 @@ Linear CLI tools are available in multiple programming languages. This document 
 * **Focus:** Basic CLI
 * **Highlights:** French language support
 
+### linearis
+
+* **Runtime:** Deno
+* **Install:** `deno install jsr:@czottmann/linearis`
+* **Focus:** LLM-optimized CLI
+* **Highlights:** Minimal token output for AI agents, JSON-first, [workaround scripts](https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc) for estimates/relations
+* **Blog:** [Token efficiency analysis](https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html)
+
 ---
 
 ## Go
@@ -124,7 +132,7 @@ Linear CLI tools are available in multiple programming languages. This document 
 
 | Language | Count | Notable Tools |
 |----------|-------|---------------|
-| JavaScript/TypeScript | 4 | schpet/linear-cli, @anoncam/linear-cli |
+| JavaScript/TypeScript | 5 | schpet/linear-cli, @anoncam/linear-cli, linearis |
 | Rust | 4 | lt, linear-issue-importer |
 | Go | 3 | linctl |
 | Python | 3 | linearator |

@@ -127,7 +127,7 @@ RESOURCE_GROUPS = {
             "cli-client", "ai-agent-tool", "linear-mcp-server",
         ],
         "highlight": True,
-        "note": "**Note**: Only linearis supports issue relations (via workaround script)",
+        "note": "**Note**: Only linearis supports issue relations (via [workaround script](https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc), tracked in [issue #27](https://github.com/czottmann/linearis/issues/27))",
     },
     "comments": {
         "title": "Comment Operations",

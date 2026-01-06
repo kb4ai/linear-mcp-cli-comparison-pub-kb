@@ -69,11 +69,11 @@ There's a DIFFERENT, OLDER package on PyPI:
    * Strong developer community presence
    * Platform: macOS, Linux
 
-2. **czottmann/linearis** (Swift)
-   * macOS-native implementation
-   * AppleScript automation support
+2. **czottmann/linearis** (TypeScript)
+   * Cross-platform CLI implementation
+   * JSON output for jq piping
    * Recent release: 2025.12.11 (v2025.12.03)
-   * Platform: macOS only
+   * Platform: Linux, macOS, Windows
    * Excellent documentation
 
 3. **AdiKsOnDev/linear-cli** aka **linearator** (Python)
@@ -102,16 +102,17 @@ There's a DIFFERENT, OLDER package on PyPI:
 * **Pros:** Git-aware, GitHub PR creation, branch automation
 * **Cons:** No Windows support
 
-**Best for macOS Native Experience:**
+**Best for LLM-Optimized Token Efficiency:**
 
 * **Package:** linearis
-* **Install:** `brew install czottmann/tap/linearis`
-* **Pros:** Swift native, AppleScript support, actively maintained
-* **Cons:** macOS only
+* **Install:** `deno install jsr:@czottmann/linearis`
+* **Pros:** TypeScript/Deno, minimal token output for AI agents, cross-platform
+* **Cons:** Some features need [workaround scripts](https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc)
+* **Blog:** [Token efficiency analysis](https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html)
 
 ### Overall Recommendation
 
-**For general CLI use:** If you're on macOS and want native performance → **linearis**
+**For general CLI use:** If you want minimal token usage for AI agents → **linearis**
 
 **For git-integrated workflows:** If you need GitHub PR automation → **schpet/linear-cli**
 

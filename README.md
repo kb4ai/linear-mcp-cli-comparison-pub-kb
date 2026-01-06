@@ -42,7 +42,7 @@ A comprehensive comparison of command-line tools for [Linear.app](https://linear
 | MCP CLI auth tools | 9 |
 | Proxy/bridge solutions | 11 |
 
-**Languages:** TypeScript, Python, Rust, Go, Swift, Node.js, Ruby
+**Languages:** TypeScript, Python, Rust, Go, Node.js, Ruby
 
 ---
 
@@ -70,6 +70,8 @@ Tools optimized for LLM agent integration with minimal token overhead:
 | [linearis](https://github.com/czottmann/linearis) | JSON output, focused features | [~0 tokens (CLI, no schema)](https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html) |
 | [linctl](https://github.com/dorkitude/linctl) | Agent-friendly, structured output | ~0 tokens (CLI, no schema) |
 | Official MCP Server | Full Linear API | [~13,000 tokens on connect](https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html) |
+
+**JSON output enables powerful pipelines:** Pipe to [jq](https://github.com/jqlang/jq) for filtering/transforming, convert to CSV with `jq -r '... | @csv'`, view as tables with [csview](https://github.com/wfxr/csview). See [JSON CLI Workflows](ramblings/2026-01-07--json-cli-workflows.md).
 
 See [SCOPE.md](SCOPE.md#why-this-research-matters) for the token efficiency analysis.
 

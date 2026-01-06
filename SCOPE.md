@@ -37,7 +37,12 @@ linearis project ABC | python -c "import json,sys; ..." > dashboard.html && pyth
 
 # Slack/Discord notifications
 linearis search "priority:urgent updated:today" | jq -r '.[] | "🔥 \(.title)"' | notify-send
+
+# Pretty terminal tables via CSV
+linearis issues list | jq -r '.[] | [.identifier, .title, .state] | @csv' | csview
 ```
+
+**Key tools:** [jq](https://github.com/jqlang/jq) (JSON processing), [csview](https://github.com/wfxr/csview)/[xsv](https://github.com/BurntSushi/xsv) (CSV tables), [csvlens](https://github.com/YS-L/csvlens) (interactive CSV viewer).
 
 **The pattern:**
 
@@ -47,6 +52,8 @@ linearis search "priority:urgent updated:today" | jq -r '.[] | "🔥 \(.title)"'
 4. Build personal dashboards, alerts, reports
 
 MCP servers can't do this. They require the LLM for every interaction.
+
+See [JSON CLI Workflows](ramblings/2026-01-07--json-cli-workflows.md) for detailed examples.
 
 ## Motivation
 

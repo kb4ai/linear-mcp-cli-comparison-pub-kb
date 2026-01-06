@@ -78,6 +78,8 @@ notes:
   - "Built as alternative to token-heavy MCP server (~13k tokens just to connect)"
   - "Author uses with Claude Code, sst/opencode, charmbracelet/crush"
   - "Blog post: https://zottmann.org/2025/09/03/linearis-my-linear-cli-built.html"
+  - "JSON output pipeable to jq: `linearis issues list | jq '.[] | select(.state==\"In Progress\")'`"
+  - "CSV export: `linearis issues list | jq -r '.[] | [.identifier,.title,.state] | @csv'`"
 
 # GraphQL API coverage analysis
 api-coverage:

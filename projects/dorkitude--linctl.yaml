@@ -97,3 +97,5 @@ notes:
   - "Flexible credential storage: env vars, system keyring, encrypted files, JSON"
   - "Enhanced media management with authenticated image downloads"
   - "Structured output for agent parsing"
+  - "JSON output pipeable to jq for filtering/transforming: `linctl issues | jq '.[]'`"
+  - "CSV conversion: `linctl issues | jq -r '.[] | [.identifier,.title,.state] | @csv'`"
