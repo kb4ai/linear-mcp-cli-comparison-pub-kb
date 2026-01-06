@@ -2,7 +2,7 @@
 
 *Label management and issue tagging*
 
-*Generated from 56 project files on 2026-01-04*
+*Generated from 56 project files on 2026-01-06*
 
 
 ## Legend
@@ -11,6 +11,7 @@
 |--------|---------|
 | ✅ | Full support |
 | ⚠️ | Partial support |
+| 🔧 | Workaround available |
 | 👁️ | Read-only |
 | ❌ | Not supported |
 | ❓ | Unknown / Not tested |

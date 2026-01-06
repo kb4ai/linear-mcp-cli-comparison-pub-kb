@@ -127,7 +127,7 @@ RESOURCE_GROUPS = {
             "cli-client", "ai-agent-tool", "linear-mcp-server",
         ],
         "highlight": True,
-        "note": "**KEY GAP**: No CLI tool currently supports issue relations via the GraphQL API",
+        "note": "**Note**: Only linearis supports issue relations (via workaround script)",
     },
     "comments": {
         "title": "Comment Operations",
@@ -230,8 +230,12 @@ class Project:
             return "❌"
         elif value == "partial":
             return "⚠️"
+        elif value == "workaround":
+            return "🔧"  # Workaround available (not native)
         elif value == "read-only":
             return "👁️"
+        elif isinstance(value, str) and "workaround" in value.lower():
+            return "🔧"
         elif isinstance(value, str) and "partial" in value.lower():
             return "⚠️"
         elif isinstance(value, str) and "read" in value.lower():
@@ -300,7 +304,7 @@ def filter_projects_by_resource(
         has_any_coverage = False
         for op_name, feature_key in operations:
             status = project.get_operation_support(feature_key)
-            if status in ("✅", "⚠️", "👁️"):
+            if status in ("✅", "⚠️", "🔧", "👁️"):
                 has_any_coverage = True
                 break
 
@@ -328,6 +332,8 @@ def calculate_coverage_percentage(
         status = project.get_operation_support(feature_key)
         if status == "✅":
             supported += 1
+        elif status == "🔧":  # Workaround - counts as 0.75
+            partial += 0.75
         elif status in ("⚠️", "👁️"):
             partial += 0.5
 
@@ -346,6 +352,7 @@ def generate_legend() -> str:
 |--------|---------|
 | ✅ | Full support |
 | ⚠️ | Partial support |
+| 🔧 | Workaround available |
 | 👁️ | Read-only |
 | ❌ | Not supported |
 | ❓ | Unknown / Not tested |
@@ -470,7 +477,7 @@ def generate_gap_analysis(
     for op_name, feature_key in operations:
         support_count = sum(
             1 for p in projects
-            if p.get_operation_support(feature_key) in ("✅", "⚠️", "👁️")
+            if p.get_operation_support(feature_key) in ("✅", "⚠️", "🔧", "👁️")
         )
         if support_count == 0:
             unsupported.append(op_name)
@@ -541,14 +548,14 @@ def generate_overview(projects: List[Project]) -> str:
     # Check issue relations specifically
     lines.append("### Issue Relationships (Blocking/Blocked-by)\n")
     lines.append("")
-    lines.append("> **No CLI tool currently supports issue relationships.**\n")
+    lines.append("> **[linearis](https://github.com/czottmann/linearis)** is the only CLI with issue relation support (via [workaround script](https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc)).\n")
     lines.append("")
     lines.append("The Linear GraphQL API provides `issueRelationCreate` with these types:\n")
     lines.append("- `blocks` - Issue A blocks Issue B\n")
     lines.append("- `duplicate` - Mark as duplicate\n")
     lines.append("- `related` - Related issues\n")
     lines.append("")
-    lines.append("This is a significant gap for dependency tracking workflows.\n")
+    lines.append("Most tools lack this feature - consider linearis + workaround for dependency workflows.\n")
     lines.append("")
 
     # Resource coverage summary

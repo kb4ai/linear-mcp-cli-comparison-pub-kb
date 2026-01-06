@@ -1,7 +1,7 @@
 # Linear API Coverage Overview
 
 
-*Generated from 56 project files on 2026-01-04*
+*Generated from 56 project files on 2026-01-06*
 
 
 ## Summary Statistics
@@ -32,7 +32,7 @@
 ### Issue Relationships (Blocking/Blocked-by)
 
 
-> **No CLI tool currently supports issue relationships.**
+> **[linearis](https://github.com/czottmann/linearis)** is the only CLI with issue relation support (via [workaround script](https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc)).
 
 
 The Linear GraphQL API provides `issueRelationCreate` with these types:
@@ -44,7 +44,7 @@ The Linear GraphQL API provides `issueRelationCreate` with these types:
 - `related` - Related issues
 
 
-This is a significant gap for dependency tracking workflows.
+Most tools lack this feature - consider linearis + workaround for dependency workflows.
 
 
 ## Resource Coverage Tables
@@ -63,8 +63,8 @@ This is a significant gap for dependency tracking workflows.
 | Tool | Category | Coverage | Stars |
 |------|----------|----------|-------|
 | [linearator](https://github.com/AdiKsOnDev/linear-cli) | cli-client | 86% | - |
+| [linearis](https://github.com/czottmann/linearis) | cli-client | 80% | - |
 | [linctl](https://github.com/dorkitude/linctl) | ai-agent-tool | 72% | ⭐ 78 |
-| [linearis](https://github.com/czottmann/linearis) | cli-client | 68% | - |
 | [linear-mcp-server](https://github.com/jerhadf/linear-mcp-server) | linear-mcp-server | 36% | ⭐ 339 |
 | [linear-streamable-mcp-server](https://github.com/iceener/linear-streamable-mcp-server) | linear-mcp-server | 36% | ⭐ 45 |
 | [linear-cli](https://github.com/rubyists/linear-cli) | cli-client | 36% | ⭐ 7 |

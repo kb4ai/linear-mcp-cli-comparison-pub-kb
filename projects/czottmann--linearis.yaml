@@ -30,13 +30,16 @@ features:
   milestones: true
   comments: true
 
-  # MISSING FEATURES (tested 2025-12-23)
-  estimates: false           # Story points - NOT SUPPORTED
-  blocking-blocked-by: false # Issue dependencies - NOT SUPPORTED
-  related-issues: false      # Related issue links - NOT SUPPORTED
-  duplicate-marking: false   # Mark as duplicate - NOT SUPPORTED
-  due-dates: false           # Due date field - NOT SUPPORTED
-  attachments: false         # File attachments - NOT SUPPORTED
+  # Features with workaround scripts (see workarounds section)
+  estimates: "workaround"           # Via gist: estimate get/set
+  blocking-blocked-by: "workaround" # Via gist: relation add --blocks/--blocked-by
+  related-issues: "workaround"      # Via gist: relation add --related
+  duplicate-marking: "workaround"   # Via gist: relation add --duplicate
+  assignee-read: "workaround"       # Via gist: assignee get/list-users (native has --assignee for create/update)
+
+  # Truly missing features (no workaround available)
+  due-dates: false           # Issue #29 - no workaround yet
+  attachments: false         # Issue #28 - file upload exists but not attachment linking
   github-commits-link: false # Linked GitHub commits - NOT SUPPORTED
   github-prs-link: false     # Linked GitHub PRs - NOT SUPPORTED
 
@@ -139,8 +142,30 @@ missing-feature-issues:
 # Python workaround scripts for missing features
 workarounds:
   gist-url: "https://gist.github.com/g-click-trade/3d73f0492abd2e5c75baa863053867dc"
-  description: "Python/GraphQL workarounds for estimates, assignees, blocking relations"
-  features-covered:
-    - "get/set estimates"
-    - "get/set assignee"
-    - "add/remove issue relations (blocking, blocked_by, related, duplicate)"
+  gist-name: "linearis_workarounds.py"
+  description: "Python/GraphQL workarounds extending linearis capabilities"
+  requires: "LINEAR_API_KEY environment variable"
+
+  commands:
+    estimates:
+      - "python linearis_workarounds.py estimate get <issue>"
+      - "python linearis_workarounds.py estimate set <issue> <value>"
+    assignee:
+      - "python linearis_workarounds.py assignee get <issue>"
+      - "python linearis_workarounds.py assignee set <issue> <user_id>"
+      - "python linearis_workarounds.py assignee clear <issue>"
+      - "python linearis_workarounds.py assignee list-users"
+    relations:
+      - "python linearis_workarounds.py relation get <issue>"
+      - "python linearis_workarounds.py relation add <issue> --blocks <other>"
+      - "python linearis_workarounds.py relation add <issue> --blocked-by <other>"
+      - "python linearis_workarounds.py relation add <issue> --related <other>"
+      - "python linearis_workarounds.py relation add <issue> --duplicate <other>"
+      - "python linearis_workarounds.py relation remove <relation_id>"
+
+  coverage-with-workaround:
+    - "estimates: full read/write"
+    - "assignee: full read/write/clear + list users"
+    - "blocking-blocked-by: full CRUD via issueRelationCreate/Delete"
+    - "related-issues: full CRUD"
+    - "duplicate-marking: full CRUD"

@@ -2,7 +2,7 @@
 
 *Which issue fields can be set via create/update*
 
-*Generated from 56 project files on 2026-01-04*
+*Generated from 56 project files on 2026-01-06*
 
 
 ## Legend
@@ -11,6 +11,7 @@
 |--------|---------|
 | ✅ | Full support |
 | ⚠️ | Partial support |
+| 🔧 | Workaround available |
 | 👁️ | Read-only |
 | ❌ | Not supported |
 | ❓ | Unknown / Not tested |
@@ -24,7 +25,7 @@
 | Tool | parentId (sub-issues) | estimate | dueDate | priority | stateId (status) | assigneeId | cycleId | projectId | Coverage |
 |------|----|----|----|----|----|----|----|----|----------|
 | [linearator](https://github.com/AdiKsOnDev/linear-cli) | ✅ | ⚠️ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | 93% |
-| [linearis](https://github.com/czottmann/linearis) | ✅ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | 75% |
+| [linearis](https://github.com/czottmann/linearis) | ✅ | 🔧 | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | 84% |
 
 ## Tui Client
 
@@ -74,5 +75,5 @@
 1. [linear-issue-importer](https://crates.io/crates/linear-issue-importer) - 100%
 2. [linearator](https://github.com/AdiKsOnDev/linear-cli) - 93%
 3. [linctl](https://github.com/dorkitude/linctl) - 87%
-4. [linearis](https://github.com/czottmann/linearis) - 75%
+4. [linearis](https://github.com/czottmann/linearis) - 84%
 5. [linear-cli](https://github.com/schpet/linear-cli) - 68%
